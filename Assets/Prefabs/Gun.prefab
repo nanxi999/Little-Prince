@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb134627316116b4693a6ea6f9e6fa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 100
-  lightBullet: {fileID: 0}
+  lightBullet: {fileID: 3396140827443464808, guid: 38984c46936ffe444b53336aee5e3952,
+    type: 3}
   attackCd: 0.4
+  firePoint: {fileID: 0}
