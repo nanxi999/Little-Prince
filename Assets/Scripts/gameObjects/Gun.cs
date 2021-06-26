@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private int target = 0;
     private Prince prince;
     private float lastShoot;
+    private float angle;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class Gun : MonoBehaviour
 
             // rotation of bullet
             Vector2 dir = prince.GetMoveDir();
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
             Instantiate(lightBullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             lastShoot = 0f;
         }

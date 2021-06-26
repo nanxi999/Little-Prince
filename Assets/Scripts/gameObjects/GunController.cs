@@ -22,6 +22,7 @@ public class GunController : MonoBehaviour
     public void Rotate()
     {
         Vector2 dir = prince.GetMoveDir();
+        if(dir.x == 0 && dir.y == 0) { return; }
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         Debug.Log(angle);
