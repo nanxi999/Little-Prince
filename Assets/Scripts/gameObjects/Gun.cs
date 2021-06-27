@@ -23,19 +23,17 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Fire();
+        lastShoot += Time.deltaTime;
     }
 
-    private void Fire()
+    public void Fire()
     {
-        lastShoot += Time.deltaTime;
+        Debug.Log("fire triggered");
         if(lastShoot < attackCd)
         {
             return;
-        } else if (Input.GetAxis("Fire1") == 1 && lightBullet)
+        } else if (lightBullet)
         {   
-            // direction of bullet
-
             // rotation of bullet
             Vector2 dir = prince.GetMoveDir();
             angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
