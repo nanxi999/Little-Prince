@@ -9,10 +9,13 @@ public class Mutant : Hurtable
     [SerializeField] float moveSpeed = 3;
 
     Prince prince;
+    LevelController levelController;
     // Start is called before the first frame update
     void Start()
     {
         prince = FindObjectOfType<Prince>();
+        levelController = FindObjectOfType<LevelController>();
+        levelController.EnemySpawned();
     }
 
     // Update is called once per frame
@@ -25,6 +28,12 @@ public class Mutant : Hurtable
     {
         float step = Time.deltaTime * moveSpeed;
         transform.position = Vector3.MoveTowards(transform.position, prince.transform.position, step);
+    }
+
+    public override void Hurt(int dmg)
+    {
+        levelController.EnemyKilled();
+        base.Hurt(dmg);
     }
 
 }

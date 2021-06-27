@@ -11,7 +11,7 @@ public class Hurtable : MonoBehaviour
     {
     }
 
-    public void Hurt(int dmg)
+    public virtual void Hurt(int dmg)
     {
         health -= dmg;
         if(health < 0)
