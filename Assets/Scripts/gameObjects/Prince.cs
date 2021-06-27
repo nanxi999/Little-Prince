@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 public class Prince : Hurtable
 {
     [SerializeField] float speed;
-    private float horizontalInput;
-    private float verticalInput;
-    private Vector2 moveDir;
     private Vector2 input;
 
     // Start is called before the first frame update
@@ -25,18 +22,6 @@ public class Prince : Hurtable
     }
 
 
-    /*
-    private void DetermineSpriteFlip()
-    {
-        if(transform.localScale.x > 0 && horizontalInput < 0)
-        {
-            FlipSprite();
-        } else if(transform.localScale.x < 0 && horizontalInput > 0)
-        {
-            FlipSprite();
-        }
-    }*/
-
     private void FlipSprite()
     {
         float x = transform.localScale.x;
@@ -46,20 +31,25 @@ public class Prince : Hurtable
         transform.localScale = newScale;
     }
 
-    /*
-    private void Move()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        moveDir = new Vector2(horizontalInput, verticalInput);
-        transform.Translate(moveDir * speed * Time.deltaTime);
-    }*/
 
     public Vector3 GetMoveDir()
     {
-        return moveDir;
+        return input;
     }
 
     public void OnMove(InputAction.CallbackContext context) => input = context.ReadValue<Vector2>();
     
+
+    public void Fire()
+    {
+        Debug.Log("start firing");
+        Gun gun = GetComponentInChildren<Gun>();
+        if(!gun)
+        {
+            Debug.Log("player's gun not properly set");
+        } else
+        {
+            gun.Fire();
+        }
+    }
 }

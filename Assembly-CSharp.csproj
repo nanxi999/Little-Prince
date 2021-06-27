@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\gameObjects\GunController.cs" />
     <Compile Include="Assets\Scripts\gameObjects\Hurtable.cs" />
     <Compile Include="Assets\Scripts\gameObjects\Prince.cs" />
+    <Compile Include="Assets\Scripts\gameObjects\System\CameraManager.cs" />
     <Compile Include="Assets\Scripts\gameObjects\bullet\LightBullet.cs" />
     <Compile Include="Assets\Scripts\gameObjects\monsters\MovementControl.cs" />
     <Compile Include="Assets\Scripts\gameObjects\monsters\Mutant.cs" />

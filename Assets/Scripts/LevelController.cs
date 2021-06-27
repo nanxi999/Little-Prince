@@ -10,7 +10,6 @@ public class LevelController : MonoBehaviour
     public void EnemySpawned()
     {
         numberOfAttackers++;
-        Debug.Log(numberOfAttackers);
     }
 
     public void EnemyKilled()

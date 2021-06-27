@@ -1285,6 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896914746}
   - component: {fileID: 896914745}
+  - component: {fileID: 896914747}
   m_Layer: 0
   m_Name: Targets
   m_TagString: Untagged
@@ -1311,7 +1312,7 @@ MonoBehaviour:
   - target: {fileID: 0}
     weight: 1
     radius: 0
-  - target: {fileID: 1926813252}
+  - target: {fileID: 0}
     weight: 1
     radius: 0
 --- !u!4 &896914746
@@ -1322,12 +1323,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896914744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.915, y: 2.275, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1737198779}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &896914747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896914744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af938ffe2a224774389433c2ecc9e86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077561971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,7 +1837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 3
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -2527,7 +2540,7 @@ Transform:
   - {fileID: 303218174}
   - {fileID: 362704974}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2034696614
 GameObject:
@@ -2960,7 +2973,7 @@ PrefabInstance:
     - target: {fileID: 235386136681188685, guid: 46afe1393706a664a8f06085008f52ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 235386136681188685, guid: 46afe1393706a664a8f06085008f52ef,
         type: 3}

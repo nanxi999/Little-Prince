@@ -26,8 +26,25 @@ public class Mutant : Hurtable
 
     private void Move()
     {
-        float step = Time.deltaTime * moveSpeed;
-        transform.position = Vector3.MoveTowards(transform.position, prince.transform.position, step);
+        if(!prince) { 
+           Prince[] princes= FindObjectsOfType<Prince>();
+            float minDist = float.MaxValue;     
+            foreach (Prince p in princes)
+            {
+                float dist = Vector2.Distance(transform.position, p.transform.position);
+                if( dist < minDist)
+                {
+                    minDist = dist;
+                    prince = p;
+                }
+            }
+
+        } else
+        {
+            float step = Time.deltaTime * moveSpeed;
+            transform.position = Vector3.MoveTowards(transform.position, prince.transform.position, step);
+        }
+
     }
 
     public override void Hurt(int dmg)

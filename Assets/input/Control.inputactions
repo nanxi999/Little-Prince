@@ -10,6 +10,14 @@
                     "type": "Value",
                     "id": "9e77b014-6835-4648-82fa-52ddc20319e9",
                     "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.25,max=0.95)",
+                    "interactions": ""
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "b5f0aeb9-8f76-4286-a9cd-3863a5735596",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -18,7 +26,7 @@
                 {
                     "name": "",
                     "id": "619418ef-d02c-4598-b4e2-2d337b53880a",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -80,6 +88,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9a277a04-c029-4b1b-ac4c-3686356282c0",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f81ec34b-67d1-4422-b9a5-2379e70131bb",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
