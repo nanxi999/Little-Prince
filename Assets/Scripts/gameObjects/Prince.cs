@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Prince : Hurtable
 {
@@ -9,6 +10,8 @@ public class Prince : Hurtable
     private float horizontalInput;
     private float verticalInput;
     private Vector2 moveDir;
+    private Vector2 input;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +21,11 @@ public class Prince : Hurtable
     // Update is called once per frame
     void Update()
     {
-        Move();
-        DetermineSpriteFlip();
+        transform.Translate(input * speed * Time.deltaTime);
     }
 
+
+    /*
     private void DetermineSpriteFlip()
     {
         if(transform.localScale.x > 0 && horizontalInput < 0)
@@ -31,7 +35,7 @@ public class Prince : Hurtable
         {
             FlipSprite();
         }
-    }
+    }*/
 
     private void FlipSprite()
     {
@@ -42,16 +46,20 @@ public class Prince : Hurtable
         transform.localScale = newScale;
     }
 
+    /*
     private void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         moveDir = new Vector2(horizontalInput, verticalInput);
         transform.Translate(moveDir * speed * Time.deltaTime);
-    }
+    }*/
 
     public Vector3 GetMoveDir()
     {
         return moveDir;
     }
+
+    public void OnMove(InputAction.CallbackContext context) => input = context.ReadValue<Vector2>();
+    
 }
