@@ -9,15 +9,17 @@ public class Prince : Hurtable
     [SerializeField] float speed;
     private Vector2 input;
 
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(input * speed * Time.deltaTime);
         transform.Translate(input * speed * Time.deltaTime);
     }
 
@@ -37,8 +39,15 @@ public class Prince : Hurtable
         return input;
     }
 
-    public void OnMove(InputAction.CallbackContext context) => input = context.ReadValue<Vector2>();
-    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        input = context.ReadValue<Vector2>();
+        if(input != Vector2.zero)
+            animator.SetBool("IsMoving", true);
+        else
+            animator.SetBool("IsMoving", false);
+    }
+
 
     public void Fire()
     {
