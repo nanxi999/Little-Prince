@@ -8,29 +8,37 @@ public class Prince : Hurtable
 {
     [SerializeField] float speed;
     private Vector2 input;
+    private GunController gunController;
 
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        gunController = GetComponentInChildren<GunController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(input * speed * Time.deltaTime);
         transform.Translate(input * speed * Time.deltaTime);
+        FlipSprite();
     }
 
 
     private void FlipSprite()
     {
-        float x = transform.localScale.x;
-        float y = transform.localScale.y;
-        float z = transform.localScale.z;
-        Vector3 newScale = new Vector3(-x, y, z);
-        transform.localScale = newScale;
+        bool cond1 = input.x > 0 && Mathf.Sign(transform.localScale.x) < 0;
+        bool cond2 = input.x < 0 && Mathf.Sign(transform.localScale.x) > 0;
+        if (cond1 || cond2)  
+        {
+            float x = transform.localScale.x;
+            float y = transform.localScale.y;
+            float z = transform.localScale.z;
+            Vector3 newScale = new Vector3(-x, y, z);
+            transform.localScale = newScale;
+            gunController.Rotate();
+        }
     }
 
 
@@ -43,7 +51,11 @@ public class Prince : Hurtable
     {
         input = context.ReadValue<Vector2>();
         if(input != Vector2.zero)
+        {
             animator.SetBool("IsMoving", true);
+            Debug.Log(input);
+            gunController.Rotate();
+        }
         else
             animator.SetBool("IsMoving", false);
     }
@@ -51,7 +63,6 @@ public class Prince : Hurtable
 
     public void Fire()
     {
-        Debug.Log("start firing");
         Gun gun = GetComponentInChildren<Gun>();
         if(!gun)
         {

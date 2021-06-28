@@ -28,19 +28,20 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log("fire triggered");
         if(lastShoot < attackCd)
         {
             return;
         } else if (lightBullet)
-        {   
-            // rotation of bullet
-            Vector2 dir = prince.GetMoveDir();
-            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        {
             Instantiate(lightBullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             lastShoot = 0f;
         }
 
+    }
+
+    public void SetAngle(float newAngle)
+    {
+        angle = newAngle;
     }
 
   
