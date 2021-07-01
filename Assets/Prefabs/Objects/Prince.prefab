@@ -547,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  deathEffect: {fileID: 0}
   speed: 15
 --- !u!114 &3191773178815609794
 MonoBehaviour:

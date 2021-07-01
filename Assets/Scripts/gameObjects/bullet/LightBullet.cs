@@ -8,15 +8,18 @@ public class LightBullet : MonoBehaviour
     [SerializeField] int dmg;
     [SerializeField] float lifeTime;
     [SerializeField] GameObject destroyEffect;
+    [SerializeField] float pushBackForce;
 
     private BoxCollider2D collider;
     private Vector3 direction;
+    private Vector3 initPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         Invoke("DestroyProjectile", lifeTime);
         collider = GetComponent<BoxCollider2D>();
+        initPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -33,9 +36,13 @@ public class LightBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Hurtable"))
+        GameObject hitObject = collision.gameObject;
+        if (hitObject.CompareTag("Hurtable"))
         {
-            collision.gameObject.GetComponent<Hurtable>().Hurt(dmg);
+            
+            Vector3 dir = transform.position - initPosition;
+            hitObject.GetComponent<Mutant>().PushBack(dir/dir.magnitude * pushBackForce, 0.7f);
+            hitObject.GetComponent<Hurtable>().Hurt(dmg);
             DestroyProjectile();
         }
     }

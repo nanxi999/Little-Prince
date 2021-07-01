@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     [SerializeField] LightBullet lightBullet;
     [SerializeField] float attackCd = 1f;
     [SerializeField] GameObject firePoint;
+    [SerializeField] AudioClip shootSound;
 
     public GameObject shootEffect;
     private int target = 0;
@@ -34,6 +35,8 @@ public class Gun : MonoBehaviour
             return;
         } else if (lightBullet)
         {
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, 8f, 5f);
             Instantiate(lightBullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             lastShoot = 0f;
 

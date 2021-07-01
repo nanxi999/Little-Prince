@@ -85,6 +85,7 @@ public class LevelController : MonoBehaviour
     public void EnemyKilled()
     {
         numberOfAttackers--;
+        Debug.Log(numberOfAttackers);
         if (numberOfAttackers <= 0 && levelTimeFinished)
         {
             StartCoroutine(NextLevel());

@@ -131,4 +131,18 @@ public class Mutant : Hurtable
         freeze = !freeze;
     }
 
+    public void PushBack(Vector3 pushBackVelocity, float duration)
+    {
+        rb.velocity = pushBackVelocity;
+        Debug.Log(pushBackVelocity);
+        StartCoroutine(Freeze(duration));
+    }
+
+    IEnumerator Freeze(float duration)
+    {
+        freeze = true;
+        yield return new WaitForSeconds(duration);
+        rb.velocity = Vector3.zero;
+        freeze = false;
+    }
 }
