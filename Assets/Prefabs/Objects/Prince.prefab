@@ -497,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5461552306284710371
 Transform:
   m_ObjectHideFlags: 0
@@ -884,6 +884,11 @@ PrefabInstance:
       objectReference: {fileID: 3191773178467335677}
     - target: {fileID: 6215506768125176233, guid: 5a99e162e6f8e6a459a14e56ab23437d,
         type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}
+    - target: {fileID: 6215506768125176233, guid: 5a99e162e6f8e6a459a14e56ab23437d,
+        type: 3}
       propertyPath: lightBullet
       value: 
       objectReference: {fileID: 3396140827443464808, guid: 38984c46936ffe444b53336aee5e3952,
@@ -892,6 +897,17 @@ PrefabInstance:
         type: 3}
       propertyPath: rotateSpeed
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215506768125176233, guid: 5a99e162e6f8e6a459a14e56ab23437d,
+        type: 3}
+      propertyPath: shootEffect
+      value: 
+      objectReference: {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03,
+        type: 3}
+    - target: {fileID: 6215506768125176233, guid: 5a99e162e6f8e6a459a14e56ab23437d,
+        type: 3}
+      propertyPath: shakeAmplitude
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a99e162e6f8e6a459a14e56ab23437d, type: 3}

@@ -8,18 +8,22 @@ public class Mutant : Hurtable
     [SerializeField] int dmg = 1;
     [SerializeField] float moveSpeed = 3;
 
-    Rigidbody2D rb;
     Prince prince;
     LevelController levelController;
     Vector2 newDir;
     bool freeze = false;
+    Rigidbody2D rb;
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        pushBackable = true;
         prince = FindObjectOfType<Prince>();
         levelController = FindObjectOfType<LevelController>();
         levelController.EnemySpawned();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -94,6 +98,7 @@ public class Mutant : Hurtable
     public override void Hurt(int dmg)
     {
         health -= dmg;
+        animator.SetBool("Hurt", true);
         if (health <= 0)
         {
             levelController.EnemyKilled();
@@ -142,6 +147,7 @@ public class Mutant : Hurtable
     {
         freeze = true;
         yield return new WaitForSeconds(duration);
+        animator.SetBool("Hurt", false);
         rb.velocity = Vector3.zero;
         freeze = false;
     }

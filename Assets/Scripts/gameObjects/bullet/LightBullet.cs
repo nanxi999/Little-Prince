@@ -37,11 +37,12 @@ public class LightBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject hitObject = collision.gameObject;
+        Mutant enemy = hitObject.GetComponent<Mutant>();
         if (hitObject.CompareTag("Hurtable"))
         {
-            
             Vector3 dir = transform.position - initPosition;
-            hitObject.GetComponent<Mutant>().PushBack(dir/dir.magnitude * pushBackForce, 0.7f);
+            if(enemy)
+                enemy.PushBack(dir/dir.magnitude * pushBackForce, 0.7f);
             hitObject.GetComponent<Hurtable>().Hurt(dmg);
             DestroyProjectile();
         }

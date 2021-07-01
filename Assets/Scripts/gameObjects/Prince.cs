@@ -9,15 +9,16 @@ public class Prince : Hurtable
     [SerializeField] float speed;
     private Vector2 input;
     private GunController gunController;
-    private Rigidbody2D rb;
 
+    Rigidbody2D rb;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        pushBackable = true;
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gunController = GetComponentInChildren<GunController>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -53,14 +54,18 @@ public class Prince : Hurtable
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        input = context.ReadValue<Vector2>();
-        if(input != Vector2.zero)
+        if(animator != null && gunController != null)
         {
-            animator.SetBool("IsMoving", true);
-            gunController.Rotate();
+            input = context.ReadValue<Vector2>();
+            if (input != Vector2.zero)
+            {
+                animator.SetBool("IsMoving", true);
+                gunController.Rotate();
+            }
+            else
+                animator.SetBool("IsMoving", false);
         }
-        else
-            animator.SetBool("IsMoving", false);
+        
     }
 
 
