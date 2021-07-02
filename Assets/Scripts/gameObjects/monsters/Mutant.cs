@@ -103,9 +103,7 @@ public class Mutant : Hurtable
         {
             levelController.EnemyKilled();
             if (deathEffect)
-            {
-                Debug.Log("created effect");
-                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            {                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(obj, 3f);
             }
             else
@@ -139,7 +137,6 @@ public class Mutant : Hurtable
     public void PushBack(Vector3 pushBackVelocity, float duration)
     {
         rb.velocity = pushBackVelocity;
-        Debug.Log(pushBackVelocity);
         StartCoroutine(Freeze(duration));
     }
 
