@@ -124,10 +124,10 @@ public class Enemy : Hurtable
     public void PushBack(Vector3 pushBackVelocity, float duration)
     {
         rb.velocity = pushBackVelocity;
-        StartCoroutine(Freeze(duration));
+        StartCoroutine(PushBackFreeze(duration));
     }
 
-    IEnumerator Freeze(float duration)
+    IEnumerator PushBackFreeze(float duration)
     {
         freeze = true;
         yield return new WaitForSeconds(duration);

@@ -36,7 +36,7 @@ public class Shadow : Enemy
         Prince prince = collision.gameObject.GetComponent<Prince>();
         if (prince)
         {
-            freeze = true;
+            StartCoroutine(Freeze(1));
             animator.SetBool("Attack", true);
         }
     }
@@ -48,7 +48,6 @@ public class Shadow : Enemy
 
     private void CheckDamage()
     {
-        freeze = false;
         if (attackPoint)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layers);
@@ -66,6 +65,13 @@ public class Shadow : Enemy
         {
             Debug.Log("The attack point for mutant is not set");
         }
+    }
+
+    IEnumerator Freeze(float duration)
+    {
+        freeze = true;
+        yield return new WaitForSeconds(duration);
+        freeze = false;
     }
 
     private void OnDrawGizmosSelected()

@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Wizard : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int dmg = 1;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
 
-    // Update is called once per frame
-    void Update()
+    public void Fire()
     {
         
     }
