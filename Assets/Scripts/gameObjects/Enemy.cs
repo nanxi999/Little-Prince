@@ -75,7 +75,6 @@ public class Enemy : Hurtable
                 newDir.y = -1;
             }
             Vector2 targetPosition = Vector2.MoveTowards(rb.position, prince.transform.position, moveSpeed * Time.fixedDeltaTime);
-            Debug.Log(targetPosition);
             rb.MovePosition(targetPosition);
         }
 

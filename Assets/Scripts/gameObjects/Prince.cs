@@ -11,6 +11,8 @@ public class Prince : Hurtable
     private bool receiveInput = true;
     private Vector2 input;
     private GunController gunController;
+    private InputAction fireAction;
+    private bool firing = false;
 
     Rigidbody2D rb;
     Animator animator;
@@ -20,6 +22,11 @@ public class Prince : Hurtable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gunController = GetComponentInChildren<GunController>();
+        var playerInput = GetComponent<PlayerInput>();
+        var map = playerInput.currentActionMap;
+        fireAction = map.FindAction("Fire");
+        fireAction.started += ToggleFiring;
+        fireAction.canceled += ToggleFiring;
     }
 
     // Update is called once per frame
@@ -28,9 +35,8 @@ public class Prince : Hurtable
         transform.Translate(input * speed * Time.deltaTime);
         //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
         FlipSprite();
-        
+        Fire();
     }
-
 
     private void FlipSprite()
     {
@@ -53,6 +59,12 @@ public class Prince : Hurtable
         return input;
     }
 
+    
+    public void ToggleFiring(InputAction.CallbackContext context)
+    {
+        firing = !firing;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if(receiveInput)
@@ -68,6 +80,7 @@ public class Prince : Hurtable
                 else
                     animator.SetBool("IsMoving", false);
             }
+           
         }
         
     }
@@ -75,7 +88,7 @@ public class Prince : Hurtable
 
     public void Fire()
     {
-        if(receiveInput)
+        if(receiveInput && firing)
         {
             Gun gun = GetComponentInChildren<Gun>();
             if (!gun)
@@ -86,6 +99,8 @@ public class Prince : Hurtable
             {
                 gun.Fire();
             }
+        } else
+        {
         }
     }
 
