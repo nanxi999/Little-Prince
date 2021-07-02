@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hurtable
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

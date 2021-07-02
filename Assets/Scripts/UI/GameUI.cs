@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GameUI : MonoBehaviour
 {
     public GameObject instruction;
     public GameObject pauseMenu;
+    public GameObject firstSelectedOnPause;
 
-    private void Start()
+    private bool pause= false;
+    private EventSystem es;
+
+    private void Awake()
     {
         instruction = transform.Find("Instruction").gameObject;
         pauseMenu = transform.Find("Paused Menu").gameObject;
+        es = GetComponent<EventSystem>();
     }
 
     public IEnumerator ShowInstruction(string content)     //Should be called in coroutine
@@ -23,15 +29,22 @@ public class GameUI : MonoBehaviour
         instruction.SetActive(false);
     }
 
-    public void PauseGame()
+    public void TogglePauseStatus()
     {
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
+        pause = !pause;
+        if(pause)
+        {
+            Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
+            if(firstSelectedOnPause)
+            {
+                es.SetSelectedGameObject(firstSelectedOnPause, new BaseEventData(es));
+            }
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
+        }
     }
 }
