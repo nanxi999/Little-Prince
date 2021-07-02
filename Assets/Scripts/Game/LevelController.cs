@@ -61,8 +61,8 @@ public class LevelController : MonoBehaviour
 
     private void StartSpawners()
     {
-        EnemySpawner[] spawnerArray = FindObjectsOfType<EnemySpawner>();
-        foreach (EnemySpawner spawner in spawnerArray)
+        ShadowSpawner[] spawnerArray = FindObjectsOfType<ShadowSpawner>();
+        foreach (ShadowSpawner spawner in spawnerArray)
         {
             StartCoroutine(spawner.StartSpawning());
         }
@@ -70,8 +70,8 @@ public class LevelController : MonoBehaviour
 
     private void StopSpawners()
     {
-        EnemySpawner[] spawnerArray = FindObjectsOfType<EnemySpawner>();
-        foreach (EnemySpawner spawner in spawnerArray)
+        ShadowSpawner[] spawnerArray = FindObjectsOfType<ShadowSpawner>();
+        foreach (ShadowSpawner spawner in spawnerArray)
         {
             spawner.StopSpawning();
         }

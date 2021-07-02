@@ -1,61 +1,68 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MutantAnimator : MonoBehaviour
+public class Shadow : Enemy
 {
-    // Start is called before the first frame update
-    Animator animator;
-    CircleCollider2D circle;
+    public int dmg = 1;
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    private LayerMask layers;
-    Mutant mutant;
 
-    void Start()
+    LayerMask layers;
+    CircleCollider2D circle;
+
+    protected override void Start()
     {
-        mutant = GetComponentInParent<Mutant>();
+        base.Start();
         animator = GetComponent<Animator>();
         circle = GetComponent<CircleCollider2D>();
-
-        // find children "attackPoint"
-        attackPoint =  transform.Find("AttackPoint");
-
-        // set mask
-        layers = LayerMask.GetMask("HittableObject");
+        attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
+        layers = LayerMask.GetMask("HittableObject");   // set mask
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetDmg()
     {
+        return dmg;
+    }
+
+    public void SetDmg(int new_dmg)
+    {
+        dmg = new_dmg;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Prince prince = collision.gameObject.GetComponent<Prince>();
-       if(prince) 
+        if (prince)
         {
-            mutant.ToggleFreeze();
-            animator.SetTrigger("Attack");
+            freeze = true;
+            animator.SetBool("Attack", true);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        animator.SetBool("Attack", false);
     }
 
     private void CheckDamage()
     {
-        mutant.ToggleFreeze();
-        if(attackPoint)
+        freeze = false;
+        if (attackPoint)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layers);
 
-            foreach(Collider2D enemy in hitEnemies)
+            foreach (Collider2D enemy in hitEnemies)
             {
                 Prince prince = enemy.gameObject.GetComponent<Prince>();
-                if(prince)
+                if (prince)
                 {
-                    prince.Hurt(mutant.GetDmg());
+                    prince.Hurt(dmg);
                 }
             }
-        } else
+        }
+        else
         {
             Debug.Log("The attack point for mutant is not set");
         }

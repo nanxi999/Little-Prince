@@ -37,7 +37,7 @@ public class LightBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject hitObject = collision.gameObject;
-        Mutant enemy = hitObject.GetComponent<Mutant>();
+        Enemy enemy = hitObject.GetComponent<Enemy>();
         if (hitObject.CompareTag("Hurtable"))
         {
             Vector3 dir = transform.position - initPosition;
