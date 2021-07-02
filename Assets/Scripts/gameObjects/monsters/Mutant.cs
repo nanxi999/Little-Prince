@@ -148,7 +148,6 @@ public class Mutant : Hurtable
         freeze = true;
         yield return new WaitForSeconds(duration);
         animator.SetBool("Hurt", false);
-        rb.velocity = Vector3.zero;
         freeze = false;
     }
 }
