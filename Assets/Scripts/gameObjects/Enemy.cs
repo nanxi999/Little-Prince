@@ -24,7 +24,7 @@ public class Enemy : Hurtable
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         Move();
         Flip();
@@ -74,9 +74,8 @@ public class Enemy : Hurtable
             {
                 newDir.y = -1;
             }
-            Vector2 targetPosition = Vector2.MoveTowards(rb.position, prince.transform.position, moveSpeed * Time.fixedDeltaTime);
-            Debug.Log(targetPosition);
-            rb.MovePosition(targetPosition);
+            //Vector2 targetPosition = Vector2.MoveTowards(rb.position, prince.transform.position, );
+            rb.MovePosition(rb.position + newDir * moveSpeed * Time.fixedDeltaTime);
         }
 
     }
@@ -133,6 +132,13 @@ public class Enemy : Hurtable
         yield return new WaitForSeconds(duration);
         animator.SetBool("Hurt", false);
         rb.velocity = Vector3.zero;
+        freeze = false;
+    }
+
+    protected IEnumerator Freeze(float duration)
+    {
+        freeze = true;
+        yield return new WaitForSeconds(duration);
         freeze = false;
     }
 }

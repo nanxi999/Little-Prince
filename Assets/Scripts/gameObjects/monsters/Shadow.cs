@@ -67,13 +67,6 @@ public class Shadow : Enemy
         }
     }
 
-    IEnumerator Freeze(float duration)
-    {
-        freeze = true;
-        yield return new WaitForSeconds(duration);
-        freeze = false;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
