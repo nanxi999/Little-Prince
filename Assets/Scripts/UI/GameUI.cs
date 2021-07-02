@@ -14,7 +14,7 @@ public class GameUI : MonoBehaviour
     private bool pause= false;
     private EventSystem es;
 
-    private void Start()
+    private void Awake()
     {
         instruction = transform.Find("Instruction").gameObject;
         pauseMenu = transform.Find("Paused Menu").gameObject;

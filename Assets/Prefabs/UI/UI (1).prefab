@@ -869,7 +869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instruction: {fileID: 5190755332220221704}
   pauseMenu: {fileID: 5190755333578455277}
-  firstSelectedOnPause: {fileID: 0}
+  firstSelectedOnPause: {fileID: 5190755332126428869}
 --- !u!114 &5190755333442514430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Actions: {fileID: -944628639613478452, guid: aa5de03a203744f42b38facc8d8dc5bb,
     type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 5190755333442514426}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -921,10 +921,6 @@ MonoBehaviour:
     m_ActionName: GamePlay/Fire[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4ed42734-4306-401c-8890-b4955e7cb2d1
-    m_ActionName: UI/Left Click[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1e8a644e-4f7d-4337-b500-4ed0f07e077c
     m_ActionName: UI/Move[/Keyboard/downArrow,/Keyboard/upArrow]
   - m_PersistentCalls:
@@ -942,6 +938,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b9f3bc83-7539-4a33-a30e-7774a4e030d9
     m_ActionName: UI/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b92c6aa9-75f2-4eba-9d67-fcbdb94887d4
+    m_ActionName: UI/Submit[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -966,10 +966,10 @@ MonoBehaviour:
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: 6065928290947358918, guid: aa5de03a203744f42b38facc8d8dc5bb,
     type: 3}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 4044575165065320377, guid: aa5de03a203744f42b38facc8d8dc5bb,
+  m_SubmitAction: {fileID: -5885643971593916677, guid: aa5de03a203744f42b38facc8d8dc5bb,
     type: 3}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
