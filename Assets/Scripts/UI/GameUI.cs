@@ -35,6 +35,10 @@ public class GameUI : MonoBehaviour
         if(pause)
         {
             Time.timeScale = 0f;
+            Prince[] allPrince = FindObjectsOfType<Prince>();
+            foreach(Prince prince in allPrince) {
+                prince.ToggleInputStatus();
+            }
             pauseMenu.SetActive(true);
             if(firstSelectedOnPause)
             {
@@ -43,6 +47,11 @@ public class GameUI : MonoBehaviour
         }
         else
         {
+            Prince[] allPrince = FindObjectsOfType<Prince>();
+            foreach (Prince prince in allPrince)
+            {
+                prince.ToggleInputStatus();
+            }
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
         }

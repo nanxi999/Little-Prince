@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class Prince : Hurtable
 {
     [SerializeField] float speed;
+
+    private bool receiveInput = true;
     private Vector2 input;
     private GunController gunController;
 
@@ -53,16 +55,19 @@ public class Prince : Hurtable
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(animator != null && gunController != null)
+        if(receiveInput)
         {
-            input = context.ReadValue<Vector2>();
-            if (input != Vector2.zero)
+            if (animator != null && gunController != null)
             {
-                animator.SetBool("IsMoving", true);
-                gunController.Rotate();
+                input = context.ReadValue<Vector2>();
+                if (input != Vector2.zero)
+                {
+                    animator.SetBool("IsMoving", true);
+                    gunController.Rotate();
+                }
+                else
+                    animator.SetBool("IsMoving", false);
             }
-            else
-                animator.SetBool("IsMoving", false);
         }
         
     }
@@ -70,13 +75,22 @@ public class Prince : Hurtable
 
     public void Fire()
     {
-        Gun gun = GetComponentInChildren<Gun>();
-        if(!gun)
+        if(receiveInput)
         {
-            Debug.Log("player's gun not properly set");
-        } else
-        {
-            gun.Fire();
+            Gun gun = GetComponentInChildren<Gun>();
+            if (!gun)
+            {
+                Debug.Log("player's gun not properly set");
+            }
+            else
+            {
+                gun.Fire();
+            }
         }
+    }
+
+    public void ToggleInputStatus()
+    {
+        receiveInput = !receiveInput;
     }
 }
