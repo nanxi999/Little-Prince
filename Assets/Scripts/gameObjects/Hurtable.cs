@@ -7,7 +7,6 @@ public class Hurtable : MonoBehaviour
     [SerializeField] protected int health;
     public GameObject deathEffect;
     int max;
-    protected bool pushBackable = false;
 
     // Start is called before the first frame update
 

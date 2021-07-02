@@ -15,7 +15,6 @@ public class Prince : Hurtable
     // Start is called before the first frame update
     void Start()
     {
-        pushBackable = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gunController = GetComponentInChildren<GunController>();

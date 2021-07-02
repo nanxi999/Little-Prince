@@ -18,7 +18,6 @@ public class Mutant : Hurtable
     // Start is called before the first frame update
     void Start()
     {
-        pushBackable = true;
         prince = FindObjectOfType<Prince>();
         levelController = FindObjectOfType<LevelController>();
         levelController.EnemySpawned();
@@ -148,6 +147,7 @@ public class Mutant : Hurtable
         freeze = true;
         yield return new WaitForSeconds(duration);
         animator.SetBool("Hurt", false);
+        rb.velocity = Vector3.zero;
         freeze = false;
     }
 }
