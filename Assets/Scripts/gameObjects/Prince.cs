@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 public class Prince : Hurtable
 {
     [SerializeField] float speed;
+    public GameObject controllerObj;
 
+    private  GunController gunController;
     private bool receiveInput = true;
     private Vector2 input;
-    private GunController gunController;
     private InputAction fireAction;
     private bool firing = false;
 
@@ -21,12 +22,14 @@ public class Prince : Hurtable
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        gunController = GetComponentInChildren<GunController>();
         var playerInput = GetComponent<PlayerInput>();
         var map = playerInput.currentActionMap;
         fireAction = map.FindAction("Fire");
         fireAction.started += ToggleFiring;
         fireAction.canceled += ToggleFiring;
+        controllerObj = Instantiate(controllerObj, transform);
+        gunController = controllerObj.GetComponent<GunController>();
+        gunController.SetPrince(this);
     }
 
     // Update is called once per frame
@@ -90,7 +93,7 @@ public class Prince : Hurtable
     {
         if(receiveInput && firing)
         {
-            Gun gun = GetComponentInChildren<Gun>();
+            Gun gun = gunController.GetComponentInChildren<Gun>();
             if (!gun)
             {
                 Debug.Log("player's gun not properly set");

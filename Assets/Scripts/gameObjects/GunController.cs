@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    private Prince prince;
+    public Prince prince;
     private Gun gun;
+    private Armory armory;
+    private GameObject gunObj;
     // Start is called before the first frame update
+
+
     void Start()
     {
-        prince = GetComponentInParent<Prince>();
-        gun = GetComponentInChildren<Gun>();
+        Debug.Log("Set Up");
+        armory = FindObjectOfType<Armory>();
+        gunObj = armory.GetRandomGun();
+        GameObject obj = Instantiate(gunObj, transform);
+        gun = obj.GetComponent<Gun>();
+        obj.transform.parent = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Rotate();
+    }
+
+    public void SetPrince(Prince prince)
+    {
+        this.prince = prince;
+        gun.SetPrince(prince);
     }
 
     public void Rotate()
