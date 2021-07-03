@@ -582,11 +582,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7625a7a53dbb94fa0e282a82043530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  deathEffect: {fileID: 0}
+  health: 80
+  deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
+    type: 3}
   moveSpeed: 3
+  dmg: 10
   prince: {fileID: 0}
-  dmg: 1
   attackPoint: {fileID: 3040799709205877778}
   attackRange: 5
   darkBullet: {fileID: 5918630548693812110, guid: 3ffef4a684621a142b7b857d85e65d41,

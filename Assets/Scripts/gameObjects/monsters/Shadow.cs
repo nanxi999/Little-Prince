@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Shadow : Enemy
 {
-    public int dmg = 1;
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
@@ -19,16 +18,6 @@ public class Shadow : Enemy
         circle = GetComponent<CircleCollider2D>();
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
         layers = LayerMask.GetMask("HittableObject");   // set mask
-    }
-
-    public int GetDmg()
-    {
-        return dmg;
-    }
-
-    public void SetDmg(int new_dmg)
-    {
-        dmg = new_dmg;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

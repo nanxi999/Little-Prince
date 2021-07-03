@@ -84,7 +84,8 @@ MonoBehaviour:
   deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
     type: 3}
   moveSpeed: 6
-  dmg: 30
+  dmg: 5
+  prince: {fileID: 0}
   attackPoint: {fileID: 1749586901359668979}
   attackRange: 4
 --- !u!50 &1749586901716044639

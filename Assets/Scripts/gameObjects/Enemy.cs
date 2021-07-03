@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Hurtable
 {
     public float moveSpeed = 3;
-
+    public int dmg = 1;
     protected bool freeze = false;
 
     public Prince prince;
@@ -14,11 +14,15 @@ public class Enemy : Hurtable
     protected Rigidbody2D rb;
     protected Animator animator;
 
+    protected virtual void Awake()
+    {
+        levelController = FindObjectOfType<LevelController>();
+        levelController.EnemySpawned();
+    }
+
     protected virtual void Start()
     {
         prince = FindObjectOfType<Prince>();
-        levelController = FindObjectOfType<LevelController>();
-        levelController.EnemySpawned();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -101,6 +105,7 @@ public class Enemy : Hurtable
         animator.SetBool("Hurt", true);
         if (health <= 0)
         {
+            Debug.Log(gameObject.name);
             levelController.EnemyKilled();
             if (deathEffect)
             {
@@ -118,6 +123,16 @@ public class Enemy : Hurtable
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+
+    public int GetDmg()
+    {
+        return dmg;
+    }
+
+    public void SetDmg(int new_dmg)
+    {
+        dmg = new_dmg;
     }
 
     public void PushBack(Vector3 pushBackVelocity, float duration)

@@ -61,8 +61,8 @@ public class LevelController : MonoBehaviour
 
     private void StartSpawners()
     {
-        ShadowSpawner[] spawnerArray = FindObjectsOfType<ShadowSpawner>();
-        foreach (ShadowSpawner spawner in spawnerArray)
+        Spawner[] spawnerArray = FindObjectsOfType<Spawner>();
+        foreach (Spawner spawner in spawnerArray)
         {
             StartCoroutine(spawner.StartSpawning());
         }
@@ -70,8 +70,8 @@ public class LevelController : MonoBehaviour
 
     private void StopSpawners()
     {
-        ShadowSpawner[] spawnerArray = FindObjectsOfType<ShadowSpawner>();
-        foreach (ShadowSpawner spawner in spawnerArray)
+        Spawner[] spawnerArray = FindObjectsOfType<Spawner>();
+        foreach (Spawner spawner in spawnerArray)
         {
             spawner.StopSpawning();
         }
@@ -80,12 +80,13 @@ public class LevelController : MonoBehaviour
     public void EnemySpawned()
     {
         numberOfAttackers++;
+        Debug.Log("number of enemies:" + numberOfAttackers);
     }
 
     public void EnemyKilled()
     {
         numberOfAttackers--;
-        Debug.Log(numberOfAttackers);
+        Debug.Log("number of enemies:" + numberOfAttackers);
         if (numberOfAttackers <= 0 && levelTimeFinished)
         {
             StartCoroutine(NextLevel());

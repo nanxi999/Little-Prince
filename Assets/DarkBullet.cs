@@ -13,6 +13,8 @@ public class DarkBullet : MonoBehaviour
     private BoxCollider2D collider;
     private Vector3 direction;
     private Vector3 initPosition;
+    private GameObject shooter;
+    private bool isColliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +37,13 @@ public class DarkBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isColliding)
+            return;
+        isColliding = true;
         GameObject hitObject = collision.gameObject;
-        Enemy enemy = hitObject.GetComponent<Enemy>();
-        if (hitObject.CompareTag("Hurtable"))
+        if (hitObject.CompareTag("Hurtable") && hitObject != shooter)
         {
             Vector3 dir = transform.position - initPosition;
-            if (enemy)
-                enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
             hitObject.GetComponent<Hurtable>().Hurt(dmg);
             DestroyProjectile();
         }
@@ -50,6 +52,16 @@ public class DarkBullet : MonoBehaviour
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection/newDirection.magnitude;
+    }
+
+    public void SetDmg(int newDmg)
+    {
+        dmg = newDmg;
+    }
+
+    public void SetShooter(GameObject tempShooter)
+    {
+        shooter = tempShooter;
     }
 
     void DestroyProjectile()

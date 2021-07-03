@@ -13,6 +13,7 @@ public class LightBullet : MonoBehaviour
     private BoxCollider2D collider;
     private Vector3 direction;
     private Vector3 initPosition;
+    private bool isColliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +37,15 @@ public class LightBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isColliding)
+            return;
+        isColliding = true;
         GameObject hitObject = collision.gameObject;
         Enemy enemy = hitObject.GetComponent<Enemy>();
         if (hitObject.CompareTag("Hurtable"))
         {
             Vector3 dir = transform.position - initPosition;
-            if(enemy)
+            if(enemy!=null && dir!=null)
                 enemy.PushBack(dir/dir.magnitude * pushBackForce, 0.7f);
             hitObject.GetComponent<Hurtable>().Hurt(dmg);
             DestroyProjectile();

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Wizard : Enemy
 {
-    public int dmg = 1;
     public Transform attackPoint;
     public float attackRange = 3f;
     public DarkBullet darkBullet;
@@ -33,6 +32,8 @@ public class Wizard : Enemy
             DarkBullet db = Instantiate(darkBullet, attackPoint.transform.position, transform.rotation);
             db.SetDirection(dir);
             db.transform.Rotate(new Vector3(0, 0, angle));
+            db.SetDmg(dmg);
+            db.SetShooter(gameObject);
         }
     }
 }
