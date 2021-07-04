@@ -31,7 +31,7 @@ public class LevelController : MonoBehaviour
     {
         if(level == 1)
             levelTime = 10;
-        else if(levelTime < 60)
+        else if(levelTime < 40)
             levelTime += 5;
         StartSpawners();
         numberOfAttackers = 0;
@@ -89,6 +89,7 @@ public class LevelController : MonoBehaviour
         Debug.Log("number of enemies:" + numberOfAttackers);
         if (numberOfAttackers <= 0 && levelTimeFinished)
         {
+            numberOfAttackers = 0;
             StartCoroutine(NextLevel());
         }
     }

@@ -13,6 +13,7 @@ public class Enemy : Hurtable
     protected Vector2 newDir;
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected bool ifAlive = true;
 
     protected virtual void Awake()
     {
@@ -106,7 +107,14 @@ public class Enemy : Hurtable
         if (health <= 0)
         {
             Debug.Log(gameObject.name);
-            levelController.EnemyKilled();
+            if(ifAlive)
+            {
+                levelController.EnemyKilled();
+                ifAlive = false;
+            } else
+            {
+                return;
+            }
             if (deathEffect)
             {
                 GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
