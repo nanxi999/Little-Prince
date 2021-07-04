@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  dmg: 25
-  lifeTime: 0.3
+  dmg: 10
+  lifeTime: 0.5
   destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
     type: 3}
   pushBackForce: 30

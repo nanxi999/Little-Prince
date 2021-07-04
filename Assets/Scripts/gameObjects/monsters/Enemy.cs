@@ -143,7 +143,7 @@ public class Enemy : Hurtable
         dmg = new_dmg;
     }
 
-    public void PushBack(Vector3 pushBackVelocity, float duration)
+    public virtual void PushBack(Vector3 pushBackVelocity, float duration)
     {
         rb.velocity = pushBackVelocity;
         StartCoroutine(PushBackFreeze(duration));

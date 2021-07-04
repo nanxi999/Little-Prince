@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1117547543362917315}
   - component: {fileID: 9051029242323493798}
   - component: {fileID: 1324200607613257786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6155555724408293604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Grass2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

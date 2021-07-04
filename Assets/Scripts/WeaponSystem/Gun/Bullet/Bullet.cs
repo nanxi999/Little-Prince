@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public GameObject destroyEffect;
     public float pushBackForce;
 
+    protected GameObject shooter;
     protected BoxCollider2D collider;
     protected Vector3 direction;
     protected Vector3 initPosition;
@@ -56,13 +57,25 @@ public class Bullet : MonoBehaviour
         isColliding = true;
         GameObject hitObject = collision.gameObject;
         Enemy enemy = hitObject.GetComponent<Enemy>();
-        if (hitObject.CompareTag("Hurtable"))
+        if (hitObject.CompareTag("Hurtable") && hitObject != shooter)
         {
             Vector3 dir = transform.position - initPosition;
             if(enemy!=null && dir!=null)
-                enemy.PushBack(dir/dir.magnitude * pushBackForce, 0.7f);
+            {
+                if(dir.magnitude == 0) { return; } 
+                else
+                {
+                    enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
+                }
+            }
+ 
             hitObject.GetComponent<Hurtable>().Hurt(dmg);
             DestroyProjectile();
         }
+    }
+
+    public void SetShooter(GameObject tempShooter)
+    {
+        shooter = tempShooter;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3319130666963411962}
   - component: {fileID: 3654030471769039874}
   - component: {fileID: 1770325412570158518}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,10 +125,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.025874, y: 3.8317494}
+  m_Offset: {x: 4.025874, y: 2.7916856}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.7464466, y: 7.1987314}
+  m_Size: {x: 3.7464466, y: 5.1186037}
   m_EdgeRadius: 0
 --- !u!1 &7988801586490389849
 GameObject:
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6256644103282264736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}

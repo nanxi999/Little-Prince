@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5918630548293307381}
   - component: {fileID: 5918630548293307382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5918630548693812110}
   - component: {fileID: 4076297039443352101}
   m_Layer: 9
-  m_Name: DarkBullet
+  m_Name: BossBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8753fde37252a44d97be363ad5176f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  dmg: 1
-  lifeTime: 1
+  speed: 45
+  dmg: 2
+  lifeTime: 2
   destroyEffect: {fileID: 2721192005346969103, guid: 4b5d1a686243a0343abccbf2111530b7,
     type: 3}
   pushBackForce: 0
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21731782, y: -0.047457963}
+  m_Offset: {x: -0.1381264, y: 0.058083534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,5 +198,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2819114, y: 1.7269969}
+  m_Size: {x: 1.3517308, y: 1.9380798}
   m_EdgeRadius: 0

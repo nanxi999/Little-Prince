@@ -80,14 +80,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864fc0f62eb116047965ad72d6cba22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 15
   deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
     type: 3}
-  moveSpeed: 6
+  moveSpeed: 10
   dmg: 5
   prince: {fileID: 0}
   attackPoint: {fileID: 1749586901359668979}
-  attackRange: 4
+  attackRange: 5.5
 --- !u!50 &1749586901716044639
 Rigidbody2D:
   serializedVersion: 4
@@ -100,11 +100,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 10
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 3147adac9a86b5c409234727b9917b88, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -138,9 +138,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.48111674, y: 26.690247}
+  m_Offset: {x: 10.991976, y: 26.016487}
   serializedVersion: 2
-  m_Radius: 35.02462
+  m_Radius: 43.903545
 --- !u!95 &6423717707171606871
 Animator:
   serializedVersion: 3

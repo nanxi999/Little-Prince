@@ -18,6 +18,7 @@ public class GunController : MonoBehaviour
         gunObj = armory.GetRandomGun();
         GameObject obj = Instantiate(gunObj, transform);
         gun = obj.GetComponent<Gun>();
+        gun.SetPrince(prince);
         obj.transform.parent = transform;
     }
 
@@ -30,7 +31,6 @@ public class GunController : MonoBehaviour
     public void SetPrince(Prince prince)
     {
         this.prince = prince;
-        gun.SetPrince(prince);
     }
 
     public void Rotate()

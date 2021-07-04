@@ -28,17 +28,24 @@ public class ShotGun : Gun
         else if (bullet)
         {
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            Bullet b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+            b.SetShooter(prince.gameObject);
+
+            for (int i = 1; i <= bulletNum/2; i++)
+            {
+                Debug.Log("generated");
+                b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
+                b.SetShooter(prince.gameObject);
+                b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
+                b.SetShooter(prince.gameObject);
+            }
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle+15));
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + 30));
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle - 30));
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle-15));
             lastShoot = 0f;
 
             if (shootEffect)
             {
-                Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+                GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+                Destroy(obj, 2);
             }
         }
     }

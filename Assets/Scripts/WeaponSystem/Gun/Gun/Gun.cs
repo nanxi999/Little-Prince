@@ -39,6 +39,7 @@ public class Gun : MonoBehaviour
 
     public virtual void Fire()
     {
+        Debug.Log("fire");
         if(lastShoot < attackCd)
         {
             return;
@@ -46,12 +47,14 @@ public class Gun : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
-            Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-            lastShoot = 0f;
+            Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+            newBullet.SetShooter(prince.gameObject);
 
+            lastShoot = 0f;
             if(shootEffect)
             {
-                Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+               GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+               Destroy(obj, 1f);
             }
         }
     }
