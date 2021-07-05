@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
+public class Award : MonoBehaviour
 {
     Animator animator;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
     }
@@ -14,7 +15,7 @@ public class Cloud : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("entered");
-        if(collision.gameObject.GetComponent<Bullet>())
+        if (collision.gameObject.GetComponent<Bullet>())
         {
             Destroy(collision.gameObject);
             animator.SetTrigger("Hit");
@@ -27,8 +28,10 @@ public class Cloud : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void GiveAwards()
+    public void ShowDescription()
     {
 
     }
+
+    protected virtual void GiveAwards() { }
 }

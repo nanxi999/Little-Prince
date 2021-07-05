@@ -80,13 +80,13 @@ public class LevelController : MonoBehaviour
     public void EnemySpawned()
     {
         numberOfAttackers++;
-        Debug.Log("number of enemies:" + numberOfAttackers);
+        //Debug.Log("number of enemies:" + numberOfAttackers);
     }
 
     public void EnemyKilled()
     {
         numberOfAttackers--;
-        Debug.Log("number of enemies:" + numberOfAttackers);
+        //Debug.Log("number of enemies:" + numberOfAttackers);
         if (numberOfAttackers <= 0 && levelTimeFinished)
         {
             numberOfAttackers = 0;

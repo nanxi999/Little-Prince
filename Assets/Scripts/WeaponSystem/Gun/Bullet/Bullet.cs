@@ -52,12 +52,13 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isColliding)
+        GameObject hitObject = collision.gameObject;
+        if (!hitObject.CompareTag("Hurtable") || isColliding)
             return;
         isColliding = true;
-        GameObject hitObject = collision.gameObject;
+        
         Enemy enemy = hitObject.GetComponent<Enemy>();
-        if (hitObject.CompareTag("Hurtable") && hitObject != shooter)
+        if (hitObject != shooter)
         {
             Vector3 dir = transform.position - initPosition;
             if(enemy!=null && dir!=null)

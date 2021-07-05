@@ -20,17 +20,13 @@ public class Shadow : Enemy
         layers = LayerMask.GetMask("HittableObject");   // set mask
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void PlayerInRange()
     {
-        Prince prince = collision.gameObject.GetComponent<Prince>();
-        if (prince)
-        {
-            StartCoroutine(Freeze(1));
-            animator.SetBool("Attack", true);
-        }
+        StartCoroutine(Freeze(1));
+        animator.SetBool("Attack", true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void PlayerOutOfRange()
     {
         animator.SetBool("Attack", false);
     }
