@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hurtable
   - MusicPlayer
+  - Friendly
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - Projectile
   - BackgroundHittable
   - Background
-  - 
-  - 
+  - Enemy
+  - Friendly
   - 
   - 
   - 

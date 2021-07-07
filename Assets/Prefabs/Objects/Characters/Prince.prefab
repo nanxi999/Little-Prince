@@ -335,9 +335,9 @@ GameObject:
   - component: {fileID: 860696728}
   - component: {fileID: 690873080}
   - component: {fileID: 690873079}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Prince
-  m_TagString: Hurtable
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,7 +510,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8639216690866781441}
   - component: {fileID: 3123561710782608748}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

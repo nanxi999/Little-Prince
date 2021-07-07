@@ -174,6 +174,8 @@ MonoBehaviour:
   destroyEffect: {fileID: 2721192005346969103, guid: 4b5d1a686243a0343abccbf2111530b7,
     type: 3}
   pushBackForce: 0
+  layers:
+  - Friendly
 --- !u!61 &4076297039443352101
 BoxCollider2D:
   m_ObjectHideFlags: 0

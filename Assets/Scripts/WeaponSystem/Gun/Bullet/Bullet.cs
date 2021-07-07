@@ -9,22 +9,30 @@ public class Bullet : MonoBehaviour
     public float lifeTime;
     public GameObject destroyEffect;
     public float pushBackForce;
+    public string[] layers;
 
     protected GameObject shooter;
     protected BoxCollider2D collider;
     protected Vector3 direction;
     protected Vector3 initPosition;
     protected bool isColliding = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected List<int> layerIndexes;
+
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void InitIndexList()
+    {
+        layerIndexes = new List<int>();
+        foreach (string layerName in layers)
+        {
+            int index = LayerMask.NameToLayer(layerName);
+            layerIndexes.Add(index);
+        }
     }
 
     public void SetDmg(int newDmg)
@@ -52,8 +60,10 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        int res = LayerMask.GetMask(layers);
+
         GameObject hitObject = collision.gameObject;
-        if (!hitObject.CompareTag("Hurtable") || isColliding)
+        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding) 
             return;
         isColliding = true;
         

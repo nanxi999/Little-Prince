@@ -54,7 +54,6 @@ public class MachineGun : Gun
                 float amplifier = (contShootTime - startModifyingSpread) * 0.6f;
                 if(amplifier > 1.5) { amplifier = 1.5f; }
                 spreadModify = spreadModify * amplifier;
-                Debug.Log(spreadModify);
             }
 
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);

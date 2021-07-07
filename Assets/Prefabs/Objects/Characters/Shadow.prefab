@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1749586901214816471}
   - component: {fileID: 6423717707171606871}
   - component: {fileID: 1356037843590818272}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Shadow
   m_TagString: Hurtable
   m_Icon: {fileID: 0}

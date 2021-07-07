@@ -11,6 +11,7 @@ public class DarkBullet : Bullet
         Invoke("DestroyProjectile", lifeTime);
         collider = GetComponent<BoxCollider2D>();
         initPosition = transform.position;
+        InitIndexList();
     }
 
     // Update is called once per frame
