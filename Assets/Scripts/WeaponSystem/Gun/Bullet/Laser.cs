@@ -7,7 +7,9 @@ public class Laser : MonoBehaviour
     public float defDistanceRay = 100;
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
-    public LayerMask mask;
+    public string[] layerNames;
+
+    private LayerMask mask;
     Transform transform;
     [SerializeField] private Vector2 dir;
 
@@ -15,7 +17,7 @@ public class Laser : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         lineRenderer = GetComponent<LineRenderer>();
-        mask = LayerMask.GetMask("Friendly");
+        mask = LayerMask.GetMask(layerNames);
     }
 
     private void Update()
@@ -30,7 +32,7 @@ public class Laser : MonoBehaviour
             DrawRay(laserFirePoint.position, hit.point);
         } else
         {
-            DrawRay(laserFirePoint.position, laserFirePoint.transform.right * defDistanceRay);
+            DrawRay(laserFirePoint.position, dir * defDistanceRay);
         }
     }
 
@@ -40,7 +42,7 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(1, endPos);
     }
 
-    void SetDir(Vector2 newDir)
+    public void SetDir(Vector2 newDir)
     {
         dir = newDir;
     }

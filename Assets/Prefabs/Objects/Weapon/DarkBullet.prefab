@@ -176,6 +176,7 @@ MonoBehaviour:
   pushBackForce: 0
   layers:
   - Friendly
+  - BackgroundHittable
 --- !u!61 &4076297039443352101
 BoxCollider2D:
   m_ObjectHideFlags: 0

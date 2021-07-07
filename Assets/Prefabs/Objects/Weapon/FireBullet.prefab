@@ -135,6 +135,7 @@ MonoBehaviour:
   layers:
   - Enemy
   - Friendly
+  - BackgroundHittable
 --- !u!61 &3396140827443464809
 BoxCollider2D:
   m_ObjectHideFlags: 0

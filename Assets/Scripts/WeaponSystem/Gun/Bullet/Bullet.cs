@@ -79,8 +79,10 @@ public class Bullet : MonoBehaviour
                     enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
                 }
             }
- 
-            hitObject.GetComponent<Hurtable>().Hurt(dmg);
+            if (hitObject.GetComponent<Hurtable>())
+            {
+                hitObject.GetComponent<Hurtable>().Hurt(dmg);
+            }
             DestroyProjectile();
         }
     }

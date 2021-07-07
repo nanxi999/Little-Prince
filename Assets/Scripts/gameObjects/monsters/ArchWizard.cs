@@ -51,6 +51,8 @@ public class ArchWizard : Enemy
 
     public void ChannelRays()
     {
-
+        Vector3 dir = prince.transform.position - attackPoint.transform.position;
+        float angle = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg - 90f;
+        laserBeam.SetDir(prince.transform.position - attackPoint.transform.position);
     }
 }
