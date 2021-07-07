@@ -8,6 +8,8 @@ public class ArchWizard : Enemy
     public float attackRange = 3f;
     public DarkBullet darkBullet;
     public float attackCd;
+    public Laser laserBeam;
+
     private float sinceLastAttack;
 
     protected override void Update()
@@ -16,6 +18,7 @@ public class ArchWizard : Enemy
         base.Update();
         transform.rotation = Quaternion.EulerRotation(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
+        ChannelRays();
     }
 
     public void FireTrigger()
@@ -44,5 +47,10 @@ public class ArchWizard : Enemy
             db.SetDmg(dmg);
             db.SetShooter(gameObject);
         }
+    }
+
+    public void ChannelRays()
+    {
+
     }
 }
