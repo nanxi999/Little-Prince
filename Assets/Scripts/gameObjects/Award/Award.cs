@@ -17,20 +17,14 @@ public class Award : MonoBehaviour
         Debug.Log("entered");
         if (collision.gameObject.GetComponent<Bullet>())
         {
-            Destroy(collision.gameObject);
-            animator.SetTrigger("Hit");
             GiveAwards();
+            DestroyThis();
         }
     }
 
     private void DestroyThis()
     {
         Destroy(this.gameObject);
-    }
-
-    public void ShowDescription()
-    {
-
     }
 
     protected virtual void GiveAwards() { }

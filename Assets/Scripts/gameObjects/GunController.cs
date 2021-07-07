@@ -39,7 +39,6 @@ public class GunController : MonoBehaviour
         gun = Instantiate(newGun, transform) as Gun;
         gun.SetPrince(prince);
         gun.transform.parent = transform;
-        Debug.Log(gun.transform.rotation);
     }
 
     public void Rotate()
@@ -49,6 +48,5 @@ public class GunController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         gun.SetAngle(angle);
-        Debug.Log(gun.transform.rotation);
     }
 }

@@ -33,7 +33,6 @@ public class ShotGun : Gun
 
             for (int i = 1; i <= bulletNum/2; i++)
             {
-                Debug.Log("generated");
                 b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
                 b.SetShooter(prince.gameObject);
                 b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
