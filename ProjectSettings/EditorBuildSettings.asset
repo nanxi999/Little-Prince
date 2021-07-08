@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start Menu.unity
     guid: 1ecfba85008b57d4a9d09cc6c4bfc3ef
-  - enabled: 1
-    path: Assets/Scenes/Nick Scene.unity
-    guid: a18285cc9c8e7fb47b2bc76a11c18bcf
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Adam Scene.unity
     guid: 014b51f1c71e46c418b665c2f4df4a2c

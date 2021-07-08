@@ -26,7 +26,7 @@ public class GunController : MonoBehaviour
         //gun.SetPrince(prince);
         //obj.transform.parent = transform;
         gun = Instantiate(prince.initialGun, transform);
-        gunsArmory.Add(prince.initialGun.name);
+        gunsArmory.Add(gun.GetName());
     }
 
     // Update is called once per frame
@@ -37,19 +37,35 @@ public class GunController : MonoBehaviour
 
     public void AddGun(Gun gunPrefab)
     {
-        if (gunsArmory.Contains(gunPrefab.name.Split('(')[0]))
+        if (gunsArmory.Contains(gunPrefab.GetName()))
         {
             return;
         } else
         {
             gunCount++;
-            gunIndex = gunCount - 1;
+            gunIndex = gunCount - 1; 
+
+            //Switch to the new gun
             gun.gameObject.SetActive(false);
             gun = Instantiate(gunPrefab, transform) as Gun;
-            Debug.Log(gunPrefab.name);
             gun.SetPrince(prince);
             gun.transform.parent = transform;
+
+            //Add new gun to gunsArmory
+            gunsArmory.Add(gun.GetName());
         }
+    }
+
+    public void RemoveGun()
+    {
+        gunIndex = 0;
+        gunCount--;
+        Destroy(gun.gameObject);
+
+        //Switch to default gun
+        gunObj = transform.GetChild(gunIndex).gameObject;
+        gunObj.SetActive(true);
+        gun = gunObj.GetComponent<Gun>();
     }
 
     public void SwitchNextGun()
@@ -68,5 +84,10 @@ public class GunController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         gun.SetAngle(angle);
+    }
+
+    public string GetGunStat()
+    {
+        return gun.GetName() + ": " + gun.GetAmmo();
     }
 }

@@ -17,6 +17,7 @@ public class Award : MonoBehaviour
         Debug.Log("entered");
         if (collision.gameObject.GetComponent<Bullet>())
         {
+            Destroy(collision.gameObject);
             GiveAwards();
             DestroyThis();
         }

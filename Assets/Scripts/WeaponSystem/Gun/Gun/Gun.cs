@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] protected string gunName;
+    [SerializeField] protected int ammo;
+
     public Bullet bullet;
     public float attackCd = 1f;
     public GameObject firePoint;
@@ -15,6 +18,7 @@ public class Gun : MonoBehaviour
     protected Prince prince;
     protected float lastShoot;
     protected float angle;
+    
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -45,6 +49,7 @@ public class Gun : MonoBehaviour
             return;
         } else if (bullet)
         {
+            ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
@@ -62,6 +67,21 @@ public class Gun : MonoBehaviour
     public void SetAngle(float newAngle)
     {
         angle = newAngle;
+    }
+
+    public string GetName()
+    {
+        return gunName;
+    }
+
+    public int GetAmmo()
+    {
+        return ammo;
+    }
+
+    public void SetAmmo(int newAmmo)
+    {
+        ammo = newAmmo;
     }
 
   

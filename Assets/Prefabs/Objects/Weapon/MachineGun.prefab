@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17877752d8469844380f6637e4fe0427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunName: MachineGun
+  ammo: 0
   bullet: {fileID: 3396140827443464808, guid: 38984c46936ffe444b53336aee5e3952, type: 3}
   attackCd: 0.1
   firePoint: {fileID: 1865358334641946203}
