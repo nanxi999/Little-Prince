@@ -16,7 +16,7 @@ public class GunAward : Award
     {
         if(gunPrefab)
         {
-            FindObjectOfType<GunController>().SetGun(gunPrefab);
+            FindObjectOfType<GunController>().AddGun(gunPrefab);
         } else
         {
             Debug.Log("Gun prefab not set");

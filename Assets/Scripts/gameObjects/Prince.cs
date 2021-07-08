@@ -6,14 +6,16 @@ using UnityEngine.InputSystem;
 
 public class Prince : Hurtable
 {
-    [SerializeField] float speed;
+    public float speed;
     public GameObject controllerObj;
+    public Gun initialGun;
 
     private  GunController gunController;
     private bool receiveInput = true;
     private Vector2 input;
     private InputAction fireAction;
     private bool firing = false;
+    private bool switching = false;
 
     Rigidbody2D rb;
     Animator animator;
@@ -29,7 +31,6 @@ public class Prince : Hurtable
         fireAction.canceled += ToggleFiring;
         controllerObj = Instantiate(controllerObj, transform);
         gunController = controllerObj.GetComponent<GunController>();
-        gunController.SetPrince(this);
     }
 
     // Update is called once per frame
@@ -105,6 +106,15 @@ public class Prince : Hurtable
         } else
         {
         }
+    }
+
+    public void SwitchGun(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            gunController.SwitchNextGun();
+        }
+        
     }
 
     public void ToggleInputStatus()
