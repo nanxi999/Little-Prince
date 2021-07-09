@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Prince : Hurtable
 {
@@ -16,6 +17,7 @@ public class Prince : Hurtable
     private InputAction fireAction;
     private bool firing = false;
     private bool switching = false;
+    private TMP_Text weaponStat;
 
     Rigidbody2D rb;
     Animator animator;
@@ -31,6 +33,7 @@ public class Prince : Hurtable
         fireAction.canceled += ToggleFiring;
         controllerObj = Instantiate(controllerObj, transform);
         gunController = controllerObj.GetComponent<GunController>();
+        weaponStat = GetComponentInChildren<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,7 @@ public class Prince : Hurtable
         //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
         FlipSprite();
         Fire();
+        weaponStat.text = gunController.GetGunStat();
     }
 
     private void FlipSprite()

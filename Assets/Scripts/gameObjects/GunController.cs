@@ -88,6 +88,13 @@ public class GunController : MonoBehaviour
 
     public string GetGunStat()
     {
-        return gun.GetName() + ": " + gun.GetAmmo();
+        if(gun.GetName().Equals("Rifle"))
+        { 
+            return gun.GetName() + ": \u221E";
+        } else
+        {
+            return gun.GetName() + ": " + gun.GetAmmo();
+        }
+        
     }
 }

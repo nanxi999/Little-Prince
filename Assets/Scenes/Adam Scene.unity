@@ -389,6 +389,7 @@ MonoBehaviour:
   darkBullet: {fileID: 5918630548693812110, guid: 21fe6e06a38397d49b8b4997b0c50b8f,
     type: 3}
   attackCd: 0.5
+  laserBeam: {fileID: 0}
 --- !u!4 &49539545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1795384808413920830, guid: 4e05c150339e6fa46bc13e73bc078385,
@@ -4846,7 +4847,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737198777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3891668, y: -13.459999, z: -15}
+  m_LocalPosition: {x: 2.3889046, y: -13.459999, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 234640455}
@@ -5173,7 +5174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900580739}
   m_LocalRotation: {x: -0, y: -0, z: 0.999999, w: 0.0014362823}
-  m_LocalPosition: {x: -0.43, y: -4.4, z: 0}
+  m_LocalPosition: {x: -0.36, y: -4.44, z: 0}
   m_LocalScale: {x: 0.9679688, y: 1.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1865540898}

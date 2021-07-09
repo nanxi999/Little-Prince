@@ -27,6 +27,7 @@ public class ShotGun : Gun
         }
         else if (bullet)
         {
+            ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             Bullet b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             b.SetShooter(prince.gameObject);
@@ -46,6 +47,10 @@ public class ShotGun : Gun
                 GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
                 Destroy(obj, 2);
             }
+        }
+        if (ammo <= 0)
+        {
+            transform.parent.GetComponent<GunController>().RemoveGun();
         }
     }
 }

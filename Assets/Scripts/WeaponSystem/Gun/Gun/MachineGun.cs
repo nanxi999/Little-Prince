@@ -43,9 +43,10 @@ public class MachineGun : Gun
         if (lastShoot < attackCd)
         {
             return;
-        }
+        } 
         else if (bullet)
         {
+            ammo--;
             // modify spread
             float spreadModify = 0;
             if (contShootTime > startModifyingSpread)
@@ -67,6 +68,11 @@ public class MachineGun : Gun
                 GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
                 Destroy(obj, 2);
             }
+        }
+
+        if(ammo <= 0)
+        {
+            transform.parent.GetComponent<GunController>().RemoveGun();
         }
     }
 }
