@@ -60,6 +60,7 @@ public class GunController : MonoBehaviour
     {
         gunIndex = 0;
         gunCount--;
+        gunsArmory.Remove(gun.GetName());
         Destroy(gun.gameObject);
 
         //Switch to default gun
