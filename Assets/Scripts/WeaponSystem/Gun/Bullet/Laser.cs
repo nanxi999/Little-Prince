@@ -23,6 +23,7 @@ public class Laser : MonoBehaviour
     private void Update()
     {
         ShootLaser();
+        LaserRotate();
     }
 
     void ShootLaser()
@@ -45,5 +46,15 @@ public class Laser : MonoBehaviour
     public void SetDir(Vector2 newDir)
     {
         dir = newDir;
+    }
+
+    void LaserRotate()
+    {
+        Vector2 angle1 = Vector2.up;
+        
+        float angle = Vector2.SignedAngle(dir, angle1);
+        angle = angle + 30 * Time.deltaTime;
+        dir = new Vector2(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle));
+        Debug.Log(dir + " " + angle);
     }
 }
