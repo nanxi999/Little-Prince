@@ -9,8 +9,16 @@ public class ArchWizard : Enemy
     public DarkBullet darkBullet;
     public float attackCd;
     public Laser laserBeam;
+    private List<Laser> laserList;
 
     private float sinceLastAttack;
+
+    protected override void Start()
+    {
+        base.Start();
+        laserList = new List<Laser>();
+        GenerateMultipleRays();
+    }
 
     protected override void Update()
     {
@@ -18,7 +26,6 @@ public class ArchWizard : Enemy
         base.Update();
         transform.rotation = Quaternion.EulerRotation(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
-        ChannelRays();
     }
 
     public void FireTrigger()
@@ -54,5 +61,28 @@ public class ArchWizard : Enemy
         Vector3 dir = prince.transform.position - attackPoint.transform.position;
         float angle = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg - 90f;
         laserBeam.SetDir(prince.transform.position - attackPoint.transform.position);
+    }
+
+    void GenerateBeam(Vector2 dir)
+    {
+        Laser laser = Instantiate(laserBeam, transform);
+        laser.SetDir(dir);
+        laserList.Add(laser);
+    }
+
+    void GenerateMultipleRays()
+    {
+        GenerateBeam(Vector2.up);
+        GenerateBeam(Vector2.down);
+        GenerateBeam(Vector2.right);
+        GenerateBeam(Vector2.left);
+
+        // 45 degree beams
+        float deg = Mathf.Deg2Rad * 45;
+        GenerateBeam(new Vector2(1, Mathf.Tan(deg)));
+        GenerateBeam(new Vector2(-1, Mathf.Tan(deg)));
+        GenerateBeam(new Vector2(1, -Mathf.Tan(deg)));
+        GenerateBeam(new Vector2(-1, -Mathf.Tan(deg)));
+
     }
 }
