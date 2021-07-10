@@ -43,7 +43,7 @@ public class Prince : Hurtable
         //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
         FlipSprite();
         Fire();
-        weaponStat.text = gunController.GetGunStat();
+        //weaponStat.text = gunController.GetGunStat();
     }
 
     private void FlipSprite()
