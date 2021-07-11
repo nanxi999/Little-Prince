@@ -18,6 +18,7 @@ public class Prince : Hurtable
     private bool firing = false;
     private bool switching = false;
     private TMP_Text weaponStat;
+    private int playerID;
 
     Rigidbody2D rb;
     Animator animator;
@@ -34,6 +35,8 @@ public class Prince : Hurtable
         controllerObj = Instantiate(controllerObj, transform);
         gunController = controllerObj.GetComponent<GunController>();
         weaponStat = GetComponentInChildren<TMP_Text>();
+
+        Debug.Log(FindObjectsOfType<Prince>().Length);
     }
 
     // Update is called once per frame
