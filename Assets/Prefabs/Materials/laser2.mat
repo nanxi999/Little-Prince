@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShadowBlast
+  m_Name: laser2
   m_Shader: {fileID: -6465566751694194690, guid: b51e5617792f1e34ebcb4716c1c16e49,
     type: 3}
   m_ShaderKeywords: 
@@ -37,13 +37,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_379997AF: 4.03
-    - Vector1_65B8A3F1: 26.53
-    - Vector1_82844822: -1.8
+    - Vector1_379997AF: 0.45
+    - Vector1_65B8A3F1: 10.01
+    - Vector1_82844822: -8.42
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_301F4AFB: {r: 0.1745283, g: 0.24440964, b: 1, a: 1}
-    - Vector2_31D4179D: {r: -2.12, g: 0, b: 0, a: 0}
+    - Color_301F4AFB: {r: 0.23705328, g: 0.1462264, b: 1, a: 1}
+    - Vector2_31D4179D: {r: -29.47, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
