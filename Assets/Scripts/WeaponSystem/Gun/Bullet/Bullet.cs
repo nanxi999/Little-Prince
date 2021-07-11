@@ -91,4 +91,9 @@ public class Bullet : MonoBehaviour
     {
         shooter = tempShooter;
     }
+
+    public GameObject GetShooter()
+    {
+        return shooter;
+    }
 }

@@ -8,12 +8,16 @@ public class LevelController : MonoBehaviour
     int level = 1;
     int levelTime;
     int numberOfAttackers;
+    int numberOfPlayers;
+    List<int> playersAwarded;
     bool levelTimeFinished;
 
     private GameUI gameUI;
 
     private void Awake()
     {
+        numberOfPlayers = 1;
+        playersAwarded = new List<int>();
         InitializeLevel();
     }
 
@@ -45,15 +49,19 @@ public class LevelController : MonoBehaviour
         StopSpawners();
         if (numberOfAttackers <= 0)
         {
-            StartCoroutine(NextLevel());
+            CompleteLevel();
         }
     }
 
-    public IEnumerator NextLevel()
+    public void CompleteLevel()
     {
         StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level..."));
         level += 1;
-        yield return new WaitForSeconds(3);
+        FindObjectOfType<AwardsSpawner>().StartSpawning();
+    }
+
+    public IEnumerator NextLevel()      //Called when all players are awarded.
+    {
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
         yield return new WaitForSeconds(3);
         InitializeLevel();
@@ -90,7 +98,32 @@ public class LevelController : MonoBehaviour
         if (numberOfAttackers <= 0 && levelTimeFinished)
         {
             numberOfAttackers = 0;
+            CompleteLevel();
+        }
+    }
+
+    public void PlayerAwarded(int id)
+    {
+        playersAwarded.Add(id);
+        if(playersAwarded.Count >= numberOfPlayers)
+        {
+            ResetAwarded();
+            var awards = FindObjectsOfType<Award>();
+            foreach(Award i in awards)
+            {
+                Destroy(i.gameObject);
+            }
             StartCoroutine(NextLevel());
         }
+    }
+
+    public void ResetAwarded()
+    {
+        playersAwarded.Clear();
+    }
+
+    public bool PlayerIsAwarded(int id)
+    {
+        return playersAwarded.Contains(id);
     }
 }

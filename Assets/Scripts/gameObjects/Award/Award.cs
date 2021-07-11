@@ -5,21 +5,34 @@ using UnityEngine;
 public class Award : MonoBehaviour
 {
     Animator animator;
+    LevelController levelConroller;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
+        levelConroller = FindObjectOfType<LevelController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Bullet>())
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        if(bullet)
         {
-            Destroy(collision.gameObject);
-            GiveAwards();
-            DestroyThis();
+            Prince prince = bullet.GetShooter().GetComponent<Prince>();
+            if(prince && !(levelConroller.PlayerIsAwarded(prince.GetID())))
+            {
+                if (collision.gameObject.GetComponent<Bullet>())
+                {
+                    Destroy(collision.gameObject);
+                    GiveAwards(bullet.GetShooter());
+                    levelConroller.PlayerAwarded(prince.GetID());
+                    DestroyThis();
+                }
+            }
+            
         }
+        
     }
 
     private void DestroyThis()
@@ -27,5 +40,5 @@ public class Award : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual void GiveAwards() { }
+    protected virtual void GiveAwards(GameObject prince) { }
 }

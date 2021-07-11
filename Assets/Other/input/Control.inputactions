@@ -141,7 +141,7 @@
                 {
                     "name": "",
                     "id": "7846608a-267b-457d-9d27-5b3700de42bf",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -201,7 +201,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -212,7 +212,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -223,7 +223,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -234,7 +234,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -245,7 +245,7 @@
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false

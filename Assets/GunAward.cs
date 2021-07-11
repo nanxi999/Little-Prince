@@ -12,11 +12,11 @@ public class GunAward : Award
         base.Start();
     }
 
-    protected override void GiveAwards() 
+    protected override void GiveAwards(GameObject prince) 
     {
         if(gunPrefab)
         {
-            FindObjectOfType<GunController>().AddGun(gunPrefab);
+            prince.GetComponentInChildren<GunController>().AddGun(gunPrefab);
         } else
         {
             Debug.Log("Gun prefab not set");

@@ -3970,6 +3970,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 860696728, guid: 93fa213589c564242a586479617a88a7, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: aa5de03a203744f42b38facc8d8dc5bb,
+        type: 3}
+    - target: {fileID: 860696728, guid: 93fa213589c564242a586479617a88a7, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard & Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 860696728, guid: 93fa213589c564242a586479617a88a7, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2026399107}
@@ -4032,6 +4041,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prince
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461552306284710373, guid: 93fa213589c564242a586479617a88a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93fa213589c564242a586479617a88a7, type: 3}
@@ -4521,7 +4535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737198777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2175264, y: -13.459999, z: -15}
+  m_LocalPosition: {x: 2.2166624, y: -13.459999, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 234640455}

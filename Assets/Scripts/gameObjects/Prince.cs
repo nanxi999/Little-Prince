@@ -35,8 +35,7 @@ public class Prince : Hurtable
         controllerObj = Instantiate(controllerObj, transform);
         gunController = controllerObj.GetComponent<GunController>();
         weaponStat = GetComponentInChildren<TMP_Text>();
-
-        Debug.Log(FindObjectsOfType<Prince>().Length);
+        playerID = FindObjectsOfType<Prince>().Length;
     }
 
     // Update is called once per frame
@@ -127,5 +126,10 @@ public class Prince : Hurtable
     public void ToggleInputStatus()
     {
         receiveInput = !receiveInput;
+    }
+
+    public int GetID()
+    {
+        return playerID;
     }
 }

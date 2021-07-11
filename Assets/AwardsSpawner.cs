@@ -7,7 +7,7 @@ public class AwardsSpawner : MonoBehaviour
     public Award[] awardPrefabArray;
     public GameObject spawnEffect;
 
-    private void Start()
+    public void StartSpawning()
     {
         GetComponent<Animator>().SetTrigger("Spawn");
     }
