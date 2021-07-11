@@ -14,7 +14,6 @@ public class Award : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("entered");
         if (collision.gameObject.GetComponent<Bullet>())
         {
             Destroy(collision.gameObject);
