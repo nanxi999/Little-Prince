@@ -86,8 +86,8 @@ public class Enemy : Hurtable
 
     }
 
-    public void Flip()
-    {
+    protected virtual void Flip()
+    {       
         Vector2 newScale = transform.localScale;
         if (newDir.x > 0 && newScale.x < 0)
         {

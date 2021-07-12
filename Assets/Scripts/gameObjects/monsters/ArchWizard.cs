@@ -10,6 +10,7 @@ public class ArchWizard : Enemy
     public float attackCd;
     public Laser laserBeam;
     private List<Laser> laserList;
+    private bool angry = false;
 
     private float sinceLastAttack;
 
@@ -17,14 +18,14 @@ public class ArchWizard : Enemy
     {
         base.Start();
         laserList = new List<Laser>();
-        GenerateMultipleRays();
+        //GenerateMultipleRays();
     }
 
     protected override void Update()
     {
         sinceLastAttack += Time.deltaTime;
         base.Update();
-        transform.rotation = Quaternion.EulerRotation(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
     }
 
@@ -33,6 +34,12 @@ public class ArchWizard : Enemy
         if (Vector2.Distance(transform.position, prince.transform.position) < attackRange)
         {
             if (sinceLastAttack < attackCd) { return; }
+            else if (!angry)
+            {
+                StartCoroutine(Freeze(2f));
+                animator.SetTrigger("CastTracer");
+                sinceLastAttack = 0;
+            }
             else
             {
                 sinceLastAttack = 0;
@@ -84,5 +91,20 @@ public class ArchWizard : Enemy
         GenerateBeam(new Vector2(1, -Mathf.Tan(deg)));
         GenerateBeam(new Vector2(-1, -Mathf.Tan(deg)));
 
+    }
+
+    protected override void Flip()
+    {
+        Vector2 newScale = transform.localScale;
+        if (newDir.x > 0 && newScale.x > 0)
+        {
+            newScale.x = -newScale.x;
+        }
+        else if (newDir.x < 0 && newScale.x < 0)
+        {
+            newScale.x = -newScale.x;
+        }
+
+        transform.localScale = newScale;
     }
 }
