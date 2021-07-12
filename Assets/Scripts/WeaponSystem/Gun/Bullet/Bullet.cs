@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         int res = LayerMask.GetMask(layers);
-
+        Debug.Log("yasssssssssssssssssssewiuroiewuroi");
         GameObject hitObject = collision.gameObject;
         if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding) 
             return;
