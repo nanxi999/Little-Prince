@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Shadow : Enemy
 {
@@ -18,6 +19,7 @@ public class Shadow : Enemy
         circle = GetComponent<CircleCollider2D>();
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
         layers = LayerMask.GetMask("HittableObject");   // set mask
+        GetComponent<AIDestinationSetter>().target = prince.transform;
     }
 
     public void PlayerInRange()
@@ -56,5 +58,16 @@ public class Shadow : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    protected override IEnumerator PushBackFreeze(float duration)
+    {
+        Debug.Log("yassssss");
+        freeze = true;
+        GetComponent<AIPath>().enabled = false;
+        yield return new WaitForSeconds(duration);
+        GetComponent<AIPath>().enabled = true;
+        animator.SetBool("Hurt", false);
+        freeze = false;
     }
 }

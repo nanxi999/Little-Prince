@@ -35,7 +35,8 @@ public class Enemy : Hurtable
         Flip();
     }
 
-    private void Move()
+    
+    protected virtual void Move()
     {
         if (freeze)
         {
@@ -149,7 +150,7 @@ public class Enemy : Hurtable
         StartCoroutine(PushBackFreeze(duration));
     }
 
-    IEnumerator PushBackFreeze(float duration)
+    protected virtual IEnumerator PushBackFreeze(float duration)
     {
         freeze = true;
         yield return new WaitForSeconds(duration);
@@ -158,7 +159,7 @@ public class Enemy : Hurtable
         freeze = false;
     }
 
-    protected IEnumerator Freeze(float duration)
+    protected virtual IEnumerator Freeze(float duration)
     {
         freeze = true;
         yield return new WaitForSeconds(duration);
