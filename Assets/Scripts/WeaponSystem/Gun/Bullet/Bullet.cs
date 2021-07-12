@@ -12,17 +12,21 @@ public class Bullet : MonoBehaviour
     public string[] layers;
 
     protected GameObject shooter;
-    protected BoxCollider2D collider;
     protected Vector3 direction;
     protected Vector3 initPosition;
     protected bool isColliding = false;
     protected List<int> layerIndexes;
 
+    protected virtual void Start()
+    {
+        Invoke("DestroyProjectile", lifeTime);
+        initPosition = transform.position;
+        InitIndexList();
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Fly();
     }
 
     public void InitIndexList()
@@ -52,7 +56,7 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected void Fly()
+    protected virtual void Fly()
     {
         Vector3 tempDir = new Vector3(0, -1f, 0);
         transform.Translate(tempDir * speed * Time.deltaTime);
