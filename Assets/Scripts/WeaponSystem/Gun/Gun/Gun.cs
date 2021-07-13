@@ -43,7 +43,6 @@ public class Gun : MonoBehaviour
 
     public virtual void Fire()
     {
-        Debug.Log("fire");
         if(lastShoot < attackCd)
         {
             return;

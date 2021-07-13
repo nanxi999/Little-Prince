@@ -6,14 +6,15 @@ public class Hurtable : MonoBehaviour
 {
     [SerializeField] protected int health;
     public GameObject deathEffect;
-    int max;
+    protected int max;
 
     // Start is called before the first frame update
 
-    private void Awake()
+    protected virtual void Awake()
     {
         max = health;
     }
+
     public virtual void Hurt(int dmg)
     {
         health -= dmg;

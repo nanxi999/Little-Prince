@@ -13,10 +13,11 @@ public class Enemy : Hurtable
     protected Vector2 newDir;
     protected Rigidbody2D rb;
     protected Animator animator;
-    protected bool ifAlive = true;
+    protected bool isAlive = true;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         levelController = FindObjectOfType<LevelController>();
         levelController.EnemySpawned();
     }
@@ -108,10 +109,10 @@ public class Enemy : Hurtable
         if (health <= 0)
         {
             Debug.Log(gameObject.name);
-            if(ifAlive)
+            if(isAlive)
             {
                 levelController.EnemyKilled();
-                ifAlive = false;
+                isAlive = false;
             } else
             {
                 return;
