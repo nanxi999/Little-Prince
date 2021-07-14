@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunName: Shotgun
-  ammo: 2
+  ammo: 25
   bullet: {fileID: 3396140827443464808, guid: fba3da5f72cd1aa48b93db58e9747484, type: 3}
   attackCd: 1
   firePoint: {fileID: 1865358334641946203}
@@ -134,5 +134,5 @@ MonoBehaviour:
   shakeAmplitude: 1
   shootEffect: {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03,
     type: 3}
-  spread: 30
+  spread: 10
   bulletNum: 5

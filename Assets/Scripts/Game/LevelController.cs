@@ -106,14 +106,14 @@ public class LevelController : MonoBehaviour
     {
         playersAwarded.Add(id);
         if(playersAwarded.Count >= numberOfPlayers)
-        {
-            ResetAwarded();
+        {           
             var awards = FindObjectsOfType<Award>();
             foreach(Award i in awards)
             {
                 Destroy(i.gameObject);
             }
             StartCoroutine(NextLevel());
+            ResetAwarded();
         }
     }
 

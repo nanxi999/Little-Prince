@@ -131,7 +131,7 @@ MonoBehaviour:
   lifeTime: 0.1
   destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
     type: 3}
-  pushBackForce: 50
+  pushBackForce: 70
   layers:
   - Enemy
   - Friendly

@@ -13,10 +13,6 @@ public class TracerBullet : Bullet
 
     protected override void Fly()
     {
-        Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        Vector3 dir = newPos - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-        transform.position = newPos;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 }

@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int health = hurtableObj.GetHealth();
+        float health = hurtableObj.GetHealth();
         if (health > 0)
         {
             float percentage = health / (float)hurtableObj.GetMaxHealth();

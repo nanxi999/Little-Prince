@@ -18,11 +18,18 @@ public class Gun : MonoBehaviour
     protected Prince prince;
     protected float lastShoot;
     protected float angle;
+    protected StatsManager stats;
     
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if(!prince)
+        {
+            prince = GetComponentInParent<Prince>();
+        }
+        stats = GetComponentInParent<StatsManager>();
+        Debug.Log(attackCd);
         lastShoot = attackCd;
     }
 
@@ -30,10 +37,6 @@ public class Gun : MonoBehaviour
     public virtual void Update()
     {
         lastShoot += Time.deltaTime;
-        if(!prince)
-        {
-            GetComponentInParent<Prince>();
-        }
     }
 
     public void SetPrince(Prince prince)
@@ -43,7 +46,7 @@ public class Gun : MonoBehaviour
 
     public virtual void Fire()
     {
-        if(lastShoot < attackCd)
+        if(lastShoot < attackCd * stats.GetShootSpeedFactor())
         {
             return;
         } else if (bullet)
@@ -77,10 +80,9 @@ public class Gun : MonoBehaviour
         return ammo;
     }
 
-    public void SetAmmo(int newAmmo)
+    public void SetAmmo(int val)
     {
-        ammo = newAmmo;
+        ammo = val;
     }
-
   
 }

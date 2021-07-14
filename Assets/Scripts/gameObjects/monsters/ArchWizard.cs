@@ -131,6 +131,7 @@ public class ArchWizard : Enemy
         if(health < (max / 2))
         {
             angry = true;
+            animator.SetTrigger("Angry");
         }
     }
 }
