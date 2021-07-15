@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - Vector1_379997AF: 0.84
     - Vector1_65B8A3F1: 10
-    - Vector1_82844822: -1.3
+    - Vector1_82844822: -0.53
     - _EnableExternalAlpha: 0
     m_Colors:
     - Color_301F4AFB: {r: 0.08018869, g: 0.1655653, b: 1, a: 1}

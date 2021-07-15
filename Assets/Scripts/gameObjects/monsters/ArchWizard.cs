@@ -13,12 +13,14 @@ public class ArchWizard : Enemy
     private bool angry = false;
 
     private float sinceLastAttack;
+    private float curTime;
+    private float lastTime = 0;
 
     protected override void Start()
     {
         base.Start();
         laserList = new List<Laser>();
-        //GenerateMultipleRays();
+        GenerateMultipleRays();
     }
 
     protected override void Update()
@@ -27,6 +29,7 @@ public class ArchWizard : Enemy
         base.Update();
         transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
+        UpdateRayWidths();
     }
 
     public void FireTrigger()
@@ -73,6 +76,7 @@ public class ArchWizard : Enemy
     void GenerateBeam(Vector2 dir)
     {
         Laser laser = Instantiate(laserBeam, transform);
+        laser.SetFirePoint(attackPoint);
         laser.SetDir(dir);
         laserList.Add(laser);
     }
@@ -106,5 +110,31 @@ public class ArchWizard : Enemy
         }
 
         transform.localScale = newScale;
+    }
+
+    void UpdateRayWidths()
+    {
+        Debug.Log(curTime + " " + lastTime);
+        curTime += Time.deltaTime;
+
+        foreach (Laser laser in laserList)
+        {
+            if (curTime < 1)
+            {
+                laser.SetWidth(0.1f);
+            }
+            else
+            {
+                if (laser.GetWidth() < 0.7f && curTime - lastTime >= 0.05f)
+                {
+                    laser.SetWidth(laser.GetWidth() + 0.02f);
+                } 
+            }
+        }
+
+        if(curTime - lastTime >= 0.05f)
+        {
+            lastTime = curTime;
+        }
     }
 }
