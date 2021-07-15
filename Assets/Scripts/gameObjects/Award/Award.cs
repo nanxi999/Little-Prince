@@ -6,6 +6,7 @@ public class Award : MonoBehaviour
 {
     Animator animator;
     LevelController levelConroller;
+    bool isCollected = false;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -17,8 +18,9 @@ public class Award : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-        if(bullet)
+        if(bullet & !isCollected)
         {
+            isCollected = true;
             Prince prince = bullet.GetShooter().GetComponent<Prince>();
             if(prince && !(levelConroller.PlayerIsAwarded(prince.GetID())))
             {

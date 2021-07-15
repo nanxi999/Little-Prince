@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour
     private GameObject gunObj;
     private int gunIndex = 0;
     private int gunCount = 1;
-    private List<string> gunsArmory;
+    private List<Gun> gunsArmory;
     // Start is called before the first frame update
 
 
@@ -19,14 +19,14 @@ public class GunController : MonoBehaviour
     {
         armory = FindObjectOfType<Armory>();
         prince = transform.parent.GetComponent<Prince>();
-        gunsArmory = new List<string>();
+        gunsArmory = new List<Gun>();
         //gunObj = armory.GetRandomGun();
         //GameObject obj = Instantiate(gunObj, transform);
         //gun = obj.GetComponent<Gun>();
         //gun.SetPrince(prince);
         //obj.transform.parent = transform;
         gun = Instantiate(prince.initialGun, transform);
-        gunsArmory.Add(gun.GetName());
+        gunsArmory.Add(gun);
     }
 
     // Update is called once per frame
@@ -35,9 +35,20 @@ public class GunController : MonoBehaviour
         //Rotate();
     }
 
+    public bool HasGun(Gun tempGun)
+    {
+        foreach(Gun g in gunsArmory)
+        {
+            if (g.GetName().Equals(tempGun.GetName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void AddGun(Gun gunPrefab)
     {
-        if (gunsArmory.Contains(gunPrefab.GetName()))
+        if (HasGun(gunPrefab))
         {
             return;
         } else
@@ -48,11 +59,9 @@ public class GunController : MonoBehaviour
             //Switch to the new gun
             gun.gameObject.SetActive(false);
             gun = Instantiate(gunPrefab, transform) as Gun;
-            gun.SetPrince(prince);
-            gun.transform.parent = transform;
 
             //Add new gun to gunsArmory
-            gunsArmory.Add(gun.GetName());
+            gunsArmory.Add(gun);
         }
     }
 
@@ -60,7 +69,7 @@ public class GunController : MonoBehaviour
     {
         gunIndex = 0;
         gunCount--;
-        gunsArmory.Remove(gun.GetName());
+        gunsArmory.Remove(gun);
         Destroy(gun.gameObject);
 
         //Switch to default gun
@@ -96,6 +105,10 @@ public class GunController : MonoBehaviour
         {
             return gun.GetName() + ": " + gun.GetAmmo();
         }
-        
+    }
+
+    public List<Gun> GetArmory()
+    {
+        return gunsArmory;
     }
 }

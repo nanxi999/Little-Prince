@@ -6,18 +6,6 @@ public class ShotGun : Gun
 {
     public int spread;
     public int bulletNum;
-    // Start is called before the first frame update
-    void Start()
-    {
-        lastShoot = attackCd;
-        prince = FindObjectOfType<Prince>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        lastShoot += Time.deltaTime;
-    }
 
     public override void Fire()
     {

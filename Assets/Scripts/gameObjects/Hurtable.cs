@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Hurtable : MonoBehaviour
 {
-    [SerializeField] protected int health;
+    [SerializeField] protected float health;
     public GameObject deathEffect;
-    int max;
+    protected float max;
 
     // Start is called before the first frame update
 
-    private void Awake()
+    protected virtual void Awake()
     {
         max = health;
     }
+
     public virtual void Hurt(int dmg)
     {
         health -= dmg;
@@ -37,14 +38,24 @@ public class Hurtable : MonoBehaviour
         return health >= 0;
     }
 
-    public int GetHealth()
+    public void SetHealth(float val)
+    {
+        health = val;
+    }
+
+    public float GetHealth()
     {
         return health;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return max;
+    }
+
+    public void SetMaxHealth(float val)
+    {
+        max = val;
     }
 
 }

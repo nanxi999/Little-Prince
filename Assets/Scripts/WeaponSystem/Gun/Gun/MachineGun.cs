@@ -12,15 +12,8 @@ public class MachineGun : Gun
     private float startModifyingSpread = 0f;
     private bool firing = false;
 
-    void Start()
-    {
-        lastShoot = attackCd;
-        prince = FindObjectOfType<Prince>();
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         lastShoot += Time.deltaTime;
         if(lastShoot > attackCd)

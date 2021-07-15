@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ArchWizard : Enemy
 {
-    public Transform attackPoint;
+    public Transform firePointBall;     //For laser
+    public Transform firePointWand;     //For simple attack
     public float attackRange = 3f;
-    public DarkBullet darkBullet;
+    public TracerBullet bullet;
     public float attackCd;
     public Laser laserBeam;
     private List<Laser> laserList;
@@ -34,6 +35,8 @@ public class ArchWizard : Enemy
 
     public void FireTrigger()
     {
+        if (prince == null)
+            return;
         if (Vector2.Distance(transform.position, prince.transform.position) < attackRange)
         {
             if (sinceLastAttack < attackCd) { return; }
@@ -52,6 +55,18 @@ public class ArchWizard : Enemy
         }
     }
 
+    public void FireTracer()
+    {
+        TracerBullet tempBullet;
+        if(bullet)
+        {
+            tempBullet = Instantiate(bullet, firePointWand.transform.position, transform.rotation);
+            tempBullet.SetTarget(prince.transform);
+        }
+            
+    }
+
+    /*
     public void Fire()
     {
         if (darkBullet)
@@ -64,13 +79,13 @@ public class ArchWizard : Enemy
             db.SetDmg(dmg);
             db.SetShooter(gameObject);
         }
-    }
+    }*/
 
     public void ChannelRays()
     {
-        Vector3 dir = prince.transform.position - attackPoint.transform.position;
+        Vector3 dir = prince.transform.position - firePointBall.transform.position;
         float angle = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg - 90f;
-        laserBeam.SetDir(prince.transform.position - attackPoint.transform.position);
+        laserBeam.SetDir(prince.transform.position - firePointBall.transform.position);
     }
 
     void GenerateBeam(Vector2 dir)
@@ -111,7 +126,6 @@ public class ArchWizard : Enemy
 
         transform.localScale = newScale;
     }
-
     void UpdateRayWidths()
     {
         Debug.Log(curTime + " " + lastTime);
@@ -135,6 +149,15 @@ public class ArchWizard : Enemy
         if(curTime - lastTime >= 0.05f)
         {
             lastTime = curTime;
+    public override void Hurt(int dmg)
+    {
+        base.Hurt(dmg);
+        Debug.Log(health);
+        Debug.Log(max);
+        if(health < (max / 2))
+        {
+            angry = true;
+            animator.SetTrigger("Angry");
         }
     }
 }
