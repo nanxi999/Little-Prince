@@ -91,7 +91,7 @@ public class ArchWizard : Enemy
     void GenerateBeam(Vector2 dir)
     {
         Laser laser = Instantiate(laserBeam, transform);
-        laser.SetFirePoint(attackPoint);
+        laser.SetFirePoint(firePointBall);
         laser.SetDir(dir);
         laserList.Add(laser);
     }
@@ -142,13 +142,16 @@ public class ArchWizard : Enemy
                 if (laser.GetWidth() < 0.7f && curTime - lastTime >= 0.05f)
                 {
                     laser.SetWidth(laser.GetWidth() + 0.02f);
-                } 
+                }
             }
         }
 
-        if(curTime - lastTime >= 0.05f)
+        if (curTime - lastTime >= 0.05f)
         {
             lastTime = curTime;
+        }
+    }
+
     public override void Hurt(int dmg)
     {
         base.Hurt(dmg);
