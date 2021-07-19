@@ -62,7 +62,6 @@ public class Shadow : Enemy
 
     protected override IEnumerator PushBackFreeze(float duration)
     {
-        Debug.Log("yassssss");
         freeze = true;
         GetComponent<AIPath>().enabled = false;
         yield return new WaitForSeconds(duration);

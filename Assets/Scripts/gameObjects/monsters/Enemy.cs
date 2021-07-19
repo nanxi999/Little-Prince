@@ -102,7 +102,7 @@ public class Enemy : Hurtable
         transform.localScale = newScale;
     }
 
-    public override void Hurt(int dmg)
+    public override void Hurt(float dmg)
     {
         health -= dmg;
         animator.SetBool("Hurt", true);

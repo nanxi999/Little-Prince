@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ArchWizard : Enemy
 {
+    public float dashDamage;
+    public float dashSpeed;
     public Transform firePointBall;     //For laser
     public Transform firePointWand;     //For simple attack
     public float attackRange = 3f;
@@ -12,16 +14,16 @@ public class ArchWizard : Enemy
     public Laser laserBeam;
     private List<Laser> laserList;
     private bool angry = false;
+    private bool isDashing = false;
 
     private float sinceLastAttack;
-    private float curTime;
-    private float lastTime = 0;
 
     protected override void Start()
     {
         base.Start();
         laserList = new List<Laser>();
-        GenerateMultipleRays();
+        //GenerateMultipleRays();
+
     }
 
     protected override void Update()
@@ -30,7 +32,7 @@ public class ArchWizard : Enemy
         base.Update();
         transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
-        UpdateRayWidths();
+        Dash();
     }
 
     public void FireTrigger()
@@ -49,10 +51,24 @@ public class ArchWizard : Enemy
             else
             {
                 sinceLastAttack = 0;
-                StartCoroutine(Freeze(1));
-                animator.SetTrigger("Cast");
+                StartCoroutine(Freeze(2f));
+                animator.SetTrigger("Dash");
             }
         }
+    }
+
+    void Dash()
+    {
+        if(isDashing)
+        {
+            Vector3 targetPosition = Vector3.MoveTowards(transform.position, prince.transform.position, dashSpeed * Time.deltaTime);
+            transform.position = targetPosition;
+        }
+    }
+
+    public void ToggleDash()
+    {
+        isDashing = !isDashing;
     }
 
     public void FireTracer()
@@ -98,6 +114,7 @@ public class ArchWizard : Enemy
 
     void GenerateMultipleRays()
     {
+        firePointBall.Find("Start").gameObject.SetActive(true);
         GenerateBeam(Vector2.up);
         GenerateBeam(Vector2.down);
         GenerateBeam(Vector2.right);
@@ -110,6 +127,13 @@ public class ArchWizard : Enemy
         GenerateBeam(new Vector2(1, -Mathf.Tan(deg)));
         GenerateBeam(new Vector2(-1, -Mathf.Tan(deg)));
 
+        // Update ray width
+        StartCoroutine(RayWidthsGrow());
+    }
+
+    void DestroyMultipleRays()
+    {
+        StartCoroutine(RayWidthsFade());
     }
 
     protected override void Flip()
@@ -126,9 +150,46 @@ public class ArchWizard : Enemy
 
         transform.localScale = newScale;
     }
-    void UpdateRayWidths()
+
+    IEnumerator RayWidthsGrow()
     {
-        Debug.Log(curTime + " " + lastTime);
+        foreach (Laser laser in laserList)
+        {
+            laser.SetWidth(0.1f);
+        }    
+        yield return new WaitForSeconds(0.5f);
+        while (laserList[0].GetWidth() < 0.7f)
+        {
+            foreach (Laser laser in laserList)
+            {
+                laser.SetWidth(laser.GetWidth() + 0.02f);
+            }
+            yield return new WaitForSeconds(0.05f);
+        } 
+    }
+
+    IEnumerator RayWidthsFade()
+    {
+        while (laserList[0].GetWidth() >= 0.1)
+        {
+            foreach (Laser laser in laserList)
+            {
+                laser.SetWidth(laser.GetWidth() - 0.05f);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+        foreach (Laser laser in laserList)
+        {
+            laser.DestroyHitEffect();
+            Destroy(laser.gameObject);
+        }
+        firePointBall.Find("Start").gameObject.SetActive(false);
+        laserList.Clear();
+    }
+
+    /*
+    void UpdateRayWidthsGrow()
+    {
         curTime += Time.deltaTime;
 
         foreach (Laser laser in laserList)
@@ -150,9 +211,9 @@ public class ArchWizard : Enemy
         {
             lastTime = curTime;
         }
-    }
+    }*/
 
-    public override void Hurt(int dmg)
+    public override void Hurt(float dmg)
     {
         base.Hurt(dmg);
         Debug.Log(health);

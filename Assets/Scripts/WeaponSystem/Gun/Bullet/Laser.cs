@@ -21,7 +21,6 @@ public class Laser : MonoBehaviour
         transform = GetComponent<Transform>();
         lineRenderer = GetComponent<LineRenderer>();
         mask = LayerMask.GetMask(layerNames);
-
     }
 
     private void Update()
@@ -31,7 +30,7 @@ public class Laser : MonoBehaviour
         GenerateHitEffect();
     }
 
-    void ShootLaser()
+    public void ShootLaser()
     {
         hit = Physics2D.Raycast(laserFirePoint.position, dir, defDistanceRay, mask);
         if (hit) { 
@@ -81,6 +80,14 @@ public class Laser : MonoBehaviour
         } else
         {
             hitEffect.transform.position = hit.point;
+        }
+    }
+
+    public void DestroyHitEffect()
+    {
+        if(hitEffect)
+        {
+            Destroy(hitEffect);
         }
     }
 
