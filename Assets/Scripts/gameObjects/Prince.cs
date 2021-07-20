@@ -19,6 +19,7 @@ public class Prince : Hurtable
     private bool switching = false;
     private TMP_Text weaponStat;
     private int playerID;
+    private bool freeze = false;
 
     Rigidbody2D rb;
     Animator animator;
@@ -41,11 +42,14 @@ public class Prince : Hurtable
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(input * speed * Time.deltaTime);
-        //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
-        FlipSprite();
-        Fire();
-        //weaponStat.text = gunController.GetGunStat();
+        if(!freeze)
+        {
+            transform.Translate(input * speed * Time.deltaTime);
+            //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
+            FlipSprite();
+            Fire();
+            //weaponStat.text = gunController.GetGunStat();
+        }
     }
 
     private void FlipSprite()
@@ -77,7 +81,7 @@ public class Prince : Hurtable
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(receiveInput)
+        if(receiveInput && !freeze)
         {
             if (animator != null && gunController != null)
             {
@@ -131,5 +135,18 @@ public class Prince : Hurtable
     public int GetID()
     {
         return playerID;
+    }
+
+    IEnumerator PushBackFreeze(float time)
+    {
+        freeze = true;
+        yield return new WaitForSeconds(time);
+        freeze = false;
+    }
+
+    public virtual void PushBack(Vector3 pushBackVelocity, float duration)
+    {   
+        rb.velocity = pushBackVelocity;
+        StartCoroutine(PushBackFreeze(duration));
     }
 }

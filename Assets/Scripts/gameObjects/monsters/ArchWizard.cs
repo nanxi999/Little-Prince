@@ -6,6 +6,7 @@ public class ArchWizard : Enemy
 {
     public float dashDamage;
     public float dashSpeed;
+    public float dashPushBack;
     public Transform firePointBall;     //For laser
     public Transform firePointWand;     //For simple attack
     public float attackRange = 3f;
@@ -17,6 +18,8 @@ public class ArchWizard : Enemy
     private bool isDashing = false;
 
     private float sinceLastAttack;
+    private int attackCount = 0;
+    private int laserThreshold = 2;
 
     protected override void Start()
     {
@@ -50,9 +53,20 @@ public class ArchWizard : Enemy
             }
             else
             {
-                sinceLastAttack = 0;
-                StartCoroutine(Freeze(2f));
-                animator.SetTrigger("Dash");
+                if(attackCount >= laserThreshold)
+                {
+                    sinceLastAttack = 0;
+                    StartCoroutine(Freeze(4f));
+                    animator.SetTrigger("CastLaser");
+                    attackCount = 0;
+                    laserThreshold = Random.Range(1, 4);
+                } else
+                {
+                    sinceLastAttack = 0;
+                    StartCoroutine(Freeze(4f));
+                    animator.SetTrigger("Dash");
+                    attackCount += 1;
+                }  
             }
         }
     }
@@ -66,9 +80,14 @@ public class ArchWizard : Enemy
         }
     }
 
-    public void ToggleDash()
+    public void StopDash()
     {
-        isDashing = !isDashing;
+        isDashing = false;
+    }
+
+    public void StartDash()
+    {
+        isDashing = true;
     }
 
     public void FireTracer()

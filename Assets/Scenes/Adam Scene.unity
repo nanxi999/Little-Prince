@@ -1093,10 +1093,10 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300905859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.60503334, y: -1.1923891}
@@ -1248,6 +1248,7 @@ MonoBehaviour:
   prince: {fileID: 0}
   dashDamage: 0
   dashSpeed: 30
+  dashPushBack: 30
   firePointBall: {fileID: 1313765327}
   firePointWand: {fileID: 1992064336}
   attackRange: 20
@@ -2618,7 +2619,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.504
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 100
+  m_Intensity: 0
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -4454,7 +4455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472558308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.54, y: -6.96, z: -5}
+  m_LocalPosition: {x: 32.9, y: -13.8, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 326269562}
@@ -4585,6 +4586,14 @@ PrefabInstance:
     - target: {fileID: 690873080, guid: 93fa213589c564242a586479617a88a7, type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 690873080, guid: 93fa213589c564242a586479617a88a7, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 690873080, guid: 93fa213589c564242a586479617a88a7, type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 860696728, guid: 93fa213589c564242a586479617a88a7, type: 3}
       propertyPath: m_Actions
@@ -4802,7 +4811,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 100
+  m_Intensity: 0
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -5320,7 +5329,7 @@ PrefabInstance:
     - target: {fileID: 8359012993398112022, guid: 8f647a838a758aa42af368ac90f3a126,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2351465
+      value: 2.2278185
       objectReference: {fileID: 0}
     - target: {fileID: 8359012993398112022, guid: 8f647a838a758aa42af368ac90f3a126,
         type: 3}
