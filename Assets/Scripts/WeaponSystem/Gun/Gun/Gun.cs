@@ -31,7 +31,6 @@ public class Gun : MonoBehaviour
             prince = GetComponentInParent<Prince>();
         }
         stats = GetComponentInParent<StatsManager>();
-        Debug.Log(attackCd);
         lastShoot = attackCd;
     }
 

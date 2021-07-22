@@ -9515,8 +9515,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4429874058887365150}
-  - component: {fileID: 6426410679604879800}
   - component: {fileID: -3472707043761419569}
+  - component: {fileID: 3482356780576012407}
   m_Layer: 9
   m_Name: FireBall
   m_TagString: Untagged
@@ -9540,27 +9540,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.80101}
---- !u!114 &6426410679604879800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4429874058887365145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8521ebdf3ca6fd4e8c67949b88f808e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 55
-  lifeTime: 1
-  destroyEffect: {fileID: 4954025030507759489, guid: 1c7c9490ec31302478129dd3929dbf57,
-    type: 3}
-  pushBackForce: 1
-  layers:
-  - Enemy
-  - Friendly
-  - BackgroundHittable
 --- !u!61 &-3472707043761419569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9587,3 +9566,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.902725, y: 4.5267277}
   m_EdgeRadius: 0
+--- !u!114 &3482356780576012407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429874058887365145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506769f8d685ce64a9b94d24fb17166e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 55
+  lifeTime: 1
+  destroyEffect: {fileID: 4954025030507759489, guid: 1c7c9490ec31302478129dd3929dbf57,
+    type: 3}
+  pushBackForce: 2
+  layers:
+  - Enemy
+  - Friendly
+  - BackgroundHittable
