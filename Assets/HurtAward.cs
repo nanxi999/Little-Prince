@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageAward : Award
+public class HurtAward : Award
 {
     public float[] percentage;
 
@@ -17,7 +17,7 @@ public class DamageAward : Award
     protected override void GiveAwards(GameObject prince)
     {
         Prince tempPrince = prince.GetComponent<Prince>();
-        StatsManager stats = tempPrince.GetComponent<StatsManager>();
-        stats.SetDamageFactor(stats.GetDamageFactor() * (1 + selected));
+        StatsManager stats = prince.GetComponent<StatsManager>();
+        stats.SetHurtFactor(stats.GetHurtFactor() * (1 - selected));
     }
 }

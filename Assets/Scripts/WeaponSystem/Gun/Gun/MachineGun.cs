@@ -40,6 +40,7 @@ public class MachineGun : Gun
         else if (bullet)
         {
             ammo--;
+
             // modify spread
             float spreadModify = 0;
             if (contShootTime > startModifyingSpread)
@@ -53,6 +54,7 @@ public class MachineGun : Gun
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spreadModify));
+            newBullet.SetDmg(dmg);
             newBullet.SetShooter(prince.gameObject);
 
             lastShoot = 0f;

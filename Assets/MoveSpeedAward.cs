@@ -17,7 +17,7 @@ public class MoveSpeedAward : Award
     protected override void GiveAwards(GameObject prince)
     {
         Prince tempPrince = prince.GetComponent<Prince>();
-        tempPrince.SetMaxHealth(tempPrince.GetMaxHealth() * (1 + selected));
-        tempPrince.SetHealth(tempPrince.GetMaxHealth());
+        StatsManager stats = tempPrince.GetComponent<StatsManager>();
+        stats.SetMoveSpeedFactor(stats.GetMoveSpeedFactor() * (1 + selected));
     }
 }

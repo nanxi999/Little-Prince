@@ -12,6 +12,7 @@ public class GunController : MonoBehaviour
     private int gunIndex = 0;
     private int gunCount = 1;
     private List<Gun> gunsArmory;
+    private StatsManager stats;
     // Start is called before the first frame update
 
 
@@ -19,6 +20,7 @@ public class GunController : MonoBehaviour
     {
         armory = FindObjectOfType<Armory>();
         prince = transform.parent.parent.GetComponent<Prince>();
+        stats = prince.GetComponent<StatsManager>();
         gunsArmory = new List<Gun>();
         //gunObj = armory.GetRandomGun();
         //GameObject obj = Instantiate(gunObj, transform);
@@ -59,6 +61,7 @@ public class GunController : MonoBehaviour
             //Switch to the new gun
             gun.gameObject.SetActive(false);
             gun = Instantiate(gunPrefab, transform) as Gun;
+            gun.SetMaxAmmo((int)Mathf.Ceil(gun.GetMaxAmmo() * stats.GetAmmoFactor()));
 
             //Add new gun to gunsArmory
             gunsArmory.Add(gun);

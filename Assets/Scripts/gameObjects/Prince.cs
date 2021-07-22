@@ -11,7 +11,8 @@ public class Prince : Hurtable
     public GameObject controllerObj;
     public Gun initialGun;
     public GunController gunController;
-
+    
+    private int infBulletsLevelsLeft = 0;
     private bool receiveInput = true;
     private Vector2 input;
     private InputAction fireAction;
@@ -20,6 +21,7 @@ public class Prince : Hurtable
     private TMP_Text weaponStat;
     private int playerID;
     private bool freeze = false;
+    private StatsManager stats;
 
     Rigidbody2D rb;
     Animator animator;
@@ -33,6 +35,7 @@ public class Prince : Hurtable
         weaponStat = GetComponentInChildren<TMP_Text>();
         playerID = FindObjectsOfType<Prince>().Length;
         controllerObj.transform.parent = transform.Find("Character").transform;
+        stats = GetComponent<StatsManager>();
 
         var playerInput = GetComponent<PlayerInput>();
         var map = playerInput.currentActionMap;
@@ -46,7 +49,7 @@ public class Prince : Hurtable
     {
         if(!freeze)
         {
-            transform.Translate(input * speed * Time.deltaTime);
+            transform.Translate(input * speed * stats.GetMoveSpeedFactor() * Time.deltaTime);
             //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
             FlipSprite();
             Fire();
@@ -152,4 +155,24 @@ public class Prince : Hurtable
         rb.velocity = pushBackVelocity;
         StartCoroutine(PushBackFreeze(duration));
     }
+
+    public override void Hurt(float dmg)
+    {
+        health -= dmg * stats.GetHurtFactor();
+        if (health <= 0)
+        {
+            if (deathEffect)
+            {
+                Debug.Log("created effect");
+                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                Destroy(obj, 3f);
+            }
+            else
+            {
+                Debug.Log("death VFX not set");
+            }
+            Destroy(this.gameObject);
+        }
+    }
+
 }

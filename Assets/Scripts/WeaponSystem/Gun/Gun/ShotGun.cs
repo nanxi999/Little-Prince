@@ -18,13 +18,16 @@ public class ShotGun : Gun
             ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             Bullet b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-            b.SetShooter(prince.gameObject);
+            b.SetDmg(dmg);
+            b.SetShooter(prince.gameObject);          
 
             for (int i = 1; i <= bulletNum/2; i++)
             {
                 b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
+                b.SetDmg(dmg);
                 b.SetShooter(prince.gameObject);
                 b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
+                b.SetDmg(dmg);
                 b.SetShooter(prince.gameObject);
             }
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);

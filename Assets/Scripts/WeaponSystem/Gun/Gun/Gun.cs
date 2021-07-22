@@ -5,7 +5,6 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] protected string gunName;
-    [SerializeField] protected int ammo;
     [SerializeField] protected int maxAmmo;
 
     public Bullet bullet;
@@ -16,6 +15,7 @@ public class Gun : MonoBehaviour
     public float shakeAmplitude;
     public GameObject shootEffect;
 
+    protected int ammo;
     protected int target = 0;
     protected Prince prince;
     protected float lastShoot;
@@ -26,6 +26,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        ammo = maxAmmo;
         if(!prince)
         {
             prince = GetComponentInParent<Prince>();
@@ -88,13 +89,9 @@ public class Gun : MonoBehaviour
         return maxAmmo;
     }
 
-    public void SetAmmo(int val)
-    {
-        ammo = val;
-    }
-
     public void SetMaxAmmo(int val)
     {
         maxAmmo = val;
+        ammo = maxAmmo;
     }
 }

@@ -105,7 +105,8 @@ public class LevelController : MonoBehaviour
     public void PlayerAwarded(int id)
     {
         playersAwarded.Add(id);
-        if(playersAwarded.Count >= numberOfPlayers)
+        numberOfPlayers = FindObjectsOfType<Prince>().Length;
+        if(playersAwarded.Count >= Mathf.Min(numberOfPlayers, 3))
         {           
             var awards = FindObjectsOfType<Award>();
             foreach(Award i in awards)
