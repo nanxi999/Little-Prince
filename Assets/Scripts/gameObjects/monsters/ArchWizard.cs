@@ -96,6 +96,7 @@ public class ArchWizard : Enemy
         if(bullet)
         {
             tempBullet = Instantiate(bullet, firePointWand.transform.position, transform.rotation);
+            tempBullet.SetDmg(dmg);
             tempBullet.SetTarget(prince.transform);
         }
             

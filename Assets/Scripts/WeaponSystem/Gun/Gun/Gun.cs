@@ -6,8 +6,10 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] protected string gunName;
     [SerializeField] protected int ammo;
+    [SerializeField] protected int maxAmmo;
 
     public Bullet bullet;
+    public float dmg;
     public float attackCd = 1f;
     public GameObject firePoint;
     public AudioClip shootSound;
@@ -54,6 +56,7 @@ public class Gun : MonoBehaviour
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+            newBullet.SetDmg(dmg * stats.GetDamageFactor());
             newBullet.SetShooter(prince.gameObject);
 
             lastShoot = 0f;
@@ -80,9 +83,18 @@ public class Gun : MonoBehaviour
         return ammo;
     }
 
+    public int GetMaxAmmo()
+    {
+        return maxAmmo;
+    }
+
     public void SetAmmo(int val)
     {
         ammo = val;
     }
-  
+
+    public void SetMaxAmmo(int val)
+    {
+        maxAmmo = val;
+    }
 }

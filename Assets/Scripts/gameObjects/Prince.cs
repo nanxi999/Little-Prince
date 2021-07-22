@@ -10,8 +10,8 @@ public class Prince : Hurtable
     public float speed;
     public GameObject controllerObj;
     public Gun initialGun;
+    public GunController gunController;
 
-    private  GunController gunController;
     private bool receiveInput = true;
     private Vector2 input;
     private InputAction fireAction;
@@ -28,15 +28,17 @@ public class Prince : Hurtable
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        controllerObj = Instantiate(controllerObj, transform);
+        gunController = controllerObj.GetComponent<GunController>();
+        weaponStat = GetComponentInChildren<TMP_Text>();
+        playerID = FindObjectsOfType<Prince>().Length;
+        controllerObj.transform.parent = transform.Find("Character").transform;
+
         var playerInput = GetComponent<PlayerInput>();
         var map = playerInput.currentActionMap;
         fireAction = map.FindAction("Fire");
         fireAction.started += ToggleFiring;
         fireAction.canceled += ToggleFiring;
-        controllerObj = Instantiate(controllerObj, transform);
-        gunController = controllerObj.GetComponent<GunController>();
-        weaponStat = GetComponentInChildren<TMP_Text>();
-        playerID = FindObjectsOfType<Prince>().Length;
     }
 
     // Update is called once per frame
@@ -48,21 +50,22 @@ public class Prince : Hurtable
             //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
             FlipSprite();
             Fire();
-            //weaponStat.text = gunController.GetGunStat();
+            weaponStat.text = gunController.GetGunStat();
         }
     }
 
     private void FlipSprite()
     {
-        bool cond1 = input.x > 0 && Mathf.Sign(transform.localScale.x) < 0;
-        bool cond2 = input.x < 0 && Mathf.Sign(transform.localScale.x) > 0;
+        Transform character = transform.Find("Character");
+        bool cond1 = input.x > 0 && Mathf.Sign(character.localScale.x) < 0;
+        bool cond2 = input.x < 0 && Mathf.Sign(character.localScale.x) > 0;
         if (cond1 || cond2)  
         {
-            float x = transform.localScale.x;
-            float y = transform.localScale.y;
-            float z = transform.localScale.z;
+            float x = character.localScale.x;
+            float y = character.localScale.y;
+            float z = character.localScale.z;
             Vector3 newScale = new Vector3(-x, y, z);
-            transform.localScale = newScale;
+            character.localScale = newScale;
             gunController.Rotate();
         }
     }

@@ -127,7 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Machine Gun
   ammo: 100
+  maxAmmo: 0
   bullet: {fileID: 3396140827443464808, guid: 38984c46936ffe444b53336aee5e3952, type: 3}
+  dmg: 3
   attackCd: 0.1
   firePoint: {fileID: 1865358334641946203}
   shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}

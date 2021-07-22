@@ -19,4 +19,14 @@ public class StatsManager : MonoBehaviour
     {
         shootSpeedFactor = val;
     }
+
+    public float GetDamageFactor()
+    {
+        return damageFactor;
+    }
+
+    public void SetDamageFactor(float val)
+    {
+        damageFactor = val;
+    }
 }

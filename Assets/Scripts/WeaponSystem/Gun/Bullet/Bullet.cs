@@ -5,12 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    public int dmg;
+    
     public float lifeTime;
     public GameObject destroyEffect;
     public float pushBackForce;
     public string[] layers;
 
+    protected float dmg;
     protected GameObject shooter;
     protected Vector3 direction;
     protected Vector3 initPosition;
@@ -39,7 +40,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void SetDmg(int newDmg)
+    public void SetDmg(float newDmg)
     {
         dmg = newDmg;
     }
@@ -59,12 +60,12 @@ public class Bullet : MonoBehaviour
     protected virtual void Fly()
     {
         Vector3 tempDir = new Vector3(0, -1f, 0);
-        Debug.Log(transform.position);
         transform.Translate(tempDir * speed * Time.deltaTime);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(dmg);
         int res = LayerMask.GetMask(layers);
         GameObject hitObject = collision.gameObject;
         if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding) 

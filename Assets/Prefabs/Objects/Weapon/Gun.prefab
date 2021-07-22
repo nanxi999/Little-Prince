@@ -97,7 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Rifle
   ammo: 0
+  maxAmmo: 0
   bullet: {fileID: 3396140827443464808, guid: b303446a5e349954ab976cc406586f09, type: 3}
+  dmg: 10
   attackCd: 0.3
   firePoint: {fileID: 5039055845542863702}
   shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}
