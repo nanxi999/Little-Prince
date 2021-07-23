@@ -1,33 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    
-    public float lifeTime;
+
+    [SerializeField] private float lifeTime;
+    [SerializeField] private Sprite[] sprites;
     public GameObject destroyEffect;
     public float pushBackForce;
     public string[] layers;
 
     protected float dmg;
+    protected bool iceBullet;
     protected GameObject shooter;
     protected Vector3 direction;
     protected Vector3 initPosition;
     protected bool isColliding = false;
     protected List<int> layerIndexes;
 
+    private SpriteRenderer renderer;
+
     protected virtual void Start()
     {
         Invoke("DestroyProjectile", lifeTime);
         initPosition = transform.position;
+        renderer = GetComponentInChildren<SpriteRenderer>();
         InitIndexList();
+        iceBullet = true;
     }
 
     void Update()
     {
         Fly();
+        UpdateSpriteRenderer();
     }
 
     public void InitIndexList()
@@ -68,17 +74,17 @@ public class Bullet : MonoBehaviour
         Debug.Log(dmg);
         int res = LayerMask.GetMask(layers);
         GameObject hitObject = collision.gameObject;
-        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding) 
+        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
             return;
         isColliding = true;
-        
+
         Enemy enemy = hitObject.GetComponent<Enemy>();
         if (hitObject != shooter)
         {
             Vector3 dir = transform.position - initPosition;
-            if(enemy!=null && dir!=null)
+            if (enemy != null && dir != null)
             {
-                if(dir.magnitude == 0) { return; } 
+                if (dir.magnitude == 0) { return; }
                 else
                 {
                     enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
@@ -87,6 +93,10 @@ public class Bullet : MonoBehaviour
             if (hitObject.GetComponent<Hurtable>())
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
+                if(iceBullet)
+                {
+                    hitObject.GetComponent<Enemy>().IceAttackHit(5f, 0.4f);
+                }
             }
             DestroyProjectile();
         }
@@ -100,5 +110,27 @@ public class Bullet : MonoBehaviour
     public GameObject GetShooter()
     {
         return shooter;
+    }
+
+    public void ToggleIceBullet(bool status)
+    {
+        iceBullet = status;
+    }
+
+    private void UpdateSpriteRenderer()
+    {
+        if(sprites.Length < 2)
+        {
+            Debug.Log("Please set the sprites for bullets");
+            return;
+        }
+        if (iceBullet)
+        {
+            renderer.sprite = sprites[1];
+        }
+        else
+        {
+            renderer.sprite = sprites[0];
+        }
     }
 }
