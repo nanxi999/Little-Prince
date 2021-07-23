@@ -10,14 +10,14 @@ public class StatsManager : MonoBehaviour
     [SerializeField] private float moveSpeedFactor = 1;
     [SerializeField] private float ammoFactor = 1;
 
-    [SerializeField] private Dictionary<string, int> passiveSkills;
+    [SerializeField] private Dictionary<string, bool> passiveSkills;
 
     [SerializeField] private float moveSpeedFactorLimit = 2;
 
     private void Start()
     {
-        passiveSkills = new Dictionary<string, int>();
-        passiveSkills.Add("infBullets", 0);
+        passiveSkills = new Dictionary<string, bool>();
+        passiveSkills.Add("InfAmmo", false);
     }
 
     public float GetShootSpeedFactor()
@@ -74,13 +74,21 @@ public class StatsManager : MonoBehaviour
         moveSpeedFactor = val;
     }
 
-    public void StartInfBullets(int levels)
+    public void ResetPassiveSkills()
     {
-        passiveSkills["infBullets"] = levels;
+        foreach(string key in passiveSkills.Keys)
+        {
+            passiveSkills[key] = false;
+        }
     }
 
-    public void ReducePassiveSkillsLevels()
+    public void StartPassiveSkills(string skillName)
     {
-        return;
+        passiveSkills[skillName] = true;
+    }
+
+    public bool GetPassiveSkillsStats(string skillName)
+    {
+        return passiveSkills[skillName];
     }
 }

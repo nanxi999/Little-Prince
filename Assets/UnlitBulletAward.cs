@@ -7,6 +7,7 @@ public class UnlitBulletAward : Award
     protected override void GiveAwards(GameObject prince)
     {
         Prince tempPrince = prince.GetComponent<Prince>();
-        //tempPrince.SetInfBullets(true);
+        StatsManager stats = tempPrince.GetComponent<StatsManager>();
+        stats.StartPassiveSkills("InfAmmo");
     }
 }

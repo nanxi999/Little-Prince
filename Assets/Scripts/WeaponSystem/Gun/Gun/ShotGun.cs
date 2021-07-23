@@ -15,7 +15,8 @@ public class ShotGun : Gun
         }
         else if (bullet)
         {
-            ammo--;
+            if(!stats.GetPassiveSkillsStats("InfAmmo"))
+                ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             Bullet b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             b.SetDmg(dmg);
