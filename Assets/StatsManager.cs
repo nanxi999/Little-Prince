@@ -76,7 +76,8 @@ public class StatsManager : MonoBehaviour
 
     public void ResetPassiveSkills()
     {
-        foreach(string key in passiveSkills.Keys)
+        List<string> keys = new List<string>();
+        foreach(string key in new List<string>(passiveSkills.Keys))
         {
             passiveSkills[key] = false;
         }
