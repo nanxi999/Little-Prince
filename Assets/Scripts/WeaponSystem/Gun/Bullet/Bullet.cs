@@ -93,7 +93,7 @@ public class Bullet : MonoBehaviour
             if (hitObject.GetComponent<Hurtable>())
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
-                if(iceBullet)
+                if(iceBullet && enemy)
                 {
                     hitObject.GetComponent<Enemy>().IceAttackHit(5f, 0.4f);
                 }

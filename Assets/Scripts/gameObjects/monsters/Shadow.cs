@@ -24,7 +24,7 @@ public class Shadow : Enemy
         animator = GetComponent<Animator>();
         circle = GetComponent<CircleCollider2D>();
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
-        layers = LayerMask.GetMask("HittableObject");   // set mask
+        layers = LayerMask.GetMask("Friendly");   // set mask
         GetComponent<AIDestinationSetter>().target = prince.transform;
     }
 
