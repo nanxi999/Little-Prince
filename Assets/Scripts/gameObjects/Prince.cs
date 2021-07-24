@@ -54,7 +54,7 @@ public class Prince : Hurtable
             FlipSprite();
             Fire();
             weaponStat.text = gunController.GetGunStat();
-        }
+        } 
     }
 
     private void FlipSprite()
@@ -163,7 +163,6 @@ public class Prince : Hurtable
         {
             if (deathEffect)
             {
-                Debug.Log("created effect");
                 GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(obj, 3f);
             }
@@ -171,7 +170,13 @@ public class Prince : Hurtable
             {
                 Debug.Log("death VFX not set");
             }
-            Destroy(this.gameObject);
+
+            if(animator)
+            {
+                animator.SetTrigger("Cry");
+            }
+
+            freeze = true;
         }
     }
 
