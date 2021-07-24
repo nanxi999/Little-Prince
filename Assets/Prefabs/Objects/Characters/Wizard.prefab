@@ -585,6 +585,7 @@ MonoBehaviour:
   health: 100
   deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
     type: 3}
+  slowColor: {r: 0.12941177, g: 0.49019608, b: 1, a: 1}
   moveSpeed: 3
   dmg: 10
   prince: {fileID: 0}

@@ -38,7 +38,6 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(myEnemy, transform.position, transform.rotation) as Enemy;
         newEnemy.transform.parent = transform;
         newEnemy.SetDmg(levelController.GetLevel() + newEnemy.GetDmg());
-        newEnemy.SetSpeed((float)(levelController.GetLevel() * 0.2 + 3));
     }
 
     public void StopSpawning()

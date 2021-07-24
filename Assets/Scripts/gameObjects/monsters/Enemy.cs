@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy : Hurtable
 {
-    public float moveSpeed = 3;
+    [SerializeField] private Color slowColor;
+    [SerializeField] protected float moveSpeed = 6;
     public int dmg = 1;
     protected bool freeze = false;
 
@@ -14,6 +16,9 @@ public class Enemy : Hurtable
     protected Rigidbody2D rb;
     protected Animator animator;
     protected bool isAlive = true;
+    private float speedModifier = 1;
+    private bool isSLowed;
+    private AIPath path;
 
     protected override void Awake()
     {
@@ -27,6 +32,7 @@ public class Enemy : Hurtable
         prince = FindObjectOfType<Prince>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        path = GetComponent<AIPath>();
     }
 
     // Update is called once per frame
@@ -42,6 +48,11 @@ public class Enemy : Hurtable
         if (freeze)
         {
             return;
+        }
+
+        if (path)
+        {
+            path.maxSpeed = moveSpeed * speedModifier;
         }
         if (!prince)
         {
@@ -81,8 +92,7 @@ public class Enemy : Hurtable
             {
                 newDir.y = -1;
             }
-            //Vector2 targetPosition = Vector2.MoveTowards(rb.position, prince.transform.position, );
-            rb.MovePosition(rb.position + newDir * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + newDir * moveSpeed * speedModifier * Time.fixedDeltaTime);
         }
 
     }
@@ -165,5 +175,41 @@ public class Enemy : Hurtable
         freeze = true;
         yield return new WaitForSeconds(duration);
         freeze = false;
+    }
+
+    public void ChangeRendererColor(Color color)
+    {
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+        if(renderer)
+        {
+            renderer.color = color;
+        }
+    }
+
+    public void IceAttackHit(float duration, float slowAmount)
+    {
+        if(isSLowed)
+        {
+            return;
+        }
+        ChangeRendererColor(slowColor);
+        if(slowAmount >= 0 && slowAmount <= 1)
+        {
+            speedModifier = slowAmount;
+            isSLowed = true;
+        } else
+        {
+            return;
+        }
+        StartCoroutine(unFreeze(duration));
+    }
+
+    private IEnumerator unFreeze(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        speedModifier = 1f;
+        ChangeRendererColor(Color.white);
+        isSLowed = false;
+
     }
 }

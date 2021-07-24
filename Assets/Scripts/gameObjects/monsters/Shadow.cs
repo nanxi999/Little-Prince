@@ -12,6 +12,12 @@ public class Shadow : Enemy
     LayerMask layers;
     CircleCollider2D circle;
 
+    protected override void Update()
+    {
+        base.Update();
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
     protected override void Start()
     {
         base.Start();
