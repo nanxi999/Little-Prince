@@ -39,7 +39,8 @@ public class MachineGun : Gun
         } 
         else if (bullet)
         {
-            ammo--;
+            if (!stats.GetPassiveSkillsStats("InfAmmo"))
+                ammo--;
 
             // modify spread
             float spreadModify = 0;

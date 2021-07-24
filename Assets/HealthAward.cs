@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthAward : Award
 {
     public float[] percentage;
+    public Transform description;
 
     private float selected;
 
@@ -12,6 +14,9 @@ public class HealthAward : Award
     {
         base.Start();
         selected = percentage[Random.Range(0, percentage.Length)];
+        TMP_Text descriptionText = description.Find("Description").GetComponent<TMP_Text>();
+        descriptionText.SetText("Increase the health limit of the prince by {0}% and heal the prince.", selected * 100);
+        description.gameObject.SetActive(false);
     }
 
     protected override void GiveAwards(GameObject prince)

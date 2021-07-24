@@ -58,6 +58,12 @@ public class LevelController : MonoBehaviour
         StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level..."));
         level += 1;
         FindObjectOfType<AwardsSpawner>().StartSpawning();
+        Prince[] players = FindObjectsOfType<Prince>();
+        foreach(Prince p in players)
+        {
+            StatsManager stats = p.GetComponent<StatsManager>();
+            stats.ResetPassiveSkills();
+        }
     }
 
     public IEnumerator NextLevel()      //Called when all players are awarded.
