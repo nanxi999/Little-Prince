@@ -101,6 +101,7 @@ public class GunController : MonoBehaviour
 
     public string GetGunStat()
     {
+        if(!gun) { return "?"; }
         if(gun.GetName().Equals("Rifle"))
         { 
             return gun.GetName() + ": \u221E";
