@@ -59,9 +59,9 @@ public class MachineGun : Gun
             newBullet.SetShooter(prince.gameObject);
 
             lastShoot = 0f;
-            if (shootEffect)
+            if (shootEffects[stats.GetBulletId()])
             {
-                GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+                GameObject obj = Instantiate(shootEffects[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
                 Destroy(obj, 2);
             }
         }

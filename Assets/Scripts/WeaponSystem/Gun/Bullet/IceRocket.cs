@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : Bullet
+public class IceRocket : Bullet
 {
     [SerializeField] private int ExplosionDmg;
     private CircleCollider2D circle;
@@ -24,13 +24,12 @@ public class Rocket : Bullet
 
     private void Accelerate()
     {
-        speed += 85 * Time.deltaTime;
+        speed += 80 * Time.deltaTime;
     }
 
     private void CheckCollision()
     {
-        if (box.IsTouchingLayers(LayerMask.GetMask("Enemy")))
-        {
+        if (box.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
             Vector3 dir = transform.position - initPosition;
             Explode(dir);
             DestroyProjectile();
@@ -39,7 +38,7 @@ public class Rocket : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-
+        
     }
 
     private void Explode(Vector3 dir)
@@ -58,6 +57,7 @@ public class Rocket : Bullet
 
                 if (enemy)
                 {
+                    enemyComp.IceAttackHit(4f, 0.7f);
                     enemyComp.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
                 }
 

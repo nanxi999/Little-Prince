@@ -131,7 +131,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: c4770d2691f5e7441817836ab2f90e57, type: 3}
   - {fileID: 21300000, guid: c33d21131440ac54195f1b5d70f7c47b, type: 3}
-  destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
+  destroyEffect: {fileID: 3499491515135428522, guid: 7119d6d54a3f7d34ca67e9017dd23107,
     type: 3}
   pushBackForce: 70
   layers:

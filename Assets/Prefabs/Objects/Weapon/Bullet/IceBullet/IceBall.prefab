@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3443396, g: 0.58642644, b: 1, a: 1}
+      maxColor: {r: 0.16470587, g: 0.50855005, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4975,7 +4975,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.41176474, g: 0.6085759, b: 1, a: 1}
+      maxColor: {r: 0.18396229, g: 0.4790689, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9516,10 +9516,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4429874058887365150}
   - component: {fileID: -3472707043761419569}
-  - component: {fileID: 3482356780576012407}
   - component: {fileID: 7097621704484676223}
+  - component: {fileID: 8909202162540154983}
   m_Layer: 9
-  m_Name: FireBall
+  m_Name: IceBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9567,29 +9567,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.902725, y: 4.5267277}
   m_EdgeRadius: 0
---- !u!114 &3482356780576012407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4429874058887365145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 506769f8d685ce64a9b94d24fb17166e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 55
-  lifeTime: 1
-  sprites: []
-  destroyEffect: {fileID: 4954025030507759489, guid: 1c7c9490ec31302478129dd3929dbf57,
-    type: 3}
-  pushBackForce: 2
-  layers:
-  - Enemy
-  - Friendly
-  - BackgroundHittable
-  ExplosionDmg: 100
 --- !u!58 &7097621704484676223
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9600,9 +9577,32 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1339016, y: -0.66688967}
+  m_Offset: {x: 0.9823961, y: -0.6663625}
   serializedVersion: 2
-  m_Radius: 2.7255523
+  m_Radius: 4.5712204
+--- !u!114 &8909202162540154983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429874058887365145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946d7167f8ced7d40ad264cfddce760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  lifeTime: 1
+  sprites: []
+  destroyEffect: {fileID: 4954025030507759489, guid: 1c7c9490ec31302478129dd3929dbf57,
+    type: 3}
+  pushBackForce: 0.5
+  layers:
+  - Friendly
+  - Enemy
+  - BackgroundHittable
+  ExplosionDmg: 25

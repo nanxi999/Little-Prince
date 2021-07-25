@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     public GameObject firePoint;
     public AudioClip shootSound;
     public float shakeAmplitude;
-    public GameObject shootEffect;
+    public GameObject[] shootEffects;
 
     protected int ammo;
     protected int target = 0;
@@ -61,9 +61,9 @@ public class Gun : MonoBehaviour
             newBullet.SetShooter(prince.gameObject);
 
             lastShoot = 0f;
-            if(shootEffect)
+            if(shootEffects[stats.GetBulletId()])
             {
-               GameObject obj = Instantiate(shootEffect, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+               GameObject obj = Instantiate(shootEffects[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
                Destroy(obj, 1f);
             }
         }

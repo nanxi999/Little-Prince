@@ -155,7 +155,7 @@ MonoBehaviour:
   speed: 80
   lifeTime: 0.1
   sprites: []
-  destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
+  destroyEffect: {fileID: 3499491515135428522, guid: 67b153ff38d7588419d9454fcaa86b4c,
     type: 3}
   pushBackForce: 70
   layers:
