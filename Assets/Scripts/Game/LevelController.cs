@@ -63,6 +63,7 @@ public class LevelController : MonoBehaviour
         {
             StatsManager stats = p.GetComponent<StatsManager>();
             stats.ResetPassiveSkills();
+            stats.SetBulletId(0);
         }
     }
 

@@ -37,7 +37,7 @@ public class MachineGun : Gun
         {
             return;
         } 
-        else if (bullet)
+        else if (bullet[stats.GetBulletId()])
         {
             if (!stats.GetPassiveSkillsStats("InfAmmo"))
                 ammo--;
@@ -54,7 +54,7 @@ public class MachineGun : Gun
 
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
-            Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spreadModify));
+            Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + spreadModify));
             newBullet.SetDmg(dmg);
             newBullet.SetShooter(prince.gameObject);
 

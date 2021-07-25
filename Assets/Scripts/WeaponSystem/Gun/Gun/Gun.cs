@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
     [SerializeField] protected string gunName;
     [SerializeField] protected int maxAmmo;
 
-    public Bullet bullet;
+    public Bullet[] bullet;     // 0:normal  1:ice 
     public float dmg;
     public float attackCd = 1f;
     public GameObject firePoint;
@@ -51,11 +51,12 @@ public class Gun : MonoBehaviour
         if(lastShoot < attackCd * stats.GetShootSpeedFactor())
         {
             return;
-        } else if (bullet)
+        } 
+        else if (bullet[stats.GetBulletId()])
         {
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
-            Bullet newBullet = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+            Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             newBullet.SetDmg(dmg * stats.GetDamageFactor());
             newBullet.SetShooter(prince.gameObject);
 

@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class Enemy : Hurtable
 {
-    [SerializeField] private Color slowColor;
+    [SerializeField] protected Color slowColor;
     [SerializeField] protected float moveSpeed = 6;
     public int dmg = 1;
     protected bool freeze = false;
@@ -17,7 +17,7 @@ public class Enemy : Hurtable
     protected Animator animator;
     protected bool isAlive = true;
     private float speedModifier = 1;
-    private bool isSLowed;
+    protected bool isSLowed;
     private AIPath path;
 
     protected override void Awake()
@@ -177,7 +177,7 @@ public class Enemy : Hurtable
         freeze = false;
     }
 
-    public void ChangeRendererColor(Color color)
+    protected virtual void ChangeRendererColor(Color color)
     {
         SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
         if(renderer)

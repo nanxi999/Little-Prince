@@ -96,9 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunName: Rifle
-  ammo: 0
   maxAmmo: 0
-  bullet: {fileID: 3396140827443464808, guid: b303446a5e349954ab976cc406586f09, type: 3}
+  bullet:
+  - {fileID: 3396140827443464808, guid: b303446a5e349954ab976cc406586f09, type: 3}
+  - {fileID: -5969198645676317466, guid: b753582b376406b49b01b9f2291e9025, type: 3}
   dmg: 10
   attackCd: 0.3
   firePoint: {fileID: 5039055845542863702}

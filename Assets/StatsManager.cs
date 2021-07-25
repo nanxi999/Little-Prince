@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
+    // Attributes
     [SerializeField] private float shootSpeedFactor = 1f;
     [SerializeField] private float damageFactor = 1;
     [SerializeField] private float hurtFactor = 1;
     [SerializeField] private float moveSpeedFactor = 1;
     [SerializeField] private float ammoFactor = 1;
+    [SerializeField] private int bulletId = 0;
 
-    [SerializeField] private Dictionary<string, bool> passiveSkills;
-
+    // Upper limits
     [SerializeField] private float moveSpeedFactorLimit = 2;
+
+    // Passive skills
+    [SerializeField] private Dictionary<string, bool> passiveSkills;
 
     private void Start()
     {
@@ -91,5 +95,15 @@ public class StatsManager : MonoBehaviour
     public bool GetPassiveSkillsStats(string skillName)
     {
         return passiveSkills[skillName];
+    }
+
+    public int GetBulletId()
+    {
+        return bulletId;
+    }
+
+    public void SetBulletId(int val)
+    {
+        bulletId = val;
     }
 }

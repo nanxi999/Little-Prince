@@ -13,21 +13,21 @@ public class ShotGun : Gun
         {
             return;
         }
-        else if (bullet)
+        else if (bullet[stats.GetBulletId()])
         {
             if(!stats.GetPassiveSkillsStats("InfAmmo"))
                 ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
-            Bullet b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+            Bullet b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             b.SetDmg(dmg);
             b.SetShooter(prince.gameObject);          
 
             for (int i = 1; i <= bulletNum/2; i++)
             {
-                b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
+                b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
                 b.SetDmg(dmg);
                 b.SetShooter(prince.gameObject);
-                b = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
+                b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
                 b.SetDmg(dmg);
                 b.SetShooter(prince.gameObject);
             }

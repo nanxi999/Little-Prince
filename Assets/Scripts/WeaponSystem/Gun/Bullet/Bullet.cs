@@ -27,13 +27,13 @@ public class Bullet : MonoBehaviour
         initPosition = transform.position;
         renderer = GetComponentInChildren<SpriteRenderer>();
         InitIndexList();
-        iceBullet = true;
+        iceBullet = false;
     }
 
     void Update()
     {
         Fly();
-        UpdateSpriteRenderer();
+        //UpdateSpriteRenderer();
     }
 
     public void InitIndexList()

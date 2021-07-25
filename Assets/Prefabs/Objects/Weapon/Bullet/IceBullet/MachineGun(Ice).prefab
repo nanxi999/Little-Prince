@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c4770d2691f5e7441817836ab2f90e57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c33d21131440ac54195f1b5d70f7c47b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,10 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3396140827443464811}
-  - component: {fileID: 3396140827443464808}
   - component: {fileID: 3396140827443464809}
+  - component: {fileID: -990613707027048945}
   m_Layer: 9
-  m_Name: ShotGun
+  m_Name: MachineGun(Ice)
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -107,37 +107,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3396140827443464814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.817, y: -0.53071, z: -2}
-  m_LocalScale: {x: 0.05652173, y: 0.061369915, z: 0.06891269}
+  m_LocalPosition: {x: 10.636, y: -0.16806, z: -2}
+  m_LocalScale: {x: 0.031457257, y: 0.024737634, z: 0.06891269}
   m_Children:
   - {fileID: 3396140826521056080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3396140827443464808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396140827443464814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8521ebdf3ca6fd4e8c67949b88f808e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 80
-  lifeTime: 0.1
-  sprites:
-  - {fileID: 21300000, guid: c4770d2691f5e7441817836ab2f90e57, type: 3}
-  - {fileID: 21300000, guid: c33d21131440ac54195f1b5d70f7c47b, type: 3}
-  destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
-    type: 3}
-  pushBackForce: 70
-  layers:
-  - Enemy
-  - Friendly
-  - BackgroundHittable
 --- !u!61 &3396140827443464809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,3 +140,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 29.408716, y: 49.623596}
   m_EdgeRadius: 0
+--- !u!114 &-990613707027048945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396140827443464814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d6fd10314b3f345809dbe317f059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 80
+  lifeTime: 0.3
+  sprites: []
+  destroyEffect: {fileID: 1249985104639089353, guid: c0893a1944a78fd46881630384fe6cdc,
+    type: 3}
+  pushBackForce: 10
+  layers:
+  - Enemy
+  - Friendly
+  - BackgroundHittable

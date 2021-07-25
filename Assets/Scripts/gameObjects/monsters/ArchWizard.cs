@@ -244,4 +244,33 @@ public class ArchWizard : Enemy
             animator.SetTrigger("Angry");
         }
     }
+
+    protected override void ChangeRendererColor(Color color)
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        foreach(SpriteRenderer renderer in renderers)
+        {
+            renderer.color = color;
+        }
+    }
+
+    /*
+    public void ChangeRendererColorInAnimation()
+    {   
+        if(isSLowed)
+        {
+            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer renderer in renderers)
+            {
+                renderer.color = slowColor;
+            }
+        } else
+        {
+            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer renderer in renderers)
+            {
+                renderer.color = Color.white;
+            }
+        }
+    }*/
 }
