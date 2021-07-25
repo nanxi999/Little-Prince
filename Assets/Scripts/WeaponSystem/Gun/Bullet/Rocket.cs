@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class Rocket : Bullet
 {
+    [SerializeField] private int ExplosionDmg;
+    private CircleCollider2D circle;
+    protected override void Start()
+    {
+        base.Start();
+        circle = GetComponent<CircleCollider2D>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        
+    }
+
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(dmg);
         int res = LayerMask.GetMask(layers);
         GameObject hitObject = collision.gameObject;
         if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
@@ -27,10 +41,27 @@ public class Rocket : Bullet
             }
             if (hitObject.GetComponent<Hurtable>())
             {
-                Debug.Log("damage dealt: " + dmg);
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
             }
+            Explode();
             DestroyProjectile();
         }
+    }
+
+    private void Explode()
+    {
+        List<Collider2D> colliderList = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(LayerMask.GetMask("Enemy"));
+        circle.OverlapCollider(filter, colliderList);
+        foreach(Collider2D collider in colliderList)
+        {
+           Hurtable enemy = collider.gameObject.GetComponent<Hurtable>();
+            if(enemy)
+            {
+                enemy.Hurt(ExplosionDmg);
+            }
+        }
+        Debug.Log("number of colliders: " + colliderList.Count);
     }
 }

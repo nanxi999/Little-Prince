@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         iceBullet = false;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Fly();
         //UpdateSpriteRenderer();
