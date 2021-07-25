@@ -899,6 +899,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0e96ce13-d496-452e-80e5-fe64b5247cee
     m_ActionName: GamePlay/PauseGame[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5461552306284710373}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3dfaab86-0b73-46a5-bf14-7ea06e9c9460
+    m_ActionName: GamePlay/Save[/Keyboard/q,/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: GamePlay

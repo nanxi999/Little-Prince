@@ -5,27 +5,36 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    private Hurtable hurtableObj;
+    private Prince prince;
     // Start is called before the first frame update
     void Start()
     {
-        hurtableObj = GetComponentInParent<Hurtable>();
+        prince = GetComponentInParent<Prince>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float health = hurtableObj.GetHealth();
-        if (health > 0)
+        float health = prince.GetHealth();
+        if (!prince.IsCryin())
         {
-            float percentage = health / (float)hurtableObj.GetMaxHealth();
+            float percentage = health / (float)prince.GetMaxHealth();
             transform.localScale = new Vector3(percentage, transform.localScale.y, transform.localScale.z);
             
             // under 30 percent health, health bar flashes
             if(percentage < 0.3)
             {
                 SetColour(Color.white);
+            } else
+            {
+                SetColour(Color.red);
             }
+        } else
+        {
+            float requiredTime = prince.GetSaveTime();
+            float remaininTime = prince.GetRemainSaveTime();
+            float percentage = (requiredTime - remaininTime) / requiredTime;
+            transform.localScale = new Vector3(percentage, transform.localScale.y, transform.localScale.z);
         }
     }
 

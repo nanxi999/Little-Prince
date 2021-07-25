@@ -23,6 +23,14 @@ public class Prince : Hurtable
     private bool freeze = false;
     private StatsManager stats;
 
+    // variables for the death and save features
+    private float saveTime = 2f;
+    private bool cryin = false;
+    private float remainingSaveTime;
+    private bool saveKeyPressed = false;
+    private InputAction saveAction;
+    private Prince princeToSave;
+
     Rigidbody2D rb;
     Animator animator;
     // Start is called before the first frame update
@@ -42,6 +50,10 @@ public class Prince : Hurtable
         fireAction = map.FindAction("Fire");
         fireAction.started += ToggleFiring;
         fireAction.canceled += ToggleFiring;
+
+        saveAction = map.FindAction("Save");
+        saveAction.started += ToggleSavin;
+        saveAction.canceled += ToggleSavin;
     }
 
     // Update is called once per frame
@@ -50,9 +62,9 @@ public class Prince : Hurtable
         if(!freeze)
         {
             transform.Translate(input * speed * stats.GetMoveSpeedFactor() * Time.deltaTime);
-            //rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
             FlipSprite();
             Fire();
+            SaveTargetPrince();
             weaponStat.text = gunController.GetGunStat();
         } 
     }
@@ -79,7 +91,11 @@ public class Prince : Hurtable
         return input;
     }
 
-    
+    public void ToggleSavin(InputAction.CallbackContext context)
+    {
+        saveKeyPressed = !saveKeyPressed;
+    }
+
     public void ToggleFiring(InputAction.CallbackContext context)
     {
         firing = !firing;
@@ -87,7 +103,7 @@ public class Prince : Hurtable
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(receiveInput && !freeze)
+        if(receiveInput && !freeze && !cryin)
         {
             if (animator != null && gunController != null)
             {
@@ -101,6 +117,9 @@ public class Prince : Hurtable
                     animator.SetBool("IsMoving", false);
             }
            
+        } else
+        {
+            input = Vector2.zero;
         }
         
     }
@@ -156,11 +175,25 @@ public class Prince : Hurtable
         StartCoroutine(PushBackFreeze(duration));
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Prince collidedPrince = collision.gameObject.GetComponent<Prince>();
+        if(collidedPrince && collidedPrince.IsCryin())
+        {
+            princeToSave = collidedPrince;
+        } 
+    }
+
     public override void Hurt(float dmg)
     {
+        if(cryin)
+        {
+            return;
+        }
         health -= dmg * stats.GetHurtFactor();
         if (health <= 0)
         {
+            health = 0;
             if (deathEffect)
             {
                 GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -173,11 +206,60 @@ public class Prince : Hurtable
 
             if(animator)
             {
+                // start cryin and waiting for help
                 animator.SetTrigger("Cry");
+                cryin = true;
+                remainingSaveTime = saveTime;
             }
-
-            freeze = true;
         }
+    }
+
+    public bool IsCryin()
+    {
+        return cryin;
+    }
+
+    public void SaveTargetPrince()
+    {
+        if(princeToSave)
+        {
+            if(princeToSave.IsCryin())
+            {
+                if(saveKeyPressed)
+                {
+                    princeToSave.Save();
+                }
+            } else
+            {
+                princeToSave = null;
+            }
+        }
+    }
+
+    public void Save()
+    {
+        if(remainingSaveTime > 0)
+        {
+            remainingSaveTime -= Time.deltaTime;
+        } else
+        {
+            // the target prince is saved
+            animator.SetTrigger("Saved");
+            saveTime += 1.5f;
+            cryin = false;
+            health = max;
+            
+        }
+    }
+
+    public float GetRemainSaveTime()
+    {
+        return remainingSaveTime;
+    }
+
+    public float GetSaveTime()
+    {
+        return saveTime;
     }
 
 }
