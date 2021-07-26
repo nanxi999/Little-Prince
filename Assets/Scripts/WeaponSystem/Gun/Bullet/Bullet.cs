@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         iceBullet = false;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Fly();
         //UpdateSpriteRenderer();
@@ -59,7 +59,7 @@ public class Bullet : MonoBehaviour
     protected void DestroyProjectile()
     {
         GameObject obj = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(obj, 2f);
+        Destroy(obj, 1f);
         Destroy(this.gameObject);
     }
 
