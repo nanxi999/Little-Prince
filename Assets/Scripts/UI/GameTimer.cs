@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     float startTime = 0;
     float levelTime = 1;
-    bool levelTimeFinished = false;
+    bool levelTimeFinished = true;
 
     void Update()
     {

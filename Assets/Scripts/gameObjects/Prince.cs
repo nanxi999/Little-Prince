@@ -209,6 +209,7 @@ public class Prince : Hurtable
                 // start cryin and waiting for help
                 animator.SetTrigger("Cry");
                 cryin = true;
+                FindObjectOfType<LevelController>().GameOverCheck();
                 remainingSaveTime = saveTime;
             }
         }

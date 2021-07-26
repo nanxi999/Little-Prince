@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865358334641946203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 9, z: 0}
+  m_LocalPosition: {x: 3.8, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2095954575783415599}
@@ -130,7 +130,7 @@ MonoBehaviour:
   bullet:
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
   - {fileID: 8909202162540154983, guid: bed1cd62dfd49ea4482f97a7f6e49d45, type: 3}
-  dmg: 10
+  dmg: 100
   attackCd: 1.5
   firePoint: {fileID: 1865358334641946203}
   shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}

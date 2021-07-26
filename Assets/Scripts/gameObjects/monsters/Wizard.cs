@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Wizard : Enemy
 {
@@ -9,6 +10,13 @@ public class Wizard : Enemy
     public DarkBullet darkBullet;
     public float attackCd;
     private float sinceLastAttack;
+
+    protected override void Start()
+    {
+        base.Start();
+        GetComponent<AIDestinationSetter>().target = prince.transform;
+        GetComponent<AIPath>().maxSpeed = moveSpeed;
+    }
 
     protected override void Update()
     {

@@ -37,21 +37,22 @@ public class GunController : MonoBehaviour
         //Rotate();
     }
 
-    public bool HasGun(Gun tempGun)
+    public Gun HasGun(Gun tempGun)
     {
         foreach(Gun g in gunsArmory)
         {
             if (g.GetName().Equals(tempGun.GetName())) {
-                return true;
+                return g;
             }
         }
-        return false;
+        return null;
     }
 
     public void AddGun(Gun gunPrefab)
     {
         if (HasGun(gunPrefab))
         {
+            gun.SetAmmo(gun.GetAmmo());
             return;
         } else
         {

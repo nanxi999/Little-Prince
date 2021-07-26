@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5050339445632216894}
-  m_Layer: 11
+  - component: {fileID: 2578205883827976441}
+  m_Layer: 10
   m_Name: house2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2578205883827976441
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826233208381574065}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.2817721, y: -1.8311093}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.21382, y: 7.905887}
+  m_EdgeRadius: 0
 --- !u!1 &6426898260669174089
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813142694559951993}
   - component: {fileID: 3094765348425684478}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6085492677752645618}
   - component: {fileID: 4683225232153660877}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +215,7 @@ GameObject:
   - component: {fileID: 6093324271763038258}
   - component: {fileID: 3730441951593806292}
   - component: {fileID: 1829138166634964566}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +293,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1c725da946aa0384db9f38c92458493b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

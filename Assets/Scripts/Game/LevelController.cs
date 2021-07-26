@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class LevelController : MonoBehaviour
 {
@@ -16,9 +17,8 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        numberOfPlayers = 1;
+        numberOfPlayers = 0;
         playersAwarded = new List<int>();
-        InitializeLevel();
     }
 
     private void Start()
@@ -61,6 +61,7 @@ public class LevelController : MonoBehaviour
         Prince[] players = FindObjectsOfType<Prince>();
         foreach(Prince p in players)
         {
+            p.SetHealth(p.GetMaxHealth());
             StatsManager stats = p.GetComponent<StatsManager>();
             stats.ResetPassiveSkills();
             stats.SetBulletId(0);
@@ -76,8 +77,8 @@ public class LevelController : MonoBehaviour
 
     private void StartSpawners()
     {
-        Spawner[] spawnerArray = FindObjectsOfType<Spawner>();
-        foreach (Spawner spawner in spawnerArray)
+        EnemySpawner[] spawnerArray = FindObjectsOfType<EnemySpawner>();
+        foreach (EnemySpawner spawner in spawnerArray)
         {
             StartCoroutine(spawner.StartSpawning());
         }
@@ -85,8 +86,8 @@ public class LevelController : MonoBehaviour
 
     private void StopSpawners()
     {
-        Spawner[] spawnerArray = FindObjectsOfType<Spawner>();
-        foreach (Spawner spawner in spawnerArray)
+        EnemySpawner[] spawnerArray = FindObjectsOfType<EnemySpawner>();
+        foreach (EnemySpawner spawner in spawnerArray)
         {
             spawner.StopSpawning();
         }
@@ -112,7 +113,6 @@ public class LevelController : MonoBehaviour
     public void PlayerAwarded(int id)
     {
         playersAwarded.Add(id);
-        numberOfPlayers = FindObjectsOfType<Prince>().Length;
         if(playersAwarded.Count >= Mathf.Min(numberOfPlayers, 3))
         {           
             var awards = FindObjectsOfType<Award>();
@@ -133,5 +133,38 @@ public class LevelController : MonoBehaviour
     public bool PlayerIsAwarded(int id)
     {
         return playersAwarded.Contains(id);
+    }
+
+    public void GameOverCheck()
+    {
+        Prince[] players = FindObjectsOfType<Prince>();
+        bool gameOver = true;
+        Debug.Log("number of princes remaining:" + players.Length);
+        foreach(Prince p in players)
+        {
+            if (!p.IsCryin())
+                gameOver = false;
+        }
+        Debug.Log(gameOver);
+        if (gameOver)
+            StartCoroutine(GameOver());    
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2);
+        FindObjectOfType<SceneLoader>().LoadSceneWithIndex(2);
+    }
+
+    public void PlayerJoined()
+    {
+        numberOfPlayers += 1;
+        if(numberOfPlayers == 1)
+            InitializeLevel();
+    }
+
+    public void PlayerLeft()
+    {
+        numberOfPlayers -= 1;
     }
 }

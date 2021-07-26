@@ -21,13 +21,13 @@ public class Gun : MonoBehaviour
     protected float lastShoot;
     protected float angle;
     protected StatsManager stats;
-    
+
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         ammo = maxAmmo;
-        if(!prince)
+        if (!prince)
         {
             prince = GetComponentInParent<Prince>();
         }
@@ -48,10 +48,10 @@ public class Gun : MonoBehaviour
 
     public virtual void Fire()
     {
-        if(lastShoot < attackCd * stats.GetShootSpeedFactor())
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
         {
             return;
-        } 
+        }
         else if (bullet[stats.GetBulletId()])
         {
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
@@ -61,10 +61,10 @@ public class Gun : MonoBehaviour
             newBullet.SetShooter(prince.gameObject);
 
             lastShoot = 0f;
-            if(shootEffects[stats.GetBulletId()])
+            if (shootEffects[stats.GetBulletId()])
             {
-               GameObject obj = Instantiate(shootEffects[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-               Destroy(obj, 1f);
+                GameObject obj = Instantiate(shootEffects[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+                Destroy(obj, 1f);
             }
         }
     }
@@ -82,6 +82,11 @@ public class Gun : MonoBehaviour
     public int GetAmmo()
     {
         return ammo;
+    }
+
+    public void SetAmmo(int val)
+    {
+        ammo = val;
     }
 
     public int GetMaxAmmo()

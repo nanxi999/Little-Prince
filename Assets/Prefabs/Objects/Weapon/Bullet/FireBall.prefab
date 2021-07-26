@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429874057267235356}
   m_LocalRotation: {x: -0.50514245, y: 0.49480417, z: -0.49480417, w: 0.50514245}
-  m_LocalPosition: {x: 0.97, y: -2.18, z: 12.029206}
+  m_LocalPosition: {x: 0, y: -2.18, z: 12.029206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429874058887365150}
@@ -4779,7 +4779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429874057820826913}
   m_LocalRotation: {x: -0.70706636, y: 0.007565323, z: -0.007565323, w: 0.70706636}
-  m_LocalPosition: {x: 0.9800288, y: -2.6900053, z: 12.029206}
+  m_LocalPosition: {x: 0, y: -2.6900053, z: 12.029206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429874058887365150}
@@ -9519,7 +9519,7 @@ GameObject:
   - component: {fileID: 3482356780576012407}
   - component: {fileID: 7097621704484676223}
   m_Layer: 9
-  m_Name: fireBall
+  m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9554,7 +9554,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0103782, y: -0.4726901}
+  m_Offset: {x: 0.0015518963, y: -0.67170596}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9565,7 +9565,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.902725, y: 4.5267277}
+  m_Size: {x: 1.7182598, y: 4.5577397}
   m_EdgeRadius: 0
 --- !u!114 &3482356780576012407
 MonoBehaviour:
@@ -9589,7 +9589,7 @@ MonoBehaviour:
   - Enemy
   - Friendly
   - BackgroundHittable
-  ExplosionDmg: 35
+  ExplosionDmg: 50
 --- !u!58 &7097621704484676223
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9603,6 +9603,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1339016, y: -0.66688967}
+  m_Offset: {x: 0.07872223, y: -0.66322404}
   serializedVersion: 2
-  m_Radius: 2.7255523
+  m_Radius: 3.4137163

@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float minSpawnDelay = 1f;
-    [SerializeField] float maxSpawnDelay = 3f;
-    [SerializeField] Enemy enemyPref;
+    [SerializeField] protected float minSpawnDelay = 1f;
+    [SerializeField] protected float maxSpawnDelay = 3f;
+    [SerializeField] protected float startSpeed = 5f;
+    [SerializeField] protected float increaseSpeed = 0.2f;
+    [SerializeField] protected Enemy enemyPref;
 
-    bool spawn = true;
-    LevelController levelController;
+    protected bool spawn = true;
+    protected LevelController levelController;
 
-    private void Start()
+    protected virtual void Start()
     {
         levelController = FindObjectOfType<LevelController>();
     }
 
     // Start is called before the first frame update
-    public IEnumerator StartSpawning()
+    public virtual IEnumerator StartSpawning()
     {
         spawn = true;
         while (spawn)
@@ -28,7 +30,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnAttacker()
+    protected void SpawnAttacker()
     {
         Spawn(enemyPref);
     }
@@ -38,6 +40,7 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(myEnemy, transform.position, transform.rotation) as Enemy;
         newEnemy.transform.parent = transform;
         newEnemy.SetDmg(levelController.GetLevel() + newEnemy.GetDmg());
+        newEnemy.SetSpeed((float)(levelController.GetLevel() * increaseSpeed + startSpeed));
     }
 
     public void StopSpawning()

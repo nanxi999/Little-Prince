@@ -92,7 +92,7 @@ public class Enemy : Hurtable
             {
                 newDir.y = -1;
             }
-            rb.MovePosition(rb.position + newDir * moveSpeed * speedModifier * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + newDir * moveSpeed * speedModifier * Time.fixedDeltaTime);
         }
 
     }

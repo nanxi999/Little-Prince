@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Pathfinding;
 public class ArchWizard : Enemy
 {
     public float dashDamage;
@@ -26,7 +26,8 @@ public class ArchWizard : Enemy
         base.Start();
         laserList = new List<Laser>();
         //GenerateMultipleRays();
-
+        GetComponent<AIDestinationSetter>().target = prince.transform;
+        GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 
     protected override void Update()
@@ -253,24 +254,4 @@ public class ArchWizard : Enemy
             renderer.color = color;
         }
     }
-
-    /*
-    public void ChangeRendererColorInAnimation()
-    {   
-        if(isSLowed)
-        {
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer renderer in renderers)
-            {
-                renderer.color = slowColor;
-            }
-        } else
-        {
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer renderer in renderers)
-            {
-                renderer.color = Color.white;
-            }
-        }
-    }*/
 }

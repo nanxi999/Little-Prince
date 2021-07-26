@@ -9605,4 +9605,4 @@ MonoBehaviour:
   - Friendly
   - Enemy
   - BackgroundHittable
-  ExplosionDmg: 25
+  ExplosionDmg: 40

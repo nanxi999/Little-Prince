@@ -26,6 +26,7 @@ public class Shadow : Enemy
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
         layers = LayerMask.GetMask("Friendly");   // set mask
         GetComponent<AIDestinationSetter>().target = prince.transform;
+        GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 
     public void PlayerInRange()
