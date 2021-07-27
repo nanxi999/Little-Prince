@@ -13,6 +13,10 @@ public class GunController : MonoBehaviour
     private int gunCount = 1;
     private List<Gun> gunsArmory;
     private StatsManager stats;
+    private Enemy target;
+    private bool assistActive;
+    private float detectRange;
+    [SerializeField] protected float targetSwitchThreshold = 10f;
     // Start is called before the first frame update
 
 
@@ -24,12 +28,20 @@ public class GunController : MonoBehaviour
         gunsArmory = new List<Gun>();
         gun = Instantiate(prince.initialGun, transform);
         gunsArmory.Add(gun);
+        detectRange = prince.GetDetectionRange();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Rotate();
+        assistActive = prince.GetFireAssistStatus();
+        SelectTarget();
+        Rotate();
+        prince.SetTarget(target);
+        if (target)
+        {
+            target.SelectAsTarget(true);
+        }
     }
 
     public Gun HasGun(Gun tempGun)
@@ -41,6 +53,41 @@ public class GunController : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void SelectTarget()
+    {
+        Enemy nextTarget = null;
+        float curDist = float.MaxValue;
+        float minDist = float.MaxValue;
+        if(target)
+        {
+            curDist = Vector2.Distance(gun.GetFirePoint().position, target.transform.position);
+        }
+
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+        foreach(Enemy enemy in enemies)
+        {
+            if (enemy != target)
+            {
+                float distance = Vector2.Distance(enemy.transform.position, gun.GetFirePoint().position);
+                if(distance < minDist)
+                {
+                    minDist = distance;
+                    nextTarget = enemy;
+                }
+            }
+        }
+
+        if(curDist - minDist > targetSwitchThreshold && minDist < detectRange)
+        {
+            if(target)
+            {
+                target.SelectAsTarget(false);
+            }
+            target = nextTarget;
+        }
     }
 
     public void AddGun(Gun gunPrefab)
@@ -89,9 +136,16 @@ public class GunController : MonoBehaviour
 
     public void Rotate()
     {
-        Vector2 dir = prince.GetMoveDir();
-        if(dir == Vector2.zero) { return; }
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        float angle = 0;
+        if(target && assistActive)
+        {
+            angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 90f;
+        } else
+        {
+            Vector2 dir = prince.GetMoveDir();
+            if (dir == Vector2.zero) { return; }
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        }
         transform.rotation = Quaternion.Euler(0, 0, angle);
         gun.SetAngle(angle);
     }

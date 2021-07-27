@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3040799709614331611}
   - component: {fileID: 3040799709614331612}
   m_Layer: 8
-  m_Name: Halo
+  m_Name: ShadowRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +254,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 65f44a7935cb741499a6ef807d691579, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.2}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -591,6 +591,7 @@ MonoBehaviour:
   slowColor: {r: 0.12941177, g: 0.49019608, b: 1, a: 1}
   moveSpeed: 6
   targetSwitchThreshold: 15
+  shadowRenderer: {fileID: 3040799709614331612}
   dmg: 10
   prince: {fileID: 0}
   attackPoint: {fileID: 3040799709205877778}

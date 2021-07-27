@@ -99,4 +99,9 @@ public class Gun : MonoBehaviour
         maxAmmo = val;
         ammo = maxAmmo;
     }
+
+    public Transform GetFirePoint()
+    {
+        return firePoint.transform;
+    }
 }

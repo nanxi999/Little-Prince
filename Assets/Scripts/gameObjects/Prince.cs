@@ -30,7 +30,13 @@ public class Prince : Hurtable
     private bool saveKeyPressed = false;
     private InputAction saveAction;
     private Prince princeToSave;
+
+    // fire assist
+    private bool assistOn = false;
+    private InputAction assistAction;
     private Enemy target;
+    private float flipSpriteThreshold = 10f;
+    [SerializeField] private float EnemyDetectionRange = 30f;
 
     Rigidbody2D rb;
     Animator animator;
@@ -56,6 +62,9 @@ public class Prince : Hurtable
         saveAction.started += ToggleSavin;
         saveAction.canceled += ToggleSavin;
 
+        assistAction = map.FindAction("FireAssist");
+        assistAction.started += ToggleAssist;
+
         Debug.Log(playerID);
     }
 
@@ -65,27 +74,52 @@ public class Prince : Hurtable
         if(!freeze)
         {
             transform.Translate(input * speed * stats.GetMoveSpeedFactor() * Time.deltaTime);
-            FlipSprite();
+            CheckFlipSpriteCondition();
             Fire();
             SaveTargetPrince();
             weaponStat.text = gunController.GetGunStat();
         } 
     }
 
+    private void CheckFlipSpriteCondition()
+    {
+        Transform character = transform.Find("Character");
+        if(assistOn && target)
+        {
+            Transform targetPos = target.transform;
+            bool cond1 = targetPos.position.x > transform.position.x + flipSpriteThreshold && Mathf.Sign(character.localScale.x) < 0;
+            bool cond2 = targetPos.position.y < transform.position.x + flipSpriteThreshold && Mathf.Sign(character.localScale.x) > 0;
+
+            if(cond1 || cond2)
+            {
+                FlipSprite();
+            }
+        }
+        else
+        {
+            bool cond1 = input.x > 0 && Mathf.Sign(character.localScale.x) < 0;
+            bool cond2 = input.x < 0 && Mathf.Sign(character.localScale.x) > 0;
+            if (cond1 || cond2)
+            {
+                FlipSprite();
+            }
+        }
+    }
+
     private void FlipSprite()
     {
         Transform character = transform.Find("Character");
-        bool cond1 = input.x > 0 && Mathf.Sign(character.localScale.x) < 0;
-        bool cond2 = input.x < 0 && Mathf.Sign(character.localScale.x) > 0;
-        if (cond1 || cond2)  
-        {
-            float x = character.localScale.x;
-            float y = character.localScale.y;
-            float z = character.localScale.z;
-            Vector3 newScale = new Vector3(-x, y, z);
-            character.localScale = newScale;
-            gunController.Rotate();
-        }
+        float x = character.localScale.x;
+        float y = character.localScale.y;
+        float z = character.localScale.z;
+        Vector3 newScale = new Vector3(-x, y, z);
+        character.localScale = newScale;
+        gunController.Rotate();
+    }
+
+    private void ToggleAssist(InputAction.CallbackContext context)
+    {
+        assistOn = !assistOn;
     }
 
 
@@ -126,7 +160,6 @@ public class Prince : Hurtable
         }
         
     }
-
 
     public void Fire()
     {
@@ -266,4 +299,18 @@ public class Prince : Hurtable
         return saveTime;
     }
 
+    public bool GetFireAssistStatus()
+    {
+        return assistOn;
+    }
+
+    public void SetTarget(Enemy enemyTarget)
+    {
+        target = enemyTarget;
+    }
+
+    public float GetDetectionRange()
+    {
+        return EnemyDetectionRange;
+    }
 }

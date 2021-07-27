@@ -8,6 +8,7 @@ public class Enemy : Hurtable
     [SerializeField] protected Color slowColor;
     [SerializeField] protected float moveSpeed = 6;
     [SerializeField] protected float targetSwitchThreshold = 30;
+    [SerializeField] protected SpriteRenderer shadowRenderer;
     public int dmg = 1;
     protected bool freeze = false;
 
@@ -20,6 +21,7 @@ public class Enemy : Hurtable
     private float speedModifier = 1;
     protected bool isSLowed;
     private AIPath path;
+    protected bool selected;
 
     protected override void Awake()
     {
@@ -239,13 +241,26 @@ public class Enemy : Hurtable
                 }
             }
         }
-        Debug.Log("cur dist: " + curDist);
-        Debug.Log("pos dist: " + Vector2.Distance(transform.position, tempPrince.transform.position));
+        if(!tempPrince) { return; }
 
         if (prince.IsCryin() || curDist - Vector2.Distance(transform.position,tempPrince.transform.position) > targetSwitchThreshold)
         {
             prince = tempPrince;
         }
+    }
 
+    public void SelectAsTarget(bool status)
+    {
+        if(shadowRenderer)
+        {
+            if (status)
+            {
+                shadowRenderer.color = Color.red;
+            }
+            else
+            {
+                shadowRenderer.color = Color.black;
+            }
+        }
     }
 }
