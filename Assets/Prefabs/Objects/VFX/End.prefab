@@ -4816,6 +4816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPushBack: 60
+  dmg: 40
 --- !u!1 &8351440497443146286
 GameObject:
   m_ObjectHideFlags: 0

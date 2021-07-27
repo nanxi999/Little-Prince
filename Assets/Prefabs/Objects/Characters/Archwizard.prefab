@@ -1527,9 +1527,9 @@ MonoBehaviour:
   moveSpeed: 5
   targetSwitchThreshold: 15
   shadowRenderer: {fileID: 0}
-  dmg: 5
+  dmg: 10
   prince: {fileID: 0}
-  dashDamage: 0
+  dashDamage: 50
   dashSpeed: 30
   dashPushBack: 30
   firePointBall: {fileID: 834399369202831503}

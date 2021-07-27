@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserDamage : MonoBehaviour
 {
     public float laserPushBack;
+    public float dmg = 30;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Prince prince = collision.gameObject.GetComponent<Prince>();
@@ -15,7 +16,7 @@ public class LaserDamage : MonoBehaviour
             {
                 prince.PushBack(dir / dir.magnitude * laserPushBack, 0.5f);
             }
-            prince.Hurt(10);
+            prince.Hurt(dmg);
         }
     }
 }

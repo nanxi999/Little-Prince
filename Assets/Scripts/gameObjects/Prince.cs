@@ -35,7 +35,6 @@ public class Prince : Hurtable
     private bool assistOn = false;
     private InputAction assistAction;
     private Enemy target;
-    private float flipSpriteThreshold = 10f;
     [SerializeField] private float EnemyDetectionRange = 30f;
 
     Rigidbody2D rb;
@@ -87,8 +86,8 @@ public class Prince : Hurtable
         if(assistOn && target)
         {
             Transform targetPos = target.transform;
-            bool cond1 = targetPos.position.x > transform.position.x + flipSpriteThreshold && Mathf.Sign(character.localScale.x) < 0;
-            bool cond2 = targetPos.position.y < transform.position.x + flipSpriteThreshold && Mathf.Sign(character.localScale.x) > 0;
+            bool cond1 = targetPos.position.x > transform.position.x && Mathf.Sign(character.localScale.x) < 0;
+            bool cond2 = targetPos.position.x < transform.position.x && Mathf.Sign(character.localScale.x) > 0;
 
             if(cond1 || cond2)
             {
