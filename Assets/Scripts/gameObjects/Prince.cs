@@ -37,6 +37,11 @@ public class Prince : Hurtable
     private Enemy target;
     [SerializeField] private float EnemyDetectionRange = 30f;
 
+    // ammo filling
+    private bool atAmmunition = false;
+    private Ammunition supplyPoint;
+    private bool filled = false;
+
     Rigidbody2D rb;
     Animator animator;
     // Start is called before the first frame update
@@ -160,9 +165,10 @@ public class Prince : Hurtable
         
     }
 
+    // When enter key is pressed, either fire or fill ammo depending on the positon of the prince
     public void Fire()
     {
-        if(receiveInput && firing)
+        if(receiveInput && firing && !atAmmunition && !cryin)
         {
             Gun gun = gunController.GetComponentInChildren<Gun>();
             if (!gun)
@@ -173,9 +179,23 @@ public class Prince : Hurtable
             {
                 gun.Fire();
             }
-        } else
+        } else if(!filled && !cryin && atAmmunition)
         {
+            if(firing)
+            {
+                supplyPoint.FillAmmo(this);
+            } else
+            {
+                supplyPoint.CancelRefill(this);
+            }
         }
+    }
+
+    public void FillAmmo()
+    {
+        gunController.RefillAmmo();
+        filled = true;
+        atAmmunition = false;
     }
 
     public void SwitchGun(InputAction.CallbackContext context)
@@ -311,5 +331,26 @@ public class Prince : Hurtable
     public float GetDetectionRange()
     {
         return EnemyDetectionRange;
+    }
+
+    public void EnterAmmoSupply(Ammunition ammu)
+    {
+        atAmmunition = true;
+        supplyPoint = ammu;
+    }
+
+    public void ExitAmmoSupply()
+    {
+        atAmmunition = false;
+    }
+
+    public void RefreshFillChance()
+    {
+        filled = true;
+    }
+
+    public bool GetFillStatus()
+    {
+        return filled;
     }
 }

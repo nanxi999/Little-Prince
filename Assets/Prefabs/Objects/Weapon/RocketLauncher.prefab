@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunName: Rocket Launcher
-  maxAmmo: 12
+  maxAmmo: 20
   bullet:
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
   - {fileID: 8909202162540154983, guid: bed1cd62dfd49ea4482f97a7f6e49d45, type: 3}

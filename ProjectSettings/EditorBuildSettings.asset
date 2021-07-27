@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Menu.unity
     guid: 1ecfba85008b57d4a9d09cc6c4bfc3ef
   - enabled: 1
-    path: Assets/Scenes/Copy Scene.unity
+    path: Assets/Scenes/Test Scene.unity
     guid: 9efee0080b2be984bb96f335800c89d7
   - enabled: 1
     path: Assets/Scenes/GameOver.unity

@@ -104,4 +104,9 @@ public class Gun : MonoBehaviour
     {
         return firePoint.transform;
     }
+
+    public void RefillAmmo()
+    {
+        ammo = maxAmmo;
+    }
 }

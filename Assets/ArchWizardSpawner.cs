@@ -7,9 +7,9 @@ public class ArchWizardSpawner : EnemySpawner
     int count = 0;
     public override IEnumerator StartSpawning()
     {
-        if(levelController.GetLevel() % 1 == 0)
+        if(levelController.GetLevel() % 10 == 0)
         {
-            while(count < levelController.GetLevel() / 1)
+            while(count < levelController.GetLevel() / 10)
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
                 SpawnAttacker();

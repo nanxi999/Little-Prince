@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     int numberOfPlayers;
     List<int> playersAwarded;
     bool levelTimeFinished;
+    Ammunition ammu;
 
     private GameUI gameUI;
 
@@ -19,6 +20,7 @@ public class LevelController : MonoBehaviour
     {
         numberOfPlayers = 0;
         playersAwarded = new List<int>();
+        ammu = FindObjectOfType<Ammunition>();
     }
 
     private void Start()
@@ -66,11 +68,22 @@ public class LevelController : MonoBehaviour
             stats.ResetPassiveSkills();
             stats.SetBulletId(0);
         }
+
+        // set the ammo supply point as active
+        if(ammu)
+        {
+            ammu.SetAmmuActive(true);
+        }
     }
 
     public IEnumerator NextLevel()      //Called when all players are awarded.
     {
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
+        if(ammu)
+        {
+            ammu.SetAmmuActive(false);
+        }
+
         yield return new WaitForSeconds(3);
         InitializeLevel();
     }

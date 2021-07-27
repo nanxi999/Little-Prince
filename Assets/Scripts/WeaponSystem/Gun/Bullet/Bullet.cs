@@ -71,20 +71,19 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(dmg);
         int res = LayerMask.GetMask(layers);
         GameObject hitObject = collision.gameObject;
-        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
-            return;
-        isColliding = true;
-
-        Enemy enemy = hitObject.GetComponent<Enemy>();
         if (hitObject != shooter)
         {
+            if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
+                return;
+            isColliding = true;
+            Enemy enemy = hitObject.GetComponent<Enemy>();
+
             Vector3 dir = transform.position - initPosition;
             if (enemy != null && dir != null)
             {
-                if (dir.magnitude == 0) { return; }
+                if (dir.magnitude == 0) { }
                 else
                 {
                     enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);

@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  dmg: 5
   lifeTime: 1
+  sprites: []
   destroyEffect: {fileID: 2721192005346969103, guid: 4b5d1a686243a0343abccbf2111530b7,
     type: 3}
   pushBackForce: 0
@@ -190,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21731782, y: -0.047457963}
+  m_Offset: {x: -0.15248537, y: -0.047457933}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -201,5 +201,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2819114, y: 1.7269969}
+  m_Size: {x: 1.4115763, y: 1.7269969}
   m_EdgeRadius: 0

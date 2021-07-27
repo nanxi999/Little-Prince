@@ -166,4 +166,9 @@ public class GunController : MonoBehaviour
     {
         return gunsArmory;
     }
+
+    public void RefillAmmo()
+    {
+        gun.RefillAmmo();
+    }
 }
