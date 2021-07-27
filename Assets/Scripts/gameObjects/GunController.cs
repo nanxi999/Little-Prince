@@ -22,11 +22,6 @@ public class GunController : MonoBehaviour
         prince = transform.parent.parent.GetComponent<Prince>();
         stats = prince.GetComponent<StatsManager>();
         gunsArmory = new List<Gun>();
-        //gunObj = armory.GetRandomGun();
-        //GameObject obj = Instantiate(gunObj, transform);
-        //gun = obj.GetComponent<Gun>();
-        //gun.SetPrince(prince);
-        //obj.transform.parent = transform;
         gun = Instantiate(prince.initialGun, transform);
         gunsArmory.Add(gun);
     }

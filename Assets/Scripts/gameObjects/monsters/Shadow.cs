@@ -8,6 +8,7 @@ public class Shadow : Enemy
 {
     public Transform attackPoint;
     public float attackRange = 0.5f;
+    private AIDestinationSetter dest;
 
     LayerMask layers;
     CircleCollider2D circle;
@@ -16,6 +17,7 @@ public class Shadow : Enemy
     {
         base.Update();
         SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+        dest.target = prince.transform;
     }
 
     protected override void Start()
@@ -25,7 +27,7 @@ public class Shadow : Enemy
         circle = GetComponent<CircleCollider2D>();
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
         layers = LayerMask.GetMask("Friendly");   // set mask
-        GetComponent<AIDestinationSetter>().target = prince.transform;
+        dest = GetComponent<AIDestinationSetter>();
         GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 

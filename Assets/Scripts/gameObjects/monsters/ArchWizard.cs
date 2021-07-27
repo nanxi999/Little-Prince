@@ -26,13 +26,13 @@ public class ArchWizard : Enemy
         base.Start();
         laserList = new List<Laser>();
         //GenerateMultipleRays();
-        GetComponent<AIDestinationSetter>().target = prince.transform;
         GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 
     protected override void Update()
     {
         sinceLastAttack += Time.deltaTime;
+        GetComponent<AIDestinationSetter>().target = prince.transform;
         base.Update();
         transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();

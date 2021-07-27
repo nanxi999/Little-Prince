@@ -14,7 +14,6 @@ public class Wizard : Enemy
     protected override void Start()
     {
         base.Start();
-        GetComponent<AIDestinationSetter>().target = prince.transform;
         GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 
@@ -22,6 +21,7 @@ public class Wizard : Enemy
     {
         sinceLastAttack += Time.deltaTime;
         base.Update();
+        GetComponent<AIDestinationSetter>().target = prince.transform;
         FireTrigger();
     }
 

@@ -30,6 +30,7 @@ public class Prince : Hurtable
     private bool saveKeyPressed = false;
     private InputAction saveAction;
     private Prince princeToSave;
+    private Enemy target;
 
     Rigidbody2D rb;
     Animator animator;

@@ -7,6 +7,7 @@ public class Enemy : Hurtable
 {
     [SerializeField] protected Color slowColor;
     [SerializeField] protected float moveSpeed = 6;
+    [SerializeField] protected float targetSwitchThreshold = 30;
     public int dmg = 1;
     protected bool freeze = false;
 
@@ -38,6 +39,7 @@ public class Enemy : Hurtable
     // Update is called once per frame
     protected virtual void Update()
     {
+        UpdateTarget();
         Move();
         Flip();
     }
@@ -213,6 +215,37 @@ public class Enemy : Hurtable
         speedModifier = 1f;
         ChangeRendererColor(Color.white);
         isSLowed = false;
+
+    }
+
+    // choose the target prince based on distance.
+    private void UpdateTarget()
+    {
+        Prince[] princes = FindObjectsOfType<Prince>();
+        float minDist = float.MaxValue;
+        float curDist = Vector2.Distance(transform.position, prince.transform.position);
+        Prince tempPrince = new Prince();
+
+        foreach(Prince newPrince in princes)
+        {
+            if (newPrince != prince && !newPrince.IsCryin())
+            {
+                float distance = Vector2.Distance(transform.position, newPrince.transform.position);
+                if(distance < minDist)
+                {
+                    Debug.Log("minPrince");
+                    minDist = distance;
+                    tempPrince = newPrince;
+                }
+            }
+        }
+        Debug.Log("cur dist: " + curDist);
+        Debug.Log("pos dist: " + Vector2.Distance(transform.position, tempPrince.transform.position));
+
+        if (prince.IsCryin() || curDist - Vector2.Distance(transform.position,tempPrince.transform.position) > targetSwitchThreshold)
+        {
+            prince = tempPrince;
+        }
 
     }
 }

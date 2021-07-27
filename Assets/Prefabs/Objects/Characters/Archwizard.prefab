@@ -1524,6 +1524,7 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
   moveSpeed: 5
+  targetSwitchThreshold: 15
   dmg: 5
   prince: {fileID: 0}
   dashDamage: 0
