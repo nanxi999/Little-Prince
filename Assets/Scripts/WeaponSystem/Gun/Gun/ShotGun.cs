@@ -9,7 +9,7 @@ public class ShotGun : Gun
 
     public override void Fire()
     {
-        if (lastShoot < attackCd)
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
         {
             return;
         }

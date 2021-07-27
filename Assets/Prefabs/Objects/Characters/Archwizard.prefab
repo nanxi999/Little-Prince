@@ -1523,7 +1523,7 @@ MonoBehaviour:
   health: 2000
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
-  moveSpeed: 100
+  moveSpeed: 5
   dmg: 5
   prince: {fileID: 0}
   dashDamage: 0

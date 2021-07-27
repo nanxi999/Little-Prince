@@ -20,17 +20,14 @@ public class Award : MonoBehaviour
         Bullet bullet = collision.gameObject.GetComponent<Bullet>();
         if(bullet & !isCollected)
         {
-            isCollected = true;
             Prince prince = bullet.GetShooter().GetComponent<Prince>();
-            if(prince && !(levelConroller.PlayerIsAwarded(prince.GetID())))
+            if (prince && !(levelConroller.PlayerIsAwarded(prince.GetID())))
             {
-                if (collision.gameObject.GetComponent<Bullet>())
-                {
-                    Destroy(collision.gameObject);
-                    GiveAwards(bullet.GetShooter());
-                    levelConroller.PlayerAwarded(prince.GetID());
-                    DestroyThis();
-                }
+                isCollected = true;
+                Destroy(collision.gameObject);
+                GiveAwards(bullet.GetShooter());
+                levelConroller.PlayerAwarded(prince.GetID());
+                DestroyThis();
             }
             
         }

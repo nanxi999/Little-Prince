@@ -50,9 +50,10 @@ public class GunController : MonoBehaviour
 
     public void AddGun(Gun gunPrefab)
     {
-        if (HasGun(gunPrefab))
+        Gun tempGun = HasGun(gunPrefab);
+        if (tempGun)
         {
-            gun.SetAmmo(gun.GetAmmo());
+            tempGun.SetAmmo(tempGun.GetMaxAmmo());
             return;
         } else
         {

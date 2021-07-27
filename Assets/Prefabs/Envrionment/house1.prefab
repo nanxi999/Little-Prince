@@ -111,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5619394731895395747}
   - component: {fileID: 3402195849500391844}
+  - component: {fileID: 6249290432909291760}
   m_Layer: 10
   m_Name: house1
   m_TagString: Untagged
@@ -160,6 +161,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.697641, y: 7.4543686}
   m_EdgeRadius: 0
+--- !u!50 &6249290432909291760
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619394731895395744}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8469694987682912642
 GameObject:
   m_ObjectHideFlags: 0

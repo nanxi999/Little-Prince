@@ -54,6 +54,8 @@ public class Prince : Hurtable
         saveAction = map.FindAction("Save");
         saveAction.started += ToggleSavin;
         saveAction.canceled += ToggleSavin;
+
+        Debug.Log(playerID);
     }
 
     // Update is called once per frame

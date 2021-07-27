@@ -164,16 +164,19 @@ public class Enemy : Hurtable
     protected virtual IEnumerator PushBackFreeze(float duration)
     {
         freeze = true;
+        GetComponent<AIPath>().enabled = false;
         yield return new WaitForSeconds(duration);
-        animator.SetBool("Hurt", false);
-        rb.velocity = Vector3.zero;
+        GetComponent<AIPath>().enabled = true;
+        //animator.SetBool("Hurt", false);
         freeze = false;
     }
 
     protected virtual IEnumerator Freeze(float duration)
     {
         freeze = true;
+        GetComponent<AIPath>().enabled = false;
         yield return new WaitForSeconds(duration);
+        GetComponent<AIPath>().enabled = true;
         freeze = false;
     }
 

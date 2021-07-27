@@ -33,7 +33,7 @@ public class MachineGun : Gun
         {
             contShootTime = 5;
         }
-        if (lastShoot < attackCd)
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
         {
             return;
         } 

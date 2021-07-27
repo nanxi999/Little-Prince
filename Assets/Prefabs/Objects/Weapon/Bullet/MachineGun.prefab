@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 80
-  lifeTime: 0.3
+  lifeTime: 0.5
   sprites:
   - {fileID: 21300000, guid: c4770d2691f5e7441817836ab2f90e57, type: 3}
   - {fileID: 21300000, guid: c33d21131440ac54195f1b5d70f7c47b, type: 3}
