@@ -1526,7 +1526,7 @@ MonoBehaviour:
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
   moveSpeed: 5
   targetSwitchThreshold: 15
-  shadowRenderer: {fileID: 0}
+  shadowRenderer: {fileID: 1049504980836993093}
   dmg: 10
   prince: {fileID: 0}
   dashDamage: 50
