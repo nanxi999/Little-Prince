@@ -31,7 +31,7 @@ public class Prince : Hurtable
     private Prince princeToSave;
 
     // fire assist
-    private bool assistOn = false;
+    private bool assistOn = true;
     private InputAction assistAction;
     private Enemy target;
     [SerializeField] private float EnemyDetectionRange = 30f;
