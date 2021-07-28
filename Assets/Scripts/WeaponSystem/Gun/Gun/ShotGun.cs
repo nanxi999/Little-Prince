@@ -40,9 +40,5 @@ public class ShotGun : Gun
                 Destroy(obj, 2);
             }
         }
-        if (ammo <= 0)
-        {
-            transform.parent.GetComponent<GunController>().RemoveGun();
-        }
     }
 }

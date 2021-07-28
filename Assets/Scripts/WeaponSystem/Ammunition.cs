@@ -8,6 +8,7 @@ public class Ammunition : MonoBehaviour
     [SerializeField] private GameObject textDisplay;
     [SerializeField] bool active = false;
     [SerializeField] float refillTime = 1.5f;
+    [SerializeField] GameObject Lights;
     Prince curPrince;
 
     private float curTime = 0f;
@@ -20,6 +21,12 @@ public class Ammunition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Lights.SetActive(active);
+    }
+
+    public bool ifActive()
+    {
+        return active;
     }
 
     public void FillAmmo(Prince prince)
@@ -59,33 +66,35 @@ public class Ammunition : MonoBehaviour
             {
                 prince.RefreshFillChance();
             }
+            curTime = 0f;
         } else
         {
             textDisplay.SetActive(false);
+            active = false;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (active)
+        Prince prince = collision.gameObject.GetComponent<Prince>();
+        if (prince && !prince.GetFillStatus())
         {
-            Debug.Log("entered");
-            Prince prince = collision.gameObject.GetComponent<Prince>();
-            if (prince && !prince.GetFillStatus())
+            prince.EnterAmmoSupply(this);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("ee");
+        Prince prince = collision.gameObject.GetComponent<Prince>();
+        if (prince)
+        {
+            prince.ExitAmmoSupply();
+            if (prince == curPrince)
             {
-                prince.EnterAmmoSupply(this);
+                CancelRefill(prince);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Prince prince = other.gameObject.GetComponent<Prince>();
-        if(prince)
-        {
-            prince.ExitAmmoSupply();
-        }
-    }
 
     public float GetMaxTime()
     {

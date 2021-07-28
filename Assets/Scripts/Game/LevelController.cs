@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
     int numberOfPlayers;
     List<int> playersAwarded;
     bool levelTimeFinished;
-    Ammunition ammu;
+    Ammunition[] ammu;
 
     // next level count down
     [SerializeField] private float prepareTime = 15f;
@@ -26,7 +26,7 @@ public class LevelController : MonoBehaviour
         timeBeforeNextLv = prepareTime;
         numberOfPlayers = 0;
         playersAwarded = new List<int>();
-        ammu = FindObjectOfType<Ammunition>();
+        ammu = FindObjectsOfType<Ammunition>();
     }
 
     private void Update()
@@ -98,9 +98,9 @@ public class LevelController : MonoBehaviour
         }
 
         // set the ammo supply point as active
-        if(ammu)
+        foreach(Ammunition ammo in ammu)
         {
-            ammu.SetAmmuActive(true);
+            ammo.SetAmmuActive(true);
         }
 
         // prep session starts
@@ -111,12 +111,11 @@ public class LevelController : MonoBehaviour
     public IEnumerator NextLevel()      //Called when the count down timer reaches 0
     {
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
-        if(ammu)
-        {
-            ammu.SetAmmuActive(false);
-        }
-
         yield return new WaitForSeconds(2);
+        foreach (Ammunition ammo in ammu)
+        {
+            ammo.SetAmmuActive(false);
+        }
         InitializeLevel();
     }
 

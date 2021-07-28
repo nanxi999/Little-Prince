@@ -859,7 +859,18 @@ MonoBehaviour:
     m_ActionId: 9e77b014-6835-4648-82fa-52ddc20319e9
     m_ActionName: GamePlay/Move[/DualShock4GamepadHID/leftStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5461552306284710373}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b5f0aeb9-8f76-4286-a9cd-3863a5735596
     m_ActionName: GamePlay/Fire[/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:

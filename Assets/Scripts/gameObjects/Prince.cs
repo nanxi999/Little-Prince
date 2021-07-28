@@ -168,7 +168,20 @@ public class Prince : Hurtable
     // When enter key is pressed, either fire or fill ammo depending on the positon of the prince
     public void Fire()
     {
-        if(receiveInput && firing && !atAmmunition && !cryin)
+        Debug.Log(atAmmunition + " " + filled + " ");
+        if(atAmmunition && !filled && supplyPoint && supplyPoint.ifActive() && !cryin)
+        {
+            Debug.Log("hjere");
+            if (firing)
+            {
+                Debug.Log("tries to fill ammo");
+                supplyPoint.FillAmmo(this);
+            }
+            else
+            {
+                supplyPoint.CancelRefill(this);
+            }
+        } else if(receiveInput && firing && !cryin)
         {
             Gun gun = gunController.GetComponentInChildren<Gun>();
             if (!gun)
@@ -178,15 +191,6 @@ public class Prince : Hurtable
             else
             {
                 gun.Fire();
-            }
-        } else if(!filled && !cryin && atAmmunition)
-        {
-            if(firing)
-            {
-                supplyPoint.FillAmmo(this);
-            } else
-            {
-                supplyPoint.CancelRefill(this);
             }
         }
     }
@@ -337,16 +341,19 @@ public class Prince : Hurtable
     {
         atAmmunition = true;
         supplyPoint = ammu;
+        Debug.Log("at ammu");
     }
 
     public void ExitAmmoSupply()
     {
+        Debug.Log("exit");
         atAmmunition = false;
+        supplyPoint = null;
     }
 
     public void RefreshFillChance()
     {
-        filled = true;
+        filled = false;
     }
 
     public bool GetFillStatus()
