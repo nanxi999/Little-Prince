@@ -12,7 +12,6 @@ public class Prince : Hurtable
     public Gun initialGun;
     public GunController gunController;
     
-    private int infBulletsLevelsLeft = 0;
     private bool receiveInput = true;
     private Vector2 input;
     private InputAction fireAction;
@@ -168,7 +167,6 @@ public class Prince : Hurtable
     // When enter key is pressed, either fire or fill ammo depending on the positon of the prince
     public void Fire()
     {
-        Debug.Log(atAmmunition + " " + filled + " ");
         if(atAmmunition && !filled && supplyPoint && supplyPoint.ifActive() && !cryin)
         {
             Debug.Log("hjere");
@@ -341,12 +339,11 @@ public class Prince : Hurtable
     {
         atAmmunition = true;
         supplyPoint = ammu;
-        Debug.Log("at ammu");
+
     }
 
     public void ExitAmmoSupply()
     {
-        Debug.Log("exit");
         atAmmunition = false;
         supplyPoint = null;
     }
