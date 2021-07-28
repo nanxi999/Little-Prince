@@ -14,13 +14,41 @@ public class LevelController : MonoBehaviour
     bool levelTimeFinished;
     Ammunition ammu;
 
+    // next level count down
+    [SerializeField] private float prepareTime = 15f;
+    private float timeBeforeNextLv;
+    private bool prepSession = false;
+
     private GameUI gameUI;
 
     private void Awake()
     {
+        timeBeforeNextLv = prepareTime;
         numberOfPlayers = 0;
         playersAwarded = new List<int>();
         ammu = FindObjectOfType<Ammunition>();
+    }
+
+    private void Update()
+    {
+        PrepSessionCountDown();
+    }
+
+    private void PrepSessionCountDown()
+    {
+        if (prepSession)
+        {
+            timeBeforeNextLv -= Time.deltaTime;
+            gameUI.DisplayCountDown(true, Mathf.FloorToInt(timeBeforeNextLv));
+
+            if (timeBeforeNextLv <= 0)
+            {
+                timeBeforeNextLv = 0;
+                prepSession = false;
+                gameUI.DisplayCountDown(false, 0);
+                StartCoroutine(NextLevel());
+            }
+        }
     }
 
     private void Start()
@@ -74,9 +102,13 @@ public class LevelController : MonoBehaviour
         {
             ammu.SetAmmuActive(true);
         }
+
+        // prep session starts
+        timeBeforeNextLv = prepareTime;
+        prepSession = true;
     }
 
-    public IEnumerator NextLevel()      //Called when all players are awarded.
+    public IEnumerator NextLevel()      //Called when the count down timer reaches 0
     {
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
         if(ammu)
@@ -84,7 +116,7 @@ public class LevelController : MonoBehaviour
             ammu.SetAmmuActive(false);
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         InitializeLevel();
     }
 
@@ -133,7 +165,7 @@ public class LevelController : MonoBehaviour
             {
                 Destroy(i.gameObject);
             }
-            StartCoroutine(NextLevel());
+            //StartCoroutine(NextLevel());
             ResetAwarded();
         }
     }

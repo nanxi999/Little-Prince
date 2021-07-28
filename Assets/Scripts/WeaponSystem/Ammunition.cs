@@ -6,7 +6,7 @@ public class Ammunition : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject textDisplay;
-    [SerializeField] bool active = true;
+    [SerializeField] bool active = false;
     [SerializeField] float refillTime = 1.5f;
     Prince curPrince;
 

@@ -169,6 +169,6 @@ public class GunController : MonoBehaviour
 
     public void RefillAmmo()
     {
-        gun.RefillAmmo();
+        gun.RefillAmmo();   
     }
 }
