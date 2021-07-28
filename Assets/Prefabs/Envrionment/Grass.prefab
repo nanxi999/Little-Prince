@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1865358334641946203
+--- !u!1 &3381829400598856456
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,68 +8,68 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1865358334641946204}
+  - component: {fileID: 3381829400598856457}
   m_Layer: 0
-  m_Name: FirePosition
-  m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1865358334641946204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865358334641946203}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1, y: 7.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2095954575783415599}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7253109879509856643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2095954575783415599}
-  - component: {fileID: 3223485551023052626}
-  - component: {fileID: 1095149863781531496}
-  m_Layer: 0
-  m_Name: MachineGun
+  m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2095954575783415599
+--- !u!4 &3381829400598856457
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253109879509856643}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0064382544, w: 0.99997926}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 50, y: 50, z: 50.540756}
+  m_GameObject: {fileID: 3381829400598856456}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -45.43, y: -21.47, z: -8}
+  m_LocalScale: {x: 0.5599246, y: 0.4899207, z: 1}
   m_Children:
-  - {fileID: 1865358334641946204}
+  - {fileID: 3381829402035101554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.73800004}
---- !u!212 &3223485551023052626
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3381829402035101549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3381829402035101554}
+  - component: {fileID: 3381829402035101552}
+  - component: {fileID: 3381829402035101555}
+  m_Layer: 0
+  m_Name: grass (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3381829402035101554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381829402035101549}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3381829400598856457}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3381829402035101552
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253109879509856643}
+  m_GameObject: {fileID: 3381829402035101549}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -102,41 +102,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01271a798a7551643bbf30718f991545, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3f5e56c2492f2a4b9b5118fa0180f5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.476662, y: 27.320002}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1095149863781531496
-MonoBehaviour:
+--- !u!95 &3381829402035101555
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253109879509856643}
+  m_GameObject: {fileID: 3381829402035101549}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17877752d8469844380f6637e4fe0427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunName: Machine Gun
-  maxAmmo: 350
-  bullet:
-  - {fileID: 3396140827443464808, guid: 38984c46936ffe444b53336aee5e3952, type: 3}
-  - {fileID: -990613707027048945, guid: 138847efa96040540807f82ac5e58e91, type: 3}
-  dmg: 7
-  attackCd: 0.1
-  firePoint: {fileID: 1865358334641946203}
-  shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}
-  shakeAmplitude: 0
-  shootEffects:
-  - {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03, type: 3}
-  - {fileID: 2049446969100869760, guid: ca3e807f346321b42b50c77fc94205d8, type: 3}
-  spread: 15
-  resetSpreadTime: 0.5
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb0de1303c59f1c4fbc030494e30d91e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -134,7 +134,7 @@ MonoBehaviour:
   attackCd: 1.5
   firePoint: {fileID: 1865358334641946203}
   shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}
-  shakeAmplitude: 0.5
+  shakeAmplitude: 0
   shootEffects:
   - {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03, type: 3}
   - {fileID: 2049446969100869760, guid: ca3e807f346321b42b50c77fc94205d8, type: 3}
