@@ -13,7 +13,7 @@ public class ShotGun : Gun
         {
             return;
         }
-        else if (bullet[stats.GetBulletId()])
+        else if (bullet[stats.GetBulletId()] && ammo > 0)
         {
             if(!stats.GetPassiveSkillsStats("InfAmmo"))
                 ammo--;

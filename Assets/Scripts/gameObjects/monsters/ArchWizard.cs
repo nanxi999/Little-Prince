@@ -34,6 +34,7 @@ public class ArchWizard : Enemy
         Physics2D.queriesStartInColliders = false;
         raycastMask = LayerMask.GetMask("Friendly", "BackgroundHittable");
         raycastStartingPoint = firePointWand.transform;
+        GetComponent<AIPath>().maxSpeed = moveSpeed;
     }
 
     protected override void Update()
@@ -279,6 +280,16 @@ public class ArchWizard : Enemy
         health -= dmg;
         if (health <= 0)
         {
+            Debug.Log(gameObject.name);
+            if (isAlive)
+            {
+                levelController.EnemyKilled();
+                isAlive = false;
+            }
+            else
+            {
+                return;
+            }
             if (deathEffect)
             {
                 GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -298,7 +309,8 @@ public class ArchWizard : Enemy
         if (health < (max / 2))
         {
             angry = true;
-            moveSpeed = moveSpeed * 1.5f;
+            AIPath aipath = GetComponent<AIPath>();
+            aipath.maxSpeed = aipath.maxSpeed * 1.5f;
             raycastStartingPoint = transform;
             animator.SetTrigger("Angry");
         }

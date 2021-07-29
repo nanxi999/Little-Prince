@@ -11,11 +11,11 @@ public class IceBullet : Bullet
         GameObject hitObject = collision.gameObject;
         if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
             return;
-        isColliding = true;
 
         Enemy enemy = hitObject.GetComponent<Enemy>();
         if (hitObject != shooter)
         {
+            isColliding = true;
             Vector3 dir = transform.position - initPosition;
             if (enemy)
             {

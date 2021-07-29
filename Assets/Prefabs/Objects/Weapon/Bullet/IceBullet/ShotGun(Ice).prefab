@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 80
-  lifeTime: 0.1
+  lifeTime: 0.3
   sprites: []
   destroyEffect: {fileID: 3499491515135428522, guid: 67b153ff38d7588419d9454fcaa86b4c,
     type: 3}

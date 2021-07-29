@@ -16,10 +16,12 @@ public class LevelController : MonoBehaviour
 
     // next level count down
     [SerializeField] private float prepareTime = 15f;
-    [SerializeField] private TMP_Text enemyCount;
+    [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private int enemyToSpawn = 25;
+
     private float timeBeforeNextLv;
     private bool prepSession = false;
-
+    private int enemyToKill;
     private GameUI gameUI;
 
     private void Awake()
@@ -33,6 +35,7 @@ public class LevelController : MonoBehaviour
     private void Update()
     {
         PrepSessionCountDown();
+        enemyCountText.text = numberOfAttackers.ToString();
     }
 
     private void PrepSessionCountDown()

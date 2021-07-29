@@ -5,12 +5,13 @@ using UnityEngine;
 public class ArchWizardSpawner : EnemySpawner
 {
     public int firstSpawnLevel = 10;
-    int count = 0;
+    private int count = 0;
     public override IEnumerator StartSpawning()
     {
+        count = 0;
         if(levelController.GetLevel() % firstSpawnLevel == 0)
         {
-            while(count < levelController.GetLevel() / 10)
+            while(count < levelController.GetLevel() / firstSpawnLevel)
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
                 SpawnAttacker();

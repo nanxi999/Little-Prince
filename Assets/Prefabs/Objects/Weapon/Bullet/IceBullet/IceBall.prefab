@@ -9516,8 +9516,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4429874058887365150}
   - component: {fileID: -3472707043761419569}
-  - component: {fileID: 7097621704484676223}
   - component: {fileID: 8909202162540154983}
+  - component: {fileID: 1413496742369269442}
   m_Layer: 9
   m_Name: IceBall
   m_TagString: Untagged
@@ -9567,22 +9567,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.902725, y: 4.5267277}
   m_EdgeRadius: 0
---- !u!58 &7097621704484676223
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4429874058887365145}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.9823961, y: -0.6663625}
-  serializedVersion: 2
-  m_Radius: 4.5712204
 --- !u!114 &8909202162540154983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9606,3 +9590,19 @@ MonoBehaviour:
   - Enemy
   - BackgroundHittable
   ExplosionDmg: 40
+--- !u!58 &1413496742369269442
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429874058887365145}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07995168, y: -0.3092223}
+  serializedVersion: 2
+  m_Radius: 11.505572
