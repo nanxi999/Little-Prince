@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Pathfinding;
 public class ArchWizard : Enemy
 {
@@ -162,6 +163,16 @@ public class ArchWizard : Enemy
         laserList.Add(laser);
     }
 
+    public void StartBloom()
+    {
+        FindObjectOfType<Volume>().enabled = true;
+    }
+
+    public void EndBloom()
+    {
+        FindObjectOfType<Volume>().enabled = false;
+    }
+
     void GenerateMultipleRays()
     {
         firePointBall.Find("Start").gameObject.SetActive(true);
@@ -265,8 +276,26 @@ public class ArchWizard : Enemy
 
     public override void Hurt(float dmg)
     {
-        base.Hurt(dmg);
-        if(health < (max / 2))
+        health -= dmg;
+        if (health <= 0)
+        {
+            if (deathEffect)
+            {
+                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                Destroy(obj, 3f);
+            }
+            else
+            {
+                Debug.Log("death VFX not set");
+            }
+            foreach (Laser laser in laserList)
+            {
+                laser.DestroyHitEffect();
+                Destroy(laser.gameObject);
+            }
+            Destroy(this.gameObject);
+        }
+        if (health < (max / 2))
         {
             angry = true;
             moveSpeed = moveSpeed * 1.5f;

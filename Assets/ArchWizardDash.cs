@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ArchWizardDash : MonoBehaviour
 {
+    private float lastHitTime = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Prince prince = collision.gameObject.GetComponent<Prince>();
         ArchWizard aw = GetComponentInParent<ArchWizard>();
-        if (prince)
+        if (prince && (Time.timeSinceLevelLoad - lastHitTime > 2))
         {
             Vector3 dir = prince.transform.position - aw.transform.position;
             if (dir.magnitude == 0) { return; }
@@ -17,6 +18,7 @@ public class ArchWizardDash : MonoBehaviour
                 prince.PushBack(dir / dir.magnitude * aw.dashPushBack, 0.7f);
             }
             prince.Hurt(aw.dashDamage);
+            lastHitTime = Time.timeSinceLevelLoad;
             aw.StopDash();
         }
     }

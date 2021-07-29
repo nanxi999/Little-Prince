@@ -16,6 +16,7 @@ public class LevelController : MonoBehaviour
 
     // next level count down
     [SerializeField] private float prepareTime = 15f;
+    [SerializeField] private TMP_Text enemyCount;
     private float timeBeforeNextLv;
     private bool prepSession = false;
 
