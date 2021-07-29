@@ -22,7 +22,7 @@ public class ArchWizard : Enemy
     private int laserThreshold = 2;
     private LayerMask raycastMask;
     private Transform raycastStartingPoint;
-    private Vector3 dashTarget;
+    private Vector2 dashDir;
     
     protected override void Start()
     {
@@ -88,7 +88,6 @@ public class ArchWizard : Enemy
                 else
                 {
                     sinceLastAttack = 0;
-                    dashTarget = prince.transform.position;
                     StartCoroutine(Freeze(4f));
                     animator.SetTrigger("Dash");
                     attackCount += 1;
@@ -97,12 +96,17 @@ public class ArchWizard : Enemy
         }          
     }
 
+    public void SetDashDir()
+    {
+        Vector2 vec = prince.transform.position - transform.position;
+        dashDir = vec / vec.magnitude;
+    }
+
     void Dash()
     {
         if(isDashing)
         {
-            Vector3 targetPosition = Vector3.MoveTowards(transform.position, dashTarget, dashSpeed * Time.deltaTime);
-            transform.position = targetPosition;
+            transform.Translate(dashDir * dashSpeed * Time.deltaTime);
         }
     }
 
