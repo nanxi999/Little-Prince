@@ -769,13 +769,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   deathEffect: {fileID: 0}
-  speed: 15
+  speed: 17
   controllerObj: {fileID: 6786467526076406317, guid: d5978d4e2ad69de409cb436618389cca,
     type: 3}
   initialGun: {fileID: 7612532923764194971, guid: 48957c02719ad9a418f9bcbb710d06ca,
     type: 3}
   gunController: {fileID: 0}
-  EnemyDetectionRange: 30
+  EnemyDetectionRange: 35
 --- !u!114 &3191773178815609794
 MonoBehaviour:
   m_ObjectHideFlags: 0
