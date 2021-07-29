@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ArchWizardSpawner : EnemySpawner
 {
+    public int firstSpawnLevel = 10;
     int count = 0;
     public override IEnumerator StartSpawning()
     {
-        if(levelController.GetLevel() % 10 == 0)
+        if(levelController.GetLevel() % firstSpawnLevel == 0)
         {
             while(count < levelController.GetLevel() / 10)
             {

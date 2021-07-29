@@ -20,13 +20,19 @@ public class ArchWizard : Enemy
     private float sinceLastAttack;
     private int attackCount = 0;
     private int laserThreshold = 2;
-
+    private LayerMask raycastMask;
+    private Transform raycastStartingPoint;
+    private Vector3 dashTarget;
+    
     protected override void Start()
     {
         base.Start();
         laserList = new List<Laser>();
         //GenerateMultipleRays();
         GetComponent<AIPath>().maxSpeed = moveSpeed;
+        Physics2D.queriesStartInColliders = false;
+        raycastMask = LayerMask.GetMask("Friendly", "BackgroundHittable");
+        raycastStartingPoint = firePointWand.transform;
     }
 
     protected override void Update()
@@ -37,16 +43,33 @@ public class ArchWizard : Enemy
         transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
         FireTrigger();
         Dash();
+        DrawRay();
+    }
+
+    public void DrawRay()
+    {
+        Vector2 dir = prince.transform.position - transform.position;
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, attackRange, raycastMask.value);
+        
+        if(hitInfo.collider)
+        {
+            Debug.DrawLine(raycastStartingPoint.position, hitInfo.point, Color.red);
+        } else
+        {
+            Debug.DrawLine(raycastStartingPoint.position, prince.transform.position, Color.green);
+        }
     }
 
     public void FireTrigger()
     {
-        if (prince == null)
+        if (prince == null || sinceLastAttack < attackCd)
             return;
-        if (Vector2.Distance(transform.position, prince.transform.position) < attackRange)
+
+        Vector2 dir = prince.transform.position - raycastStartingPoint.position;
+        RaycastHit2D hitInfo = Physics2D.Raycast(raycastStartingPoint.position, dir, attackRange, raycastMask.value);
+        if (hitInfo.transform.GetComponent<Prince>())
         {
-            if (sinceLastAttack < attackCd) { return; }
-            else if (!angry)
+            if (!angry)
             {
                 StartCoroutine(Freeze(2f));
                 animator.SetTrigger("CastTracer");
@@ -54,29 +77,31 @@ public class ArchWizard : Enemy
             }
             else
             {
-                if(attackCount >= laserThreshold)
+                if (attackCount >= laserThreshold)
                 {
                     sinceLastAttack = 0;
                     StartCoroutine(Freeze(4f));
                     animator.SetTrigger("CastLaser");
                     attackCount = 0;
                     laserThreshold = Random.Range(1, 4);
-                } else
+                }
+                else
                 {
                     sinceLastAttack = 0;
+                    dashTarget = prince.transform.position;
                     StartCoroutine(Freeze(4f));
                     animator.SetTrigger("Dash");
                     attackCount += 1;
-                }  
+                }
             }
-        }
+        }          
     }
 
     void Dash()
     {
         if(isDashing)
         {
-            Vector3 targetPosition = Vector3.MoveTowards(transform.position, prince.transform.position, dashSpeed * Time.deltaTime);
+            Vector3 targetPosition = Vector3.MoveTowards(transform.position, dashTarget, dashSpeed * Time.deltaTime);
             transform.position = targetPosition;
         }
     }
@@ -237,11 +262,11 @@ public class ArchWizard : Enemy
     public override void Hurt(float dmg)
     {
         base.Hurt(dmg);
-        Debug.Log(health);
-        Debug.Log(max);
         if(health < (max / 2))
         {
             angry = true;
+            moveSpeed = moveSpeed * 1.5f;
+            raycastStartingPoint = transform;
             animator.SetTrigger("Angry");
         }
     }

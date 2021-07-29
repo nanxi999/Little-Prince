@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1461303594732543724}
   - component: {fileID: 1461303594732543725}
   - component: {fileID: 1461303594732543634}
-  - component: {fileID: 1461303594732543635}
   m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f71a7c34069181249879bcb3ba168879, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,8 +97,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 7.0124865, y: -1.604024}
-  m_Size: {x: 2.0587997, y: 6.306562}
+  m_Offset: {x: 7.1035194, y: -1.604024}
+  m_Size: {x: 2.6049984, y: 6.306562}
   m_Direction: 0
 --- !u!50 &1461303594732543725
 Rigidbody2D:
@@ -138,22 +137,6 @@ CircleCollider2D:
   m_Offset: {x: 7.106308, y: -3.1282697}
   serializedVersion: 2
   m_Radius: 3.2563329
---- !u!114 &1461303594732543635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461303594732543633}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff2dd933c2257694cb420e02207125c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 1461303595723027711}
-  active: 0
-  refillTime: 2
-  Lights: {fileID: 7332647910991553129}
 --- !u!1 &1461303594766871021
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,8 +501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.63, y: -9}
-  m_SizeDelta: {x: 11.801622, y: 4.836638}
+  m_AnchoredPosition: {x: 0.7, y: -8.67}
+  m_SizeDelta: {x: 8.2131195, y: 3.5921187}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1461303595723027704
 CanvasRenderer:
@@ -548,7 +531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Press E or \u25A2 to fill ammo\n"
+  m_text: "Press Enter or \u25A2 to fill ammo\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -557,8 +540,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190087
-  m_fontColor: {r: 0.028301895, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -575,15 +558,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.8
+  m_fontSizeBase: 0.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -611,7 +594,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.003121376, y: 0.001063715, z: -0.0054397583, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -776,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1461303596014083488
 Transform:
   m_ObjectHideFlags: 0
@@ -857,6 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1461303595723027711}
+  progressObj: {fileID: 1461303596014083489}
   active: 0
   refillTime: 1.5
   Lights: {fileID: 7332647910991553129}

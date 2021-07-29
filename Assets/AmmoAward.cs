@@ -6,7 +6,6 @@ using TMPro;
 public class AmmoAward : Award
 {
     public float[] percentage;
-    public Transform description;
 
     private float selected;
 

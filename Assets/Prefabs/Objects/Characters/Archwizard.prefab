@@ -1430,7 +1430,7 @@ Transform:
   m_GameObject: {fileID: 834399370225458489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -21.308, y: 18.076, z: -7}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 834399369751346474}
   - {fileID: 834399370272818966}
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   dmg: 10
   prince: {fileID: 0}
   dashDamage: 50
-  dashSpeed: 30
+  dashSpeed: 40
   dashPushBack: 30
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}

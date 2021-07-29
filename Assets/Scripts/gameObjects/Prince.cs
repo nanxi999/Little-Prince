@@ -26,7 +26,7 @@ public class Prince : Hurtable
     private float saveTime = 2f;
     private bool cryin = false;
     private float remainingSaveTime;
-    private bool saveKeyPressed = false;
+    public bool saveKeyPressed = false;
     private InputAction saveAction;
     private Prince princeToSave;
 
@@ -169,10 +169,9 @@ public class Prince : Hurtable
     {
         if(atAmmunition && !filled && supplyPoint && supplyPoint.ifActive() && !cryin)
         {
-            Debug.Log("hjere");
             if (firing)
             {
-                Debug.Log("tries to fill ammo");
+                //Debug.Log("tries to fill ammo");
                 supplyPoint.FillAmmo(this);
             }
             else
@@ -292,6 +291,11 @@ public class Prince : Hurtable
                 princeToSave = null;
             }
         }
+    }
+
+    public Prince GetPrinceToSave()
+    {
+        return princeToSave;
     }
 
     public void Save()

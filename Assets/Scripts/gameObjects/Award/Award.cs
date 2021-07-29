@@ -1,37 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Award : MonoBehaviour
 {
+    public Transform description;
     Animator animator;
     LevelController levelConroller;
     bool isCollected = false;
+    List<Prince> princesCollided;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         levelConroller = FindObjectOfType<LevelController>();
+        princesCollided = new List<Prince>();
+    }
+
+    protected void Update()
+    {
+        foreach(Prince prince in princesCollided) 
+        {
+            if (prince.saveKeyPressed && !prince.GetPrinceToSave() && !isCollected)
+            {
+                isCollected = true;
+                GiveAwards(prince.gameObject);
+                levelConroller.PlayerAwarded(prince.GetID());
+                DestroyThis();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-        if(bullet & !isCollected)
+        Prince prince = collision.gameObject.GetComponent<Prince>();
+        if (prince)
         {
-            Prince prince = bullet.GetShooter().GetComponent<Prince>();
-            if (prince && !(levelConroller.PlayerIsAwarded(prince.GetID())))
-            {
-                isCollected = true;
-                Destroy(collision.gameObject);
-                GiveAwards(bullet.GetShooter());
-                levelConroller.PlayerAwarded(prince.GetID());
-                DestroyThis();
-            }
-            
+            princesCollided.Add(prince);
+            AwardSetActive(true);
         }
-        
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Prince prince = collision.gameObject.GetComponent<Prince>();
+        if (prince)
+        {
+            princesCollided.Remove(prince);
+            if(princesCollided.Count == 0)
+                AwardSetActive(false);
+        }
+    }
+
+    private void AwardSetActive(bool stat)
+    {
+        animator.SetBool("Bounce", stat);
+        description.gameObject.SetActive(stat);
     }
 
     private void DestroyThis()

@@ -6,6 +6,7 @@ public class Ammunition : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject textDisplay;
+    [SerializeField] private GameObject progressObj;
     [SerializeField] bool active = false;
     [SerializeField] float refillTime = 1.5f;
     [SerializeField] GameObject Lights;
@@ -14,8 +15,9 @@ public class Ammunition : MonoBehaviour
     private float curTime = 0f;
 
     void Start()
-    {
-        
+    {   
+        if(progressObj)
+            Debug.Log("progressObj is not null");
     }
 
     // Update is called once per frame
@@ -60,6 +62,8 @@ public class Ammunition : MonoBehaviour
         if(status)
         {
             textDisplay.SetActive(true);
+            progressObj.SetActive(true);
+            //transform.Find("Progress").gameObject.SetActive(true);
             active = true;
             Prince[] princes = FindObjectsOfType<Prince>();
             foreach(Prince prince in princes)
@@ -70,6 +74,7 @@ public class Ammunition : MonoBehaviour
         } else
         {
             textDisplay.SetActive(false);
+            progressObj.SetActive(false);
             active = false;
         }
     }
