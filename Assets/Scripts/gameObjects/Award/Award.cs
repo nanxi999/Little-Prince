@@ -24,7 +24,12 @@ public class Award : MonoBehaviour
 
     protected void Update()
     {
-        foreach(Prince prince in princesCollided) 
+        CheckCollidedPrinces();
+    }
+
+    private void CheckCollidedPrinces()
+    {
+        foreach (Prince prince in princesCollided)
         {
             if (prince.saveKeyPressed && !prince.GetPrinceToSave() && !isCollected)
             {
@@ -33,9 +38,10 @@ public class Award : MonoBehaviour
                 //levelConroller.PlayerAwarded(prince.GetID());
                 effect = Instantiate(collectEffect, transform.Find("Renderer").position, transform.rotation);
                 Destroy(effect, 1.5f);
-                Destroy(this.gameObject);
             }
         }
+        if (isCollected)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

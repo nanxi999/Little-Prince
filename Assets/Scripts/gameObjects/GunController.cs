@@ -165,7 +165,10 @@ public class GunController : MonoBehaviour
 
     public int GetGunLevel()
     {
-        return gun.GetLevel();
+        if (gun)
+            return gun.GetLevel();
+        else
+            return -1;
     }
 
     public List<Gun> GetArmory()
