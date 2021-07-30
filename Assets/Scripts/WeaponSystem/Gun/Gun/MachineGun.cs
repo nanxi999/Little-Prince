@@ -55,8 +55,7 @@ public class MachineGun : Gun
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + spreadModify));
-            newBullet.SetDmg(dmg);
-            newBullet.SetShooter(prince.gameObject);
+            InitBullet(newBullet);
 
             lastShoot = 0f;
             if (shootEffects[stats.GetBulletId()])

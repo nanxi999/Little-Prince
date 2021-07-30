@@ -591,9 +591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ad2958305a1304bba5c5a24358103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: {fileID: 0}
-  percentage: []
-  description: {fileID: 0}
+  description: {fileID: 4625010202328704898}
+  weight: 3
+  collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
+    type: 3}
 --- !u!61 &1862566049848675913
 BoxCollider2D:
   m_ObjectHideFlags: 0

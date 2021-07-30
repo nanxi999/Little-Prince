@@ -29,7 +29,7 @@ public class Rocket : Bullet
 
     private void CheckCollision()
     {
-        if (box.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        if (box.IsTouchingLayers(LayerMask.GetMask(layers)))
         {
             Vector3 dir = transform.position - initPosition;
             Explode(dir);

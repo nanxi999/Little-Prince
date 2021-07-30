@@ -9579,15 +9579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506769f8d685ce64a9b94d24fb17166e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  lifeTime: 0.75
   sprites: []
   destroyEffect: {fileID: 4954025030507759489, guid: 1c7c9490ec31302478129dd3929dbf57,
     type: 3}
-  pushBackForce: 2
   layers:
   - Enemy
-  - Friendly
   - BackgroundHittable
   ExplosionDmg: 50
 --- !u!58 &7097621704484676223

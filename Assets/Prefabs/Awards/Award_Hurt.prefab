@@ -490,11 +490,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: {fileID: 1969660997979215927}
+  weight: 3
+  collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
+    type: 3}
   percentage:
   - 0.1
   - 0.2
   - 0.3
-  description: {fileID: 1969660997979215927}
 --- !u!61 &6818572816402404981
 BoxCollider2D:
   m_ObjectHideFlags: 0

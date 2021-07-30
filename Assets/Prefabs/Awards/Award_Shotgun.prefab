@@ -307,7 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f49b1695b88248a68018b397597b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: {fileID: 0}
+  description: {fileID: 1685036447107536157}
+  weight: 2
+  collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
+    type: 3}
   gunPrefab: {fileID: -4216488091696379238, guid: 07d377d3dcba3674c88c173a72d04b41,
     type: 3}
 --- !u!95 &4542261721658995486

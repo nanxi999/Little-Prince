@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class IceBulletAward : Award
 {
-    public float[] percentage;
-    public Transform description;
-
     private float selected;
 
     protected override void GiveAwards(GameObject prince)

@@ -95,6 +95,7 @@ public class GunController : MonoBehaviour
         Gun tempGun = HasGun(gunPrefab);
         if (tempGun)
         {
+            tempGun.LevelUp();
             tempGun.SetAmmo(tempGun.GetMaxAmmo());
             return;
         } else

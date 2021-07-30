@@ -126,14 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8521ebdf3ca6fd4e8c67949b88f808e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
-  lifeTime: 0.5
   sprites:
   - {fileID: 21300000, guid: c4770d2691f5e7441817836ab2f90e57, type: 3}
   - {fileID: 21300000, guid: c33d21131440ac54195f1b5d70f7c47b, type: 3}
   destroyEffect: {fileID: 3499491515135428522, guid: 7119d6d54a3f7d34ca67e9017dd23107,
     type: 3}
-  pushBackForce: 30
   layers:
   - Enemy
   - Friendly

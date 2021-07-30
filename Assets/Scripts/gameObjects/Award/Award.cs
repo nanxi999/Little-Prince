@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 public class Award : MonoBehaviour
 {
     public Transform description;
+    public float weight;
+    public GameObject collectEffect;
     Animator animator;
     LevelController levelConroller;
     bool isCollected = false;
     List<Prince> princesCollided;
+    GameObject effect;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -28,7 +31,8 @@ public class Award : MonoBehaviour
                 isCollected = true;
                 GiveAwards(prince.gameObject);
                 levelConroller.PlayerAwarded(prince.GetID());
-                DestroyThis();
+                effect = Instantiate(collectEffect, transform.Find("Renderer").position, transform.rotation);
+                StartCoroutine(DestroyThis());
             }
         }
     }
@@ -61,9 +65,16 @@ public class Award : MonoBehaviour
         description.gameObject.SetActive(stat);
     }
 
-    private void DestroyThis()
+    private IEnumerator DestroyThis()
     {
+        Destroy(effect, 1f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(this.gameObject);
+    }
+
+    public float GetWeight()
+    {
+        return weight;
     }
 
     protected virtual void GiveAwards(GameObject prince) { }

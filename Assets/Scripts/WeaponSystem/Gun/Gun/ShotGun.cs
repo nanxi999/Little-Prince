@@ -7,6 +7,32 @@ public class ShotGun : Gun
     public int spread;
     public int bulletNum;
 
+    public override void LevelUp()
+    {
+        if (level < maxLevel)
+            level++;
+        else
+            return;
+        switch (level)
+        {
+            case 2:
+                bulletNum = 5;
+                attackCd = attackCd * 0.8f;
+                break;
+            case 3:
+                dmg = dmg * 1.2f;
+                attackCd = attackCd * 0.6f;
+                break;
+            case 4:
+                dmg = dmg * 1.2f;
+                attackCd = 0.15f;
+                maxAmmo = maxAmmo * 2;
+                break;
+            default:
+                break;
+        }
+    }
+
     public override void Fire()
     {
         if (lastShoot < attackCd * stats.GetShootSpeedFactor())
@@ -19,17 +45,16 @@ public class ShotGun : Gun
                 ammo--;
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             Bullet b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-            b.SetDmg(dmg);
-            b.SetShooter(prince.gameObject);          
+            InitBullet(b);
+                     
 
             for (int i = 1; i <= bulletNum/2; i++)
             {
                 b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + spread * i));
-                b.SetDmg(dmg);
-                b.SetShooter(prince.gameObject);
+                InitBullet(b);
+
                 b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle - spread * i));
-                b.SetDmg(dmg);
-                b.SetShooter(prince.gameObject);
+                InitBullet(b);
             }
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             lastShoot = 0f;

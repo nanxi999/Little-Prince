@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [Header("Basic Settings")]
     [SerializeField] protected string gunName;
     [SerializeField] protected int maxAmmo;
-
-    public Bullet[] bullet;     // 0:normal  1:ice 
+    
     public float dmg;
     public float attackCd = 1f;
+    public float bulletLifetime;
+    public float bulletSpeed;
+    public float pushBackForce;
+
+    [Header("Level Settings")]
+    public int level;
+    public int maxLevel;
+
+    [Header("Other Settings")]
+    public Bullet[] bullet;     // 0:normal  1:ice 
     public GameObject firePoint;
     public AudioClip shootSound;
     public float shakeAmplitude;
@@ -26,6 +36,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        level = 1;
         ammo = maxAmmo;
         if (!prince)
         {
@@ -59,8 +70,7 @@ public class Gun : MonoBehaviour
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
-            newBullet.SetDmg(dmg * stats.GetDamageFactor());
-            newBullet.SetShooter(prince.gameObject);
+            InitBullet(newBullet);
 
             lastShoot = 0f;
             if (shootEffects[stats.GetBulletId()])
@@ -110,5 +120,19 @@ public class Gun : MonoBehaviour
     public void RefillAmmo()
     {
         ammo = maxAmmo;
+    }
+
+    public virtual void LevelUp()
+    {
+        return;
+    }
+
+    protected void InitBullet(Bullet bullet)
+    {
+        bullet.SetShooter(prince.gameObject);
+        bullet.SetLifeTime(bulletLifetime);
+        bullet.SetSpeed(bulletSpeed);
+        bullet.SetDmg(dmg);
+        bullet.SetPushBackForce(pushBackForce);
     }
 }

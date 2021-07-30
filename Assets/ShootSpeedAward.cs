@@ -6,7 +6,6 @@ using TMPro;
 public class ShootSpeedAward : Award
 {
     public float[] percentage;
-    public Transform description;
 
     private float selected;
 

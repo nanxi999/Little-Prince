@@ -1805,7 +1805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &302359702
 Transform:
   m_ObjectHideFlags: 0
@@ -3148,7 +3148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34206.527, y: 0.000011444092, z: 0}
+  m_LocalPosition: {x: -60108424, y: -11.96137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1737198779}
@@ -7532,7 +7532,7 @@ MonoBehaviour:
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7949156834466033353}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayerJoined
         m_Mode: 1
         m_Arguments:
@@ -7546,7 +7546,7 @@ MonoBehaviour:
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7949156834466033353}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayerLeft
         m_Mode: 1
         m_Arguments:
@@ -8872,7 +8872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737198777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34241.41, y: -11.99998, z: -10}
+  m_LocalPosition: {x: 60108460, y: -11.978237, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 234640455}
@@ -9068,6 +9068,11 @@ PrefabInstance:
     - target: {fileID: 5050339445632216894, guid: 5abea26395e834f40a0a770dae228b76,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093324271763038258, guid: 5abea26395e834f40a0a770dae228b76,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6426898260669174089, guid: 5abea26395e834f40a0a770dae228b76,

@@ -2,17 +2,16 @@
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{
-    public float speed;
-
-    [SerializeField] private float lifeTime;
+{  
     [SerializeField] private Sprite[] sprites;
     public GameObject destroyEffect;
-    public float pushBackForce;
     public string[] layers;
 
+    protected float speed;
     protected float dmg;
+    protected float lifeTime;
     protected bool iceBullet;
+    protected float pushBackForce;
     protected GameObject shooter;
     protected Vector3 direction;
     protected Vector3 initPosition;
@@ -51,9 +50,24 @@ public class Bullet : MonoBehaviour
         dmg = newDmg;
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public void SetLifeTime(float newLifeTime)
+    {
+        lifeTime = newLifeTime;
+    }
+
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection;
+    }
+
+    public void SetPushBackForce(float newPushBackForce)
+    {
+        pushBackForce = newPushBackForce;
     }
 
     protected void DestroyProjectile()
@@ -92,10 +106,6 @@ public class Bullet : MonoBehaviour
             if (hitObject.GetComponent<Hurtable>())
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
-                if(iceBullet && enemy)
-                {
-                    hitObject.GetComponent<Enemy>().IceAttackHit(5f, 0.4f);
-                }
             }
             DestroyProjectile();
         }
@@ -111,6 +121,7 @@ public class Bullet : MonoBehaviour
         return shooter;
     }
 
+    /*
     public void ToggleIceBullet(bool status)
     {
         iceBullet = status;
@@ -131,5 +142,5 @@ public class Bullet : MonoBehaviour
         {
             renderer.sprite = sprites[0];
         }
-    }
+    }*/
 }

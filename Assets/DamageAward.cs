@@ -8,7 +8,6 @@ public class DamageAward : Award
     public float[] percentage;
 
     private float selected;
-    public Transform description;
 
     protected override void Start()
     {

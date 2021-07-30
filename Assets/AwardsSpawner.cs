@@ -20,15 +20,76 @@ public class AwardsSpawner : MonoBehaviour
         Award award2 = Instantiate(GetRandomAward(), transform.position + offset, transform.rotation);
         Award award3 = Instantiate(GetRandomAward(), transform.position + offset, transform.rotation);
 
-        award1.GetComponent<Rigidbody2D>().velocity = new Vector3 (-6f, 5f, 0f);
-        award2.GetComponent<Rigidbody2D>().velocity = new Vector3(0f, 5f, 0f);
-        award3.GetComponent<Rigidbody2D>().velocity = new Vector3(6f, 5f, 0f);
+        if(award1 && award2 && award3)
+        {
+            award1.GetComponent<Rigidbody2D>().velocity = new Vector3(-6f, 5f, 0f);
+            award2.GetComponent<Rigidbody2D>().velocity = new Vector3(0f, 5f, 0f);
+            award3.GetComponent<Rigidbody2D>().velocity = new Vector3(6f, 5f, 0f);
+        } else
+        {
+            Debug.Log("Fail to get ramdom award");
+        }
+        
 
         Destroy(effect, 2);
     }
 
     private Award GetRandomAward()
     {
-        return awardPrefabArray[Random.Range(0, awardPrefabArray.Length)];
+        float weightSum = 0;
+        float randomVal = Random.value;
+        float s = 0;
+
+        for (int i = 0; i < awardPrefabArray.Length; i++)
+        {
+            weightSum += awardPrefabArray[i].GetWeight();
+        }
+        
+        for (int i = 0; i < awardPrefabArray.Length; i++)
+        {
+            if (awardPrefabArray[i].GetWeight() <= 0)
+                continue;
+            s += awardPrefabArray[i].GetWeight() / weightSum;
+            if (s >= randomVal)
+                return awardPrefabArray[i];
+        }
+        return null;
     }
+
+    /*
+    private int GetRandomAwardIdx()
+    {
+        float weightSum = 0;
+        float randomVal = Random.value;
+        float s = 0;
+
+        for (int i = 0; i < awardPrefabArray.Length; i++)
+        {
+            weightSum += awardPrefabArray[i].GetWeight();
+        }
+
+        for (int i = 0; i < awardPrefabArray.Length; i++)
+        {
+            if (awardPrefabArray[i].GetWeight() <= 0)
+                continue;
+            s += awardPrefabArray[i].GetWeight() / weightSum;
+            if (s >= randomVal)
+                return i;
+        }
+        return -1;
+    }
+
+    private void TestRandom()
+    {
+        int[] count = new int[11];
+        for(int i = 0; i < 1000; i++)
+        {
+            int idx = GetRandomAwardIdx();
+            count[idx] += 1;
+        }
+        for (int i = 0; i < 11; i++)
+        {
+            Debug.Log(i + ":" + count[i]/1000f);
+        }
+    }*/
 }
