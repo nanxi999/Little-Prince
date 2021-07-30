@@ -161,6 +161,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /*
     public void PlayerAwarded(int id)
     {
         playersAwarded.Add(id);
@@ -185,6 +186,7 @@ public class LevelController : MonoBehaviour
     {
         return playersAwarded.Contains(id);
     }
+    */
 
     public void GameOverCheck()
     {

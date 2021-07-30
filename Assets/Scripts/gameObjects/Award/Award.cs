@@ -30,9 +30,10 @@ public class Award : MonoBehaviour
             {
                 isCollected = true;
                 GiveAwards(prince.gameObject);
-                levelConroller.PlayerAwarded(prince.GetID());
+                //levelConroller.PlayerAwarded(prince.GetID());
                 effect = Instantiate(collectEffect, transform.Find("Renderer").position, transform.rotation);
-                StartCoroutine(DestroyThis());
+                Destroy(effect, 1.5f);
+                Destroy(this.gameObject);
             }
         }
     }
@@ -63,13 +64,6 @@ public class Award : MonoBehaviour
     {
         animator.SetBool("Bounce", stat);
         description.gameObject.SetActive(stat);
-    }
-
-    private IEnumerator DestroyThis()
-    {
-        Destroy(effect, 1f);
-        yield return new WaitForSeconds(1.5f);
-        Destroy(this.gameObject);
     }
 
     public float GetWeight()
