@@ -1532,11 +1532,13 @@ MonoBehaviour:
   dashDamage: 50
   dashSpeed: 40
   dashPushBack: 30
+  attackRange: 40
+  attackCd: 5
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}
-  attackRange: 40
   bullet: {fileID: 5878042762024612096, guid: 33f4096d02a939941bbedc5486b52633, type: 3}
-  attackCd: 5
+  bulletLifeTime: 1.5
+  bulletSpeed: 25
   laserBeam: {fileID: 905975976534769803, guid: fa094db3eee74ad499fcecbdf2ec7950,
     type: 3}
 --- !u!58 &834399370225458492

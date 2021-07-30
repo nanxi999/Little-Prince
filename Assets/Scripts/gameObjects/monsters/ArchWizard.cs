@@ -5,14 +5,22 @@ using UnityEngine.Rendering;
 using Pathfinding;
 public class ArchWizard : Enemy
 {
+    [Header("Dash Settings")]
     public float dashDamage;
     public float dashSpeed;
     public float dashPushBack;
+
+    [Header("Fire Settings")]
+    public float attackRange = 3f;
+    public float attackCd;
     public Transform firePointBall;     //For laser
     public Transform firePointWand;     //For simple attack
-    public float attackRange = 3f;
+
+    [Header("Bullet Settings")]
     public TracerBullet bullet;
-    public float attackCd;
+    public float bulletLifeTime;
+    public float bulletSpeed;
+
     public Laser laserBeam;
     private List<Laser> laserList;
     private bool angry = false;
@@ -129,6 +137,8 @@ public class ArchWizard : Enemy
         {
             tempBullet = Instantiate(bullet, firePointWand.transform.position, transform.rotation);
             tempBullet.SetDmg(dmg);
+            tempBullet.SetLifeTime(bulletLifeTime);
+            tempBullet.SetSpeed(bulletSpeed);
             tempBullet.SetTarget(prince.transform);
         }
             
