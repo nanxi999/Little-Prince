@@ -17,10 +17,11 @@ public class Prince : Hurtable
     private InputAction fireAction;
     private bool firing = false;
     private bool switching = false;
-    private TMP_Text weaponStat;
     private int playerID;
     private bool freeze = false;
     private StatsManager stats;
+    [SerializeField] private TMP_Text weaponStat;
+    [SerializeField] private TMP_Text weaponLevel   ;
 
     // variables for the death and save features
     private float saveTime = 2f;
@@ -79,7 +80,32 @@ public class Prince : Hurtable
             Fire();
             SaveTargetPrince();
             weaponStat.text = gunController.GetGunStat();
+            SetWeaponLevelText();
         } 
+    }
+
+    private void SetWeaponLevelText()
+    {
+        int lv = gunController.GetGunLevel();
+        weaponLevel.text = "Lv" + lv;
+        switch (lv)
+        { 
+            case 1:
+                weaponLevel.color = Color.white;
+                break;
+            case 2:
+                weaponLevel.color = Color.yellow;
+                break;
+            case 3:
+                weaponLevel.color = new Color(1.0f, 0.64f, 0.0f);
+                break;
+            case 4:
+                weaponLevel.color = Color.red;
+                break;
+            default:
+                weaponLevel.color = Color.white;
+                break;
+        }
     }
 
     private void CheckFlipSpriteCondition()

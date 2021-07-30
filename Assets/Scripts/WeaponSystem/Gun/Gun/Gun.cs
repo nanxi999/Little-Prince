@@ -127,6 +127,11 @@ public class Gun : MonoBehaviour
         return;
     }
 
+    public int GetLevel()
+    {
+        return level;
+    }
+
     protected void InitBullet(Bullet bullet)
     {
         bullet.SetShooter(prince.gameObject);

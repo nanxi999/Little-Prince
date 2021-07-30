@@ -163,6 +163,11 @@ public class GunController : MonoBehaviour
         }
     }
 
+    public int GetGunLevel()
+    {
+        return gun.GetLevel();
+    }
+
     public List<Gun> GetArmory()
     {
         return gunsArmory;
