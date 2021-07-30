@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7949156834406462480}
-  - component: {fileID: 7949156834406462481}
+  - component: {fileID: 7949156834466033353}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7949156834406462481
+--- !u!114 &7949156834466033353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7949156834406462482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468af456ae828864dafb17cc08641f3c, type: 3}
+  m_Script: {fileID: 11500000, guid: b1ff331db43d39443b27cd2621574ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prepareTime: 20
+  enemyCountText: {fileID: 0}
+  enemyToSpawn: 0

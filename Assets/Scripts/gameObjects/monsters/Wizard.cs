@@ -5,11 +5,16 @@ using Pathfinding;
 
 public class Wizard : Enemy
 {
+    [Header("Bullet Settings")]
+    public DarkBullet darkBullet;
+    public float bulletSpeed;
+    public float bulletLifeTime;
     public Transform attackPoint;
     public float attackRange = 3f;
-    public DarkBullet darkBullet;
     public float attackCd;
+
     private float sinceLastAttack;
+
 
     protected override void Start()
     {
@@ -48,6 +53,8 @@ public class Wizard : Enemy
             DarkBullet db = Instantiate(darkBullet, attackPoint.transform.position, transform.rotation);
             db.SetDirection(dir);
             db.transform.Rotate(new Vector3(0, 0, angle));
+            db.SetLifeTime(bulletLifeTime);
+            db.SetSpeed(bulletSpeed);
             db.SetDmg(dmg);
             db.SetShooter(gameObject);
         }

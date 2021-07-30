@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour
     // next level count down
     [SerializeField] private float prepareTime = 15f;
     [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private int enemyToSpawn = 25;
 
     private float timeBeforeNextLv;
@@ -58,6 +59,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         gameUI = FindObjectOfType<GameUI>();
+        levelText.text = "Level 1";
     }
 
     public int GetLevel()
@@ -69,7 +71,7 @@ public class LevelController : MonoBehaviour
     {
         if(level == 1)
             levelTime = 10;
-        else if(levelTime < 40)
+        else
             levelTime += 5;
         StartSpawners();
         numberOfAttackers = 0;
@@ -114,6 +116,7 @@ public class LevelController : MonoBehaviour
 
     public IEnumerator NextLevel()      //Called when the count down timer reaches 0
     {
+        levelText.text = "Level " + level;
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
         yield return new WaitForSeconds(2);
         foreach (Ammunition ammo in ammu)
@@ -209,6 +212,7 @@ public class LevelController : MonoBehaviour
         numberOfPlayers += 1;
         if(numberOfPlayers == 1)
             InitializeLevel();
+        Debug.Log("start game!");
     }
 
     public void PlayerLeft()

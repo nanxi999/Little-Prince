@@ -594,10 +594,12 @@ MonoBehaviour:
   shadowRenderer: {fileID: 3040799709614331612}
   dmg: 10
   prince: {fileID: 0}
-  attackPoint: {fileID: 3040799709205877778}
-  attackRange: 20
   darkBullet: {fileID: 5918630548693812110, guid: 3ffef4a684621a142b7b857d85e65d41,
     type: 3}
+  bulletSpeed: 45
+  bulletLifeTime: 0.6
+  attackPoint: {fileID: 3040799709205877778}
+  attackRange: 20
   attackCd: 3
 --- !u!50 &3040799711009921018
 Rigidbody2D:

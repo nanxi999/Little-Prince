@@ -26,6 +26,31 @@ public class MachineGun : Gun
         }
     }
 
+    public override void LevelUp()
+    {
+        if (level < maxLevel)
+            level++;
+        else
+            return;
+        switch (level)
+        {
+            case 2:
+                attackCd = attackCd * 0.7f;
+                maxAmmo = (int) (maxAmmo * 1.2f);
+                break;
+            case 3:
+                dmg = dmg * 1.5f;
+                break;
+            case 4:
+                attackCd = attackCd * 0.6f;
+                maxAmmo = (int)(maxAmmo * 1.8f);
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+
     public override void Fire()
     {
         contShootTime +=  Time.deltaTime;

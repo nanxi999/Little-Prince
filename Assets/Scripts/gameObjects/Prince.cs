@@ -67,8 +67,6 @@ public class Prince : Hurtable
 
         assistAction = map.FindAction("FireAssist");
         assistAction.started += ToggleAssist;
-
-        Debug.Log(playerID);
     }
 
     // Update is called once per frame
