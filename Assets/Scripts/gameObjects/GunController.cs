@@ -96,7 +96,7 @@ public class GunController : MonoBehaviour
         if (tempGun)
         {
             tempGun.LevelUp();
-            tempGun.SetAmmo(tempGun.GetMaxAmmo());
+            tempGun.SetAmmo((int)Mathf.Ceil(gun.GetMaxAmmo() * stats.GetAmmoFactor()));
             return;
         } else
         {

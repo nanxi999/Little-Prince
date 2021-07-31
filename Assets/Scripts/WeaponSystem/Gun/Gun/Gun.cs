@@ -119,7 +119,7 @@ public class Gun : MonoBehaviour
 
     public void RefillAmmo()
     {
-        ammo = maxAmmo;
+        ammo = (int)Mathf.Ceil(maxAmmo * stats.GetAmmoFactor());
     }
 
     public virtual void LevelUp()

@@ -20,13 +20,13 @@ public class ShotGun : Gun
                 attackCd = attackCd * 0.8f;
                 break;
             case 3:
-                dmg = dmg * 1.2f;
                 attackCd = attackCd * 0.6f;
+                maxAmmo = (int)(maxAmmo * 1.5);
                 break;
             case 4:
-                dmg = dmg * 1.2f;
+                dmg = dmg * 0.8f;
                 attackCd = 0.15f;
-                maxAmmo = maxAmmo * 2;
+                maxAmmo = (int)maxAmmo * 2;
                 break;
             default:
                 break;

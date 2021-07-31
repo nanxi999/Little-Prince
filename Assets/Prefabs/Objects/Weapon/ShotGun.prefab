@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Shotgun
   maxAmmo: 45
-  dmg: 25
+  dmg: 40
   attackCd: 1
   bulletLifetime: 0.3
   bulletSpeed: 80
