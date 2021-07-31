@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class LevelController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class LevelController : MonoBehaviour
     bool levelTimeFinished;
     Ammunition[] ammu;
 
+    [SerializeField] public Transform startCameraPos;
+    [SerializeField] public GameObject joinText;
     // next level count down
     [SerializeField] private float prepareTime = 15f;
     [SerializeField] private TMP_Text enemyCountText;
@@ -27,6 +30,7 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
+        FindObjectOfType<CinemachineTargetGroup>().AddMember(startCameraPos, 1, 0);
         timeBeforeNextLv = prepareTime;
         numberOfPlayers = 0;
         playersAwarded = new List<int>();
@@ -213,8 +217,11 @@ public class LevelController : MonoBehaviour
     {
         numberOfPlayers += 1;
         if(numberOfPlayers == 1)
+        {
+            joinText.SetActive(false);
             InitializeLevel();
-        Debug.Log("start game!");
+            FindObjectOfType<CinemachineTargetGroup>().RemoveMember(startCameraPos);
+        }
     }
 
     public void PlayerLeft()
