@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: {fileID: 7598163365327955022}
   weight: 3
+  firstSpawnLevel: 0
   collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
     type: 3}
 --- !u!61 &9202340719337239137

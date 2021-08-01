@@ -9,7 +9,7 @@ public class Enemy : Hurtable
     [SerializeField] protected float moveSpeed = 6;
     [SerializeField] protected float targetSwitchThreshold = 30;
     [SerializeField] protected SpriteRenderer shadowRenderer;
-    public int dmg = 1;
+    public float dmg = 1;
     protected bool freeze = false;
 
     public Prince prince;
@@ -144,17 +144,22 @@ public class Enemy : Hurtable
         }
     }
 
+    public float GetSpeed()
+    {
+        return moveSpeed;
+    }
+
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
     }
 
-    public int GetDmg()
+    public float GetDmg()
     {
         return dmg;
     }
 
-    public void SetDmg(int new_dmg)
+    public void SetDmg(float new_dmg)
     {
         dmg = new_dmg;
     }

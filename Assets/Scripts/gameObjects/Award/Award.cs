@@ -7,6 +7,7 @@ public class Award : MonoBehaviour
 {
     public Transform description;
     public float weight;
+    public int firstSpawnLevel;
     public GameObject collectEffect;
     Animator animator;
     LevelController levelConroller;
@@ -75,6 +76,11 @@ public class Award : MonoBehaviour
     public float GetWeight()
     {
         return weight;
+    }
+
+    public int GetFirstSpawnLevel()
+    {
+        return firstSpawnLevel;
     }
 
     protected virtual void GiveAwards(GameObject prince) { }

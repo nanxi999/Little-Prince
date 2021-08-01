@@ -112,6 +112,16 @@ public class ArchWizard : Enemy
         dashDir = vec / vec.magnitude;
     }
 
+    public void SetDashDmg(float val)
+    {
+        dashDamage = val;
+    }
+
+    public float GetDashDmg()
+    {
+        return dashDamage;
+    }
+
     void Dash()
     {
         if(isDashing)

@@ -96,7 +96,6 @@ public class LevelController : MonoBehaviour
     public void CompleteLevel()
     {
         StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level..."));
-        level += 1;
         FindObjectOfType<AwardsSpawner>().StartSpawning();
         Prince[] players = FindObjectsOfType<Prince>();
         foreach(Prince p in players)
@@ -120,6 +119,7 @@ public class LevelController : MonoBehaviour
 
     public IEnumerator NextLevel()      //Called when the count down timer reaches 0
     {
+        level += 1;
         levelText.text = "Level " + level;
         StartCoroutine(gameUI.ShowInstruction("Level " + level));
         yield return new WaitForSeconds(2);

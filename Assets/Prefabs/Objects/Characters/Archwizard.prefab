@@ -1524,7 +1524,7 @@ MonoBehaviour:
   health: 2000
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
-  moveSpeed: 5
+  moveSpeed: 7
   targetSwitchThreshold: 15
   shadowRenderer: {fileID: 1049504980836993093}
   dmg: 10
