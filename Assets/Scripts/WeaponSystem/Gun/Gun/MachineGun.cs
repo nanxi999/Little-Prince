@@ -35,18 +35,21 @@ public class MachineGun : Gun
         switch (level)
         {
             case 2:
-                attackCd = attackCd * 0.7f;
-                maxAmmo = (int) (maxAmmo * 1.2f);
+                maxAmmo = 450;
+                dmg = dmg * 1.2f;
                 startModifyingSpread = 1;
-                spread = 10;
-                break;
-            case 3:
-                dmg = dmg * 1.5f;
-                startModifyingSpread = 2;
                 spread = 8;
                 break;
-            case 4:
+            case 3:
                 dmg = dmg * 1.2f;
+                attackCd = attackCd * 0.7f;
+                maxAmmo = 550;
+                startModifyingSpread = 2;
+                spread = 10;
+                break;
+            case 4:
+                dmg = dmg * 1.3f;
+                maxAmmo = 750;
                 attackCd = attackCd * 0.6f;
                 maxAmmo = (int)(maxAmmo * 1.8f);
                 startModifyingSpread = 3;
@@ -84,7 +87,7 @@ public class MachineGun : Gun
                 spreadModify = spreadModify * amplifier;
             }
 
-            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            audioSource.PlayOneShot(shootSound);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + spreadModify));
             InitBullet(newBullet);

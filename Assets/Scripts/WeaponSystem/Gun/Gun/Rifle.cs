@@ -39,7 +39,7 @@ public class Rifle : Gun
         }
         else if (bullet[stats.GetBulletId()])
         {
-            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            audioSource.PlayOneShot(shootSound);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             InitBullet(newBullet);

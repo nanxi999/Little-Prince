@@ -44,6 +44,16 @@ public class Wizard : Enemy
         }   
     }
 
+    protected override void ChangeRendererColor(Color color)
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            if (!renderer.gameObject.name.Equals("ShadowRenderer"))
+                renderer.color = color;
+        }
+    }
+
     public void Fire()
     {
         if (darkBullet)

@@ -1035,8 +1035,9 @@ MonoBehaviour:
     m_ActionName: GamePlay/SwitchWeapon[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: TogglePauseStatus
+      - m_Target: {fileID: 7949156834466033353, guid: 6ae798e8261e28140b965089dc3b2937,
+          type: 3}
+        m_MethodName: TogglePauseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

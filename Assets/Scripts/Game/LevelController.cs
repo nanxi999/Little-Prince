@@ -76,7 +76,7 @@ public class LevelController : MonoBehaviour
         if(level == 1)
             levelTime = 10;
         else
-            levelTime += (level - 1) * 5;
+            levelTime += 5;
         StartSpawners();
         numberOfAttackers = 0;
         levelTimeFinished = false;
@@ -227,5 +227,10 @@ public class LevelController : MonoBehaviour
     public void PlayerLeft()
     {
         numberOfPlayers -= 1;
+    }
+
+    public void TogglePauseGame()
+    {
+        FindObjectOfType<GameUI>().TogglePauseStatus();
     }
 }

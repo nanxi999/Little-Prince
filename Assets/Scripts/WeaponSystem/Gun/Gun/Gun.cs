@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
     protected float lastShoot;
     protected float angle;
     protected StatsManager stats;
+    protected AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class Gun : MonoBehaviour
         }
         stats = GetComponentInParent<StatsManager>();
         lastShoot = attackCd;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,7 +69,8 @@ public class Gun : MonoBehaviour
         {
             if (!stats.GetPassiveSkillsStats("InfAmmo") && ammo > 0)
                 ammo--;
-            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            audioSource.PlayOneShot(shootSound);
+            //AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             InitBullet(newBullet);

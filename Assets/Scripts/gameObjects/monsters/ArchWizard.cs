@@ -341,7 +341,8 @@ public class ArchWizard : Enemy
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
         foreach(SpriteRenderer renderer in renderers)
         {
-            renderer.color = color;
+            if(!renderer.gameObject.name.Equals("ShadowRenderer"))
+                renderer.color = color;
         }
     }
 }
