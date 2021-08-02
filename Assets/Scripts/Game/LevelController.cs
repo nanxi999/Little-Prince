@@ -7,8 +7,8 @@ using Cinemachine;
 
 public class LevelController : MonoBehaviour
 {
-    int level = 1;
-    int levelTime;
+    [SerializeField] int level = 1;
+    [SerializeField] int levelTime;
     int numberOfAttackers;
     int numberOfPlayers;
     List<int> playersAwarded;
@@ -63,7 +63,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         gameUI = FindObjectOfType<GameUI>();
-        levelText.text = "Level 1";
+        levelText.text = "Level " + level;
     }
 
     public int GetLevel()
@@ -76,7 +76,7 @@ public class LevelController : MonoBehaviour
         if(level == 1)
             levelTime = 10;
         else
-            levelTime += 5;
+            levelTime += (level - 1) * 5;
         StartSpawners();
         numberOfAttackers = 0;
         levelTimeFinished = false;

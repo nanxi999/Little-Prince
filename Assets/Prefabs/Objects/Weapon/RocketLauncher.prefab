@@ -138,7 +138,7 @@ MonoBehaviour:
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
   - {fileID: 8909202162540154983, guid: bed1cd62dfd49ea4482f97a7f6e49d45, type: 3}
   firePoint: {fileID: 1865358334641946203}
-  shootSound: {fileID: 8300000, guid: 76511a562a546a04c91e6c417736f0d2, type: 3}
+  shootSound: {fileID: 8300000, guid: 3400cb620902e8c49a6538ae25c3b30e, type: 3}
   shakeAmplitude: 0
   shootEffects:
   - {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03, type: 3}

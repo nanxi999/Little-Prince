@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] protected float startMaxSpawnDelay = 3f;
     [SerializeField] protected float baseMinSpawnDelay = 1f;
     [SerializeField] protected float baseMaxSpawnDelay = 3f;
+    [SerializeField] protected float spawnDelayDecreaseFactor = 0.1f;
     [SerializeField] protected float speedIncreaseFactor;
     [SerializeField] protected float maxSpeedIncrease;
     [SerializeField] protected float dmgIncreaseFactor;
@@ -26,8 +27,9 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     public virtual IEnumerator StartSpawning()
     {
-        float minSpawnDelay = Mathf.Max(baseMinSpawnDelay, startMinSpawnDelay - levelController.GetLevel() * 0.05f);
-        float maxSpawnDelay = Mathf.Max(baseMaxSpawnDelay, startMaxSpawnDelay - levelController.GetLevel() * 0.05f);
+        int stage = (levelController.GetLevel() - 1) / 5;
+        float minSpawnDelay = Mathf.Max(baseMinSpawnDelay, startMinSpawnDelay - stage * spawnDelayDecreaseFactor);
+        float maxSpawnDelay = Mathf.Max(baseMaxSpawnDelay, startMaxSpawnDelay - stage * spawnDelayDecreaseFactor);
         speedIncrease = Mathf.Min(((levelController.GetLevel() - 1) / 5) * speedIncreaseFactor, maxSpeedIncrease);
         dmgIncrease = ((levelController.GetLevel() - 1) / 5) * dmgIncreaseFactor;
         spawn = true;
