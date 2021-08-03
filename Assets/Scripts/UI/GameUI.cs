@@ -9,7 +9,8 @@ public class GameUI : MonoBehaviour
 {
     public GameObject instruction;
     public GameObject pauseMenu;
-    public GameObject firstSelectedOnPause;
+    public GameObject firstSelectedOnPauseDefault;
+    public GameObject firstSelectedOnPauseHelp;
     public GameObject countDownDisplay;
 
     private bool pause= false;
@@ -51,9 +52,9 @@ public class GameUI : MonoBehaviour
                 prince.ToggleInputStatus();
             }
             pauseMenu.SetActive(true);
-            if(firstSelectedOnPause)
+            if(firstSelectedOnPauseDefault)
             {
-                es.SetSelectedGameObject(firstSelectedOnPause, new BaseEventData(es));
+                es.SetSelectedGameObject(firstSelectedOnPauseDefault, new BaseEventData(es));
             }
         }
         else
@@ -65,6 +66,37 @@ public class GameUI : MonoBehaviour
             }
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
+        }
+    }
+
+    public void PauseMenuHelpPage()
+    {
+        foreach(Transform page in pauseMenu.transform)
+        {
+            if(page.gameObject.name == "HelpPage")
+            {
+                page.gameObject.SetActive(true);
+                es.SetSelectedGameObject(firstSelectedOnPauseHelp, new BaseEventData(es));
+            } else
+            {
+                page.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void PauseMenuDefaultPage()
+    {
+        foreach (Transform page in pauseMenu.transform)
+        {
+            if (page.gameObject.name == "DefaultPage")
+            {
+                page.gameObject.SetActive(true);
+                es.SetSelectedGameObject(firstSelectedOnPauseDefault, new BaseEventData(es));
+            }
+            else
+            {
+                page.gameObject.SetActive(false);
+            }
         }
     }
 }
