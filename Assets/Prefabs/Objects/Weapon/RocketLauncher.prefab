@@ -40,8 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2095954575783415599}
   - component: {fileID: 3223485551023052626}
-  - component: {fileID: 4878360652696478236}
   - component: {fileID: -3116513351097128278}
+  - component: {fileID: 1314576770222126849}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -114,36 +114,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4878360652696478236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253109879509856643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb134627316116b4693a6ea6f9e6fa8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunName: Rocket Launcher
-  maxAmmo: 20
-  dmg: 75
-  attackCd: 1.5
-  bulletLifetime: 1.5
-  bulletSpeed: 0
-  pushBackForce: 0
-  level: 1
-  maxLevel: 4
-  bullet:
-  - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
-  - {fileID: 8909202162540154983, guid: bed1cd62dfd49ea4482f97a7f6e49d45, type: 3}
-  firePoint: {fileID: 1865358334641946203}
-  shootSound: {fileID: 8300000, guid: 3400cb620902e8c49a6538ae25c3b30e, type: 3}
-  shakeAmplitude: 0
-  shootEffects:
-  - {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03, type: 3}
-  - {fileID: 2049446969100869760, guid: ca3e807f346321b42b50c77fc94205d8, type: 3}
 --- !u!82 &-3116513351097128278
 AudioSource:
   m_ObjectHideFlags: 0
@@ -240,3 +210,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1314576770222126849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253109879509856643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899e7ad80fc33f1478b14cb4cc6e0a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunName: Rocket Launcher
+  maxAmmo: 10
+  dmg: 100
+  attackCd: 1.5
+  bulletLifetime: 1.5
+  bulletSpeed: 25
+  pushBackForce: 0
+  level: 1
+  maxLevel: 4
+  bullet:
+  - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
+  - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
+  firePoint: {fileID: 1865358334641946203}
+  shootSound: {fileID: 8300000, guid: 3400cb620902e8c49a6538ae25c3b30e, type: 3}
+  shakeAmplitude: 0
+  shootEffects:
+  - {fileID: 2049446969100869760, guid: 6508cb5c2dce7f943953b3bc52cb3c03, type: 3}
+  - {fileID: 2049446969100869760, guid: ca3e807f346321b42b50c77fc94205d8, type: 3}

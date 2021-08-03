@@ -70,10 +70,13 @@ public class Bullet : MonoBehaviour
         pushBackForce = newPushBackForce;
     }
 
-    protected void DestroyProjectile()
+    protected virtual void DestroyProjectile()
     {
-        GameObject obj = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(obj, 1f);
+        if(destroyEffect)
+        {
+            GameObject obj = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+            Destroy(obj, 1f);
+        }
         Destroy(this.gameObject);
     }
 

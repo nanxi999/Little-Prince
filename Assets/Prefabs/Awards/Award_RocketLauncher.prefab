@@ -617,7 +617,7 @@ MonoBehaviour:
   firstSpawnLevel: 10
   collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
     type: 3}
-  gunPrefab: {fileID: 4878360652696478236, guid: 6a9820d355f96df429b2e5e22485d196,
+  gunPrefab: {fileID: 1314576770222126849, guid: 6a9820d355f96df429b2e5e22485d196,
     type: 3}
 --- !u!61 &7180300288010497104
 BoxCollider2D:

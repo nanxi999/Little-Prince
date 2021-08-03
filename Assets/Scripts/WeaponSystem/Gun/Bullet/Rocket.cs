@@ -5,19 +5,21 @@ using UnityEngine;
 public class Rocket : Bullet
 {
     [SerializeField] private int ExplosionDmg;
-    private CircleCollider2D circle;
+    [SerializeField] Bullet microRocket;
+    [SerializeField] private RocketExplosion explosion;
+    private GameObject hitObject;
+    private int microRockNum = 0;
+    private int microRockDmg = 10;
     private BoxCollider2D box;
     protected override void Start()
     {
         base.Start();
-        circle = GetComponent<CircleCollider2D>();
         box = GetComponent<BoxCollider2D>();
     }
 
     protected override void Update()
     {
         base.Update();
-        CheckCollision();
         Accelerate();
 
     }
@@ -27,41 +29,62 @@ public class Rocket : Bullet
         speed += 85 * Time.deltaTime;
     }
 
-    private void CheckCollision()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (box.IsTouchingLayers(LayerMask.GetMask(layers)))
+        int res = LayerMask.GetMask(layers);
+        hitObject = collision.gameObject;
+        if (hitObject != shooter)
         {
-            Vector3 dir = transform.position - initPosition;
-            Explode(dir);
+            if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
+                return;
+            isColliding = true;
+            Enemy enemy = hitObject.GetComponent<Enemy>();
+            if (hitObject.GetComponent<Hurtable>())
+            {
+                hitObject.GetComponent<Hurtable>().Hurt(dmg);
+            }
+            RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
+            obj.SetDmg(ExplosionDmg);
+            SpawnMicroRockets();
+            Destroy(obj, 2);
             DestroyProjectile();
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    public void SetMicroRocketNum(int num)
     {
-
+        microRockNum = num;
     }
 
-    private void Explode(Vector3 dir)
+    private void SpawnMicroRockets()
     {
-        List<Collider2D> colliderList = new List<Collider2D>();
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.SetLayerMask(LayerMask.GetMask("Enemy"));
-        circle.OverlapCollider(filter, colliderList);
-        foreach (Collider2D collider in colliderList)
+        Debug.Log("Spawning");
+        if (microRocket)
         {
-            Hurtable enemy = collider.gameObject.GetComponent<Hurtable>();
-            if (enemy)
+            while (microRockNum > 0)
             {
-                enemy.Hurt(ExplosionDmg);
-                Enemy enemyComp = enemy.GetComponent<Enemy>();
-
-                if (enemy)
-                {
-                    enemyComp.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
-                }
-
+                Debug.Log("spawn " + microRockNum);
+                int angle = 30 * microRockNum;
+                Vector2 dir = -(transform.position - initPosition);
+                Bullet bullet = Instantiate(microRocket, transform.position, Quaternion.Euler(0, 0, angle));
+                InitBullet(bullet);
+                microRockNum--;
             }
         }
+    }
+
+    protected void InitBullet(Bullet bullet)
+    {
+        bullet.SetShooter(hitObject);
+        bullet.SetLifeTime(lifeTime / 4);
+        bullet.SetSpeed(speed / 3);
+        bullet.SetDmg(microRockDmg);
+    }
+
+    protected override void DestroyProjectile()
+    {
+        RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
+        obj.SetDmg(ExplosionDmg);
+        Destroy(this.gameObject);
     }
 }

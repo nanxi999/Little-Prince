@@ -73,6 +73,7 @@ public class Gun : MonoBehaviour
             //AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
+
             InitBullet(newBullet);
 
             lastShoot = 0f;
