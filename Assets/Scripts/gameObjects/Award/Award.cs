@@ -9,11 +9,11 @@ public class Award : MonoBehaviour
     public float weight;
     public int firstSpawnLevel;
     public GameObject collectEffect;
-    Animator animator;
-    LevelController levelConroller;
-    bool isCollected = false;
-    List<Prince> princesCollided;
-    GameObject effect;
+    protected Animator animator;
+    protected LevelController levelConroller;
+    protected bool isCollected = false;
+    protected List<Prince> princesCollided;
+    protected GameObject effect;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -28,7 +28,7 @@ public class Award : MonoBehaviour
         CheckCollidedPrinces();
     }
 
-    private void CheckCollidedPrinces()
+    protected virtual void CheckCollidedPrinces()
     {
         foreach (Prince prince in princesCollided)
         {

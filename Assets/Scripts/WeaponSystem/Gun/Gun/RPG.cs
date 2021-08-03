@@ -27,7 +27,7 @@ public class RPG : Gun
                 microRocketNum = 8;
                 break;
             case 7:
-                attackCd = 0.7f;
+                attackCd = 0.8f;
                 microRocketNum = 12;
                 bulletSpeed = 35;
                 break;

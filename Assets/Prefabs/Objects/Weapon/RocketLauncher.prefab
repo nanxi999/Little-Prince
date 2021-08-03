@@ -230,7 +230,7 @@ MonoBehaviour:
   bulletSpeed: 25
   pushBackForce: 0
   level: 1
-  maxLevel: 4
+  maxLevel: 7
   bullet:
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}

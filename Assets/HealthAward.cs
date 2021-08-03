@@ -5,23 +5,23 @@ using TMPro;
 
 public class HealthAward : Award
 {
-    public float[] percentage;
+    public float[] value;
 
     private float selected;
 
     protected override void Start()
     {
         base.Start();
-        selected = percentage[Random.Range(0, percentage.Length)];
+        selected = value[Random.Range(0, value.Length)];
         TMP_Text descriptionText = description.Find("Description").GetComponent<TMP_Text>();
-        descriptionText.SetText("Increase the health limit of the prince by {0}% and heal the prince.", selected * 100);
+        descriptionText.SetText("Increase {0} health limit of the prince.", selected);
         description.gameObject.SetActive(false);
     }
 
     protected override void GiveAwards(GameObject prince)
     {
         Prince tempPrince = prince.GetComponent<Prince>();
-        tempPrince.SetMaxHealth(tempPrince.GetMaxHealth() * (1 + selected));
+        tempPrince.SetMaxHealth(tempPrince.GetMaxHealth() + selected);
         tempPrince.SetHealth(tempPrince.GetMaxHealth());
     }
 }

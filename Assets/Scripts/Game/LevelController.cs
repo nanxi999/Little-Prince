@@ -95,7 +95,7 @@ public class LevelController : MonoBehaviour
 
     public void CompleteLevel()
     {
-        StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level..."));
+        StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level...", 3f));
         FindObjectOfType<AwardsSpawner>().StartSpawning();
         Prince[] players = FindObjectsOfType<Prince>();
         foreach(Prince p in players)
@@ -119,9 +119,10 @@ public class LevelController : MonoBehaviour
 
     public IEnumerator NextLevel()      //Called when the count down timer reaches 0
     {
+        DestroyAwards();
         level += 1;
         levelText.text = "Level " + level;
-        StartCoroutine(gameUI.ShowInstruction("Level " + level));
+        StartCoroutine(gameUI.ShowInstruction("Level " + level, 3f));
         yield return new WaitForSeconds(2);
         foreach (Ammunition ammo in ammu)
         {
@@ -162,6 +163,15 @@ public class LevelController : MonoBehaviour
         {
             numberOfAttackers = 0;
             CompleteLevel();
+        }
+    }
+
+    private void DestroyAwards()
+    {
+        var awards = FindObjectsOfType<Award>();
+        foreach (Award i in awards)
+        {
+            Destroy(i.gameObject);
         }
     }
 

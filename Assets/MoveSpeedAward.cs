@@ -22,6 +22,31 @@ public class MoveSpeedAward : Award
     {
         Prince tempPrince = prince.GetComponent<Prince>();
         StatsManager stats = tempPrince.GetComponent<StatsManager>();
-        stats.SetMoveSpeedFactor(stats.GetMoveSpeedFactor() * (1 + selected));
+        stats.SetMoveSpeedFactor(Mathf.Min(stats.GetMoveSpeedFactor() * (1 + selected), stats.GetMoveSpeedFactorLimit()));
+    }
+
+    protected override void CheckCollidedPrinces()
+    {
+        StatsManager stats;
+        foreach (Prince prince in princesCollided)
+        {
+            stats = prince.GetComponent<StatsManager>();
+            if (prince.saveKeyPressed && !prince.GetPrinceToSave() && !isCollected)
+            {
+                if(stats.GetMoveSpeedFactor() < stats.GetMoveSpeedFactorLimit())
+                {
+                    isCollected = true;
+                    GiveAwards(prince.gameObject);
+                    //levelConroller.PlayerAwarded(prince.GetID());
+                    effect = Instantiate(collectEffect, transform.Find("Renderer").position, transform.rotation);
+                    Destroy(effect, 1.5f);
+                } else
+                {
+                    return;
+                }   
+            }
+        }
+        if (isCollected)
+            Destroy(gameObject);
     }
 }

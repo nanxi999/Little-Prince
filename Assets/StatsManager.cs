@@ -69,6 +69,11 @@ public class StatsManager : MonoBehaviour
         return moveSpeedFactor;
     }
 
+    public float GetMoveSpeedFactorLimit()
+    {
+        return moveSpeedFactorLimit;
+    }
+
     public void SetMoveSpeedFactor(float val)
     {
         if(val > moveSpeedFactorLimit)

@@ -13,17 +13,17 @@ public class Rifle : Gun
         switch (level)
         {
             case 2:
-                dmg = dmg * 1.2f;
-                bulletSpeed = bulletSpeed * 2f;
+                dmg = dmg * 1.1f;
+                bulletSpeed = bulletSpeed * 1.2f;
                 break;
             case 3:
-                dmg = dmg * 1.2f;
-                pushBackForce = pushBackForce * 2f;
+                dmg = dmg * 1.1f;
+                pushBackForce = pushBackForce * 1.2f;
                 break;
             case 4:
-                dmg = dmg * 1.5f;
-                bulletSpeed = bulletSpeed * 1.25f;
-                pushBackForce = pushBackForce * 3f;
+                dmg = dmg * 1.1f;
+                bulletSpeed = bulletSpeed * 1.1f;
+                pushBackForce = pushBackForce * 1.1f;
                 break;
             default:
                 break;

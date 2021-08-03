@@ -419,14 +419,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: {fileID: 192766395384461234}
-  weight: 5
+  weight: 7
   firstSpawnLevel: 0
   collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
     type: 3}
-  percentage:
-  - 0.1
-  - 0.15
-  - 0.2
+  value:
+  - 10
 --- !u!61 &3460781675845430116
 BoxCollider2D:
   m_ObjectHideFlags: 0

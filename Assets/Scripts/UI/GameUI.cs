@@ -15,25 +15,38 @@ public class GameUI : MonoBehaviour
 
     private bool pause= false;
     private EventSystem es;
+    private Animator instructionAnimator;
 
     private void Awake()
     {
-        instruction = transform.Find("Instruction").gameObject;
+        instruction = transform.Find("LevelInstruction").gameObject;
+        instructionAnimator = instruction.GetComponent<Animator>();
         pauseMenu = transform.Find("Paused Menu").gameObject;
         es = GetComponent<EventSystem>();
     }
 
-    public IEnumerator ShowInstruction(string content)     //Should be called in coroutine
+    public IEnumerator ShowInstruction(string content, float duration)     //Should be called in coroutine
     {
-        instruction.SetActive(true);
+        InstructionUp();
         instruction.GetComponent<TMP_Text>().text = content;
-        yield return new WaitForSeconds(3);
-        instruction.SetActive(false);
+        yield return new WaitForSeconds(duration);
+        InstructionDown();
+    }
+
+    private void InstructionUp()
+    {
+        instructionAnimator.SetTrigger("Up");
+        return;
+    }
+
+    private void InstructionDown()
+    {
+        instructionAnimator.SetTrigger("Down");
+        return;
     }
 
     public void DisplayCountDown(bool status, int remaininTime)
     {
-        Debug.Log("count");
         countDownDisplay.SetActive(status);
         if(status)
         {
@@ -67,6 +80,12 @@ public class GameUI : MonoBehaviour
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
         }
+    }
+
+    public void MainButtonOnClick()
+    {
+        FindObjectOfType<SceneLoader>().LoadSceneWithIndex(0);
+        TogglePauseStatus();
     }
 
     public void PauseMenuHelpPage()

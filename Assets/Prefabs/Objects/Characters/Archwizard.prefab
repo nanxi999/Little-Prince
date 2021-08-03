@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836b87c3b40f5c24ea0de17b2f717c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 3000
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
   moveSpeed: 7

@@ -41,16 +41,16 @@ public class MachineGun : Gun
                 spread = 8;
                 break;
             case 3:
-                dmg = dmg * 1.2f;
-                attackCd = attackCd * 0.7f;
+                dmg = dmg * 1.1f;
+                attackCd = attackCd * 0.9f;
                 maxAmmo = 550;
                 startModifyingSpread = 2;
                 spread = 10;
                 break;
             case 4:
-                dmg = dmg * 1.3f;
-                maxAmmo = 750;
-                attackCd = attackCd * 0.6f;
+                dmg = dmg * 1.2f;
+                maxAmmo = 650;
+                attackCd = attackCd * 0.8f;
                 maxAmmo = (int)(maxAmmo * 1.8f);
                 startModifyingSpread = 3;
                 spread = 6;

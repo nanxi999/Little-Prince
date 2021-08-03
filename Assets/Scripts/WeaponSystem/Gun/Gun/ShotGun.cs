@@ -25,7 +25,7 @@ public class ShotGun : Gun
                 maxAmmo = 80;
                 break;
             case 4:
-                dmg = dmg * 0.8f;
+                dmg = dmg * 0.6f;
                 attackCd = 0.15f;
                 maxAmmo = 130;
                 break;
