@@ -8,6 +8,7 @@ public class RocketExplosion : MonoBehaviour
     protected List<int> layerIndexes;
     private CircleCollider2D circle;
     private int dmg = 10;
+    private bool ice;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,11 @@ public class RocketExplosion : MonoBehaviour
         {
             Start();
         }
+    }
+
+    public void IfIcyAttack(bool val)
+    {
+        ice = val;
     }
 
     public void InitIndexList()
@@ -53,6 +59,16 @@ public class RocketExplosion : MonoBehaviour
             if (enemy)
             {
                 enemy.Hurt(dmg);
+            }
+
+            Enemy enemyComp = collider.gameObject.GetComponent<Enemy>();
+            if(enemyComp)
+            {
+                enemyComp.PushBack(Vector3.zero, 0.5f);
+                if(ice)
+                {
+                    enemyComp.IceAttackHit(4, 0.6f);
+                }
             }
         }
     }

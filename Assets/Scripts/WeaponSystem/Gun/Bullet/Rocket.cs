@@ -7,6 +7,8 @@ public class Rocket : Bullet
     [SerializeField] private int ExplosionDmg;
     [SerializeField] Bullet microRocket;
     [SerializeField] private RocketExplosion explosion;
+    [SerializeField] private bool iceBullet;
+
     private GameObject hitObject;
     private int microRockNum = 0;
     private int microRockDmg = 10;
@@ -45,6 +47,7 @@ public class Rocket : Bullet
             }
             RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
             obj.SetDmg(ExplosionDmg);
+            obj.IfIcyAttack(iceBullet);
             SpawnMicroRockets();
             Destroy(obj, 2);
             DestroyProjectile();
@@ -78,7 +81,6 @@ public class Rocket : Bullet
         bullet.SetShooter(hitObject);
         bullet.SetLifeTime(lifeTime / 4);
         bullet.SetSpeed(speed / 3);
-        bullet.SetDmg(microRockDmg);
     }
 
     protected override void DestroyProjectile()

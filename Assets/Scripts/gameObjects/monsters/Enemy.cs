@@ -166,7 +166,8 @@ public class Enemy : Hurtable
 
     public virtual void PushBack(Vector3 pushBackVelocity, float duration)
     {
-        rb.velocity = pushBackVelocity;
+        if(pushBackVelocity != Vector3.zero) 
+            rb.velocity = pushBackVelocity;
         StartCoroutine(PushBackFreeze(duration));
     }
 

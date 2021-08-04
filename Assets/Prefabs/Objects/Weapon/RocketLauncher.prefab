@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Rocket Launcher
   maxAmmo: 10
-  dmg: 100
+  dmg: 0
   attackCd: 1.5
   bulletLifetime: 1.5
   bulletSpeed: 25
@@ -233,7 +233,7 @@ MonoBehaviour:
   maxLevel: 7
   bullet:
   - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
-  - {fileID: 3482356780576012407, guid: 2b768b3d25264074ca1ff293d2d64bb7, type: 3}
+  - {fileID: 3482356780576012407, guid: 94fb3b1313b214143a63fc8472bb2421, type: 3}
   firePoint: {fileID: 1865358334641946203}
   shootSound: {fileID: 8300000, guid: 3400cb620902e8c49a6538ae25c3b30e, type: 3}
   shakeAmplitude: 0

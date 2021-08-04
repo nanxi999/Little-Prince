@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     protected float speed;
     protected float dmg;
     protected float lifeTime;
-    protected bool iceBullet;
     protected float pushBackForce;
     protected GameObject shooter;
     protected Vector3 direction;
@@ -26,7 +25,6 @@ public class Bullet : MonoBehaviour
         initPosition = transform.position;
         renderer = GetComponentInChildren<SpriteRenderer>();
         InitIndexList();
-        iceBullet = false;
     }
 
     protected virtual void Update()
