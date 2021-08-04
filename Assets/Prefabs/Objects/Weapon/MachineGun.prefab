@@ -124,11 +124,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17877752d8469844380f6637e4fe0427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   gunName: Machine Gun
-  maxAmmo: 350
-  dmg: 20
+  maxAmmo: 250
+  dmg: 18
   attackCd: 0.15
   bulletLifetime: 0.4
   bulletSpeed: 120

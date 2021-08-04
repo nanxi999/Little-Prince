@@ -25,7 +25,7 @@ public class AwardsSpawner : MonoBehaviour
         GameObject effect = Instantiate(spawnEffect, transform.position, transform.rotation);
         Award award1, award2, award3;
         List<Award> awards;
-        if(FindObjectOfType<LevelController>().GetLevel() % 5 == 0)
+        if(FindObjectOfType<LevelController>().GetLevel() % 4 == 0)
         {
             awards = GetValidGunAwards();
         } else

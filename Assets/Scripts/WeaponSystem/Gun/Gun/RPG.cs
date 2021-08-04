@@ -7,14 +7,9 @@ public class RPG : Gun
     private int microRocketNum = 0;
     public override void LevelUp()
     {
-        if (level < maxLevel)
-        {
-            level++;
-            maxAmmo += 2;
-            dmg += 10;
-        }
-        else
-            return;
+        level++;
+        maxAmmo += 2;
+        dmg += 10;
         switch (level)
         {
             case 3:

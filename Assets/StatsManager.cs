@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
-    // Attributes
+    [Header("Factors")]
     [SerializeField] private float shootSpeedFactor = 1f;
     [SerializeField] private float damageFactor = 1;
     [SerializeField] private float hurtFactor = 1;
@@ -12,8 +12,10 @@ public class StatsManager : MonoBehaviour
     [SerializeField] private float ammoFactor = 1;
     [SerializeField] private int bulletId = 0;
 
-    // Upper limits
+    [Header("Limits")]
     [SerializeField] private float moveSpeedFactorLimit = 2;
+    [SerializeField] private float hurtFactorLimit = 0.5f;
+    [SerializeField] private float shootSpeedFactorLimit = 0.5f;
 
     // Passive skills
     [SerializeField] private Dictionary<string, bool> passiveSkills;
@@ -61,7 +63,7 @@ public class StatsManager : MonoBehaviour
 
     public void SetHurtFactor(float val)
     {
-        hurtFactor = val;
+        hurtFactor = Mathf.Max(val, hurtFactorLimit);
     }
 
     public float GetMoveSpeedFactor()
@@ -76,11 +78,7 @@ public class StatsManager : MonoBehaviour
 
     public void SetMoveSpeedFactor(float val)
     {
-        if(val > moveSpeedFactorLimit)
-        {
-            val = moveSpeedFactorLimit;
-        }
-        moveSpeedFactor = val;
+        moveSpeedFactor = Mathf.Min(val, moveSpeedFactorLimit);
     }
 
     public void ResetPassiveSkills()

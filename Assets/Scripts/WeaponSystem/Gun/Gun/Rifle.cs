@@ -6,26 +6,24 @@ public class Rifle : Gun
 {
     public override void LevelUp()
     {
-        if (level < maxLevel)
-            level++;
-        else
-            return;
+        level++;
         switch (level)
         {
-            case 2:
-                dmg = dmg * 1.1f;
-                bulletSpeed = bulletSpeed * 1.2f;
-                break;
             case 3:
-                dmg = dmg * 1.1f;
-                pushBackForce = pushBackForce * 1.2f;
+                dmg = 30;
+                bulletSpeed = bulletSpeed * 1.5f;
                 break;
-            case 4:
-                dmg = dmg * 1.1f;
-                bulletSpeed = bulletSpeed * 1.1f;
-                pushBackForce = pushBackForce * 1.1f;
+            case 5:
+                dmg = 40;
+                pushBackForce = pushBackForce * 1.5f;
+                break;
+            case 7:
+                dmg = 50;
+                bulletSpeed = bulletSpeed * 1.5f;
+                pushBackForce = pushBackForce * 1.5f;
                 break;
             default:
+                dmg += 5;
                 break;
         }
         return;

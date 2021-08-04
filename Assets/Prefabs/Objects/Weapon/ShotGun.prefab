@@ -129,7 +129,7 @@ MonoBehaviour:
   gunName: Shotgun
   maxAmmo: 45
   dmg: 40
-  attackCd: 1
+  attackCd: 0.3
   bulletLifetime: 0.3
   bulletSpeed: 80
   pushBackForce: 60
@@ -146,6 +146,8 @@ MonoBehaviour:
   - {fileID: 2049446969100869760, guid: ca3e807f346321b42b50c77fc94205d8, type: 3}
   spread: 10
   bulletNum: 3
+  coolDownCd: 2
+  shotsBeforeCoolDown: 4
 --- !u!82 &1501133770750634420
 AudioSource:
   m_ObjectHideFlags: 0
