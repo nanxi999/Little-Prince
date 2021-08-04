@@ -32,6 +32,7 @@ public class Wizard : Enemy
         sinceLastAttack += Time.deltaTime;
         igniteSinceLastAtk += Time.deltaTime;
 
+        IgniteNum = levelController.GetLevel() / 10 + 1
         base.Update();
         GetComponent<AIDestinationSetter>().target = prince.transform;
         FireTrigger();
@@ -47,7 +48,7 @@ public class Wizard : Enemy
                 StartCoroutine(Freeze(1));
                 animator.SetTrigger("Fire");
             } 
-        } else if(igniteSinceLastAtk >= IgniteCd)
+        } else if(igniteSinceLastAtk >= IgniteCd && FindObjectOfType<LevelController>().GetLevel() > 5)
         {
             Ignite();
             igniteSinceLastAtk = 0f;

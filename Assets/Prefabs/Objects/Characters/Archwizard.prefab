@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836b87c3b40f5c24ea0de17b2f717c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3500
+  health: 3000
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
   moveSpeed: 7.5
@@ -1537,9 +1537,9 @@ MonoBehaviour:
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}
   bullets:
-  - {fileID: 520976966090748550, guid: eddf838d9cc89f74eb8eb3ae6ab315aa, type: 3}
-  - {fileID: 2531787858631804134, guid: 1e8e1cb0444067c45a61eb6f201c77f2, type: 3}
   - {fileID: 5878042762024612096, guid: 33f4096d02a939941bbedc5486b52633, type: 3}
+  - {fileID: 2531787858631804134, guid: 1e8e1cb0444067c45a61eb6f201c77f2, type: 3}
+  - {fileID: 520976966090748550, guid: eddf838d9cc89f74eb8eb3ae6ab315aa, type: 3}
   bulletLifeTime: 1.2
   bulletSpeed: 30
   bulletAmount: 6

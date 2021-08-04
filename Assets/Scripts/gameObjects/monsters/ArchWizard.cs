@@ -106,7 +106,8 @@ public class ArchWizard : Enemy
                 sinceLastAttack = 0;
                 firing = true;
                 numFired = 0;
-                int index = Random.RandomRange(0, bullets.Length);
+                int max = Mathf.Min(bullets.Length, FindObjectOfType<LevelController>().GetLevel() / 5);
+                int index = Random.RandomRange(0, max);
                 bullet = bullets[index];
             }
             else
