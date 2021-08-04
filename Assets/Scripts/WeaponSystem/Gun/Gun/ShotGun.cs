@@ -6,42 +6,67 @@ public class ShotGun : Gun
 {
     public int spread;
     public int bulletNum;
+    public float coolDownCd = 2f;
+    public int shotsBeforeCoolDown;
+
+    private float tempCoolDownCd = 0;
+    private int shootCount = 0;
+
+    public override void Start()
+    {
+        base.Start();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        tempCoolDownCd -= Time.deltaTime;
+    }
 
     public override void LevelUp()
     {
-        if (level < maxLevel)
-            level++;
-        else
-            return;
+        level++;
         switch (level)
         {
-            case 2:
-                bulletNum = 5;
-                maxAmmo = 60;
-                attackCd = attackCd * 0.8f;
-                break;
             case 3:
-                attackCd = attackCd * 0.6f;
-                maxAmmo = 80;
+                shotsBeforeCoolDown = 6;
+                maxAmmo = 60;
+                coolDownCd = 1f;
                 break;
-            case 4:
+            case 5:
+                dmg = 35;
+                bulletNum = 5;
+                shotsBeforeCoolDown = 8;
+                attackCd = 0.22f;
+                maxAmmo = 90;
+                break;
+            case 7:
                 dmg = dmg * 0.6f;
                 attackCd = 0.15f;
                 maxAmmo = 130;
+                coolDownCd = 0f;
                 break;
             default:
+                dmg += 5;
                 break;
         }
     }
 
     public override void Fire()
     {
-        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor() || tempCoolDownCd > 0)
         {
             return;
         }
         else if (bullet[stats.GetBulletId()] && ammo > 0)
         {
+            shootCount++;
+            if (shootCount >= shotsBeforeCoolDown)
+            {
+                tempCoolDownCd = coolDownCd;
+                shootCount = 0;
+            }         
+
             if(!stats.GetPassiveSkillsStats("InfAmmo"))
                 ammo--;
             audioSource.PlayOneShot(shootSound);

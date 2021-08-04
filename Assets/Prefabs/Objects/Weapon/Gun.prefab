@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Rifle
   maxAmmo: 0
-  dmg: 15
+  dmg: 20
   attackCd: 0.3
   bulletLifetime: 0.4
   bulletSpeed: 80

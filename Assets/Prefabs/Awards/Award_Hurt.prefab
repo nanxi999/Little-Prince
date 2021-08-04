@@ -495,7 +495,8 @@ MonoBehaviour:
   collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
     type: 3}
   percentage:
-  - 0.02
+  - 0.05
+  - 0.1
 --- !u!61 &6818572816402404981
 BoxCollider2D:
   m_ObjectHideFlags: 0

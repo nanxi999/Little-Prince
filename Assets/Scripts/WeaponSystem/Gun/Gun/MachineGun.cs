@@ -28,34 +28,32 @@ public class MachineGun : Gun
 
     public override void LevelUp()
     {
-        if (level < maxLevel)
-            level++;
-        else
-            return;
+        level++;
         switch (level)
         {
-            case 2:
-                maxAmmo = 450;
+            case 3:
+                maxAmmo = 350;
                 dmg = dmg * 1.2f;
                 startModifyingSpread = 1;
-                spread = 8;
-                break;
-            case 3:
-                dmg = dmg * 1.1f;
-                attackCd = attackCd * 0.9f;
-                maxAmmo = 550;
-                startModifyingSpread = 2;
                 spread = 10;
                 break;
-            case 4:
+            case 5:
                 dmg = dmg * 1.2f;
-                maxAmmo = 650;
+                attackCd = attackCd * 0.9f;
+                maxAmmo = 450;
+                startModifyingSpread = 2;
+                spread = 8;
+                break;
+            case 7:
+                dmg = dmg * 1.2f;
+                maxAmmo = 550;
                 attackCd = attackCd * 0.8f;
                 maxAmmo = (int)(maxAmmo * 1.8f);
                 startModifyingSpread = 3;
                 spread = 6;
                 break;
             default:
+                dmg += 3;
                 break;
         }
         return;
