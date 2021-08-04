@@ -61,7 +61,7 @@ public class Gun : MonoBehaviour
 
     public virtual void Fire()
     {
-        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor() * stats.GetAttackSpeedReduct())
         {
             return;
         }

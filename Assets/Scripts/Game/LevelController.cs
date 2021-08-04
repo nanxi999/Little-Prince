@@ -75,7 +75,7 @@ public class LevelController : MonoBehaviour
     {
         if(level == 1)
             levelTime = 20;
-        else if(level%5 == 0)
+        else if(level%5 == 0 )
             levelTime += 5;
         StartSpawners();
         numberOfAttackers = 0;

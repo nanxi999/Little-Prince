@@ -34,7 +34,7 @@ public class TracerBullet : Bullet
 
     private void InitAIPath()
     {
-        path.maxSpeed = speed + 17;
+        path.maxSpeed = speed + 13;
         dest.target = target;
         lifeTime = 2.5f;
     }
@@ -71,7 +71,15 @@ public class TracerBullet : Bullet
             if(collision.gameObject.GetComponent<Prince>())
             {
                 dmg = 5;
-                collision.gameObject.GetComponent<Prince>().Freeze(0.8f, 10);
+                collision.gameObject.GetComponent<Prince>().Freeze(0.5f, 4);
+            }
+        }
+
+        if(element.Equals("Darkness"))
+        {
+            if (collision.gameObject.GetComponent<Prince>())
+            {
+                collision.gameObject.GetComponentInChildren<Prince>().DarkBoltHit(2.0f, 4);
             }
         }
         base.OnTriggerEnter2D(collision);
@@ -82,7 +90,7 @@ public class TracerBullet : Bullet
         if(element.Equals("Explosion"))
         {
             RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
-            exp.SetDmg((int)dmg);
+            exp.SetDmg((int)10);
             Destroy(exp, 1f);
         } else if(element.Equals("Ice"))
         {

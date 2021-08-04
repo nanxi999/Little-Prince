@@ -31,7 +31,7 @@ public class Rifle : Gun
 
     public override void Fire()
     {
-        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor() * stats.GetAttackSpeedReduct())
         {
             return;
         }

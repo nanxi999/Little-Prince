@@ -26,7 +26,7 @@ public class Prince : Hurtable
     [SerializeField] private SpriteRenderer renderer;
 
     // variables for the death and save features
-    private float saveTime = 2f;
+    private float saveTime = 1.5f;
     private bool cryin = false;
     private float remainingSaveTime;
     public bool saveKeyPressed = false;
@@ -332,7 +332,7 @@ public class Prince : Hurtable
         {
             // the target prince is saved
             animator.SetTrigger("Saved");
-            saveTime += 1.5f;
+            saveTime += 0.5f;
             cryin = false;
             health = max;
             
@@ -390,16 +390,33 @@ public class Prince : Hurtable
     public void Freeze(float speedReduct, int duration)
     {
         if(speedReductFactor != 1) { return; }
-        Color prevColor = renderer.color;
         renderer.color = Color.blue;
-        StartCoroutine(SlowForSeconds(speedReduct, duration, prevColor));
+        StartCoroutine(SlowForSeconds(speedReduct, duration));
     }
 
-    IEnumerator SlowForSeconds(float speedReduct, int seconds, Color color)
+    IEnumerator SlowForSeconds(float speedReduct, int seconds)
     {
         speedReductFactor = speedReduct;
         yield return new WaitForSeconds(seconds);
-        renderer.color = color;
+        renderer.color = Color.white;
         speedReductFactor = 1f;
+    }
+
+    public void DarkBoltHit(float attackSpeedReduct, float duration)
+    {
+        if(stats.GetAttackSpeedReduct() != 1)
+        {
+            return;
+        }
+        stats.SetAttackSpeedReduct(attackSpeedReduct);
+        renderer.color = new Color(177 / 255f, 129 / 255f, 255 / 255f);
+        StartCoroutine(ResetAttackSpeed(duration));
+    }
+    
+    IEnumerator ResetAttackSpeed(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        stats.SetAttackSpeedReduct(1.0f);
+        renderer.color = Color.white;
     }
 }

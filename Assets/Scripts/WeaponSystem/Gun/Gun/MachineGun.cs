@@ -66,7 +66,7 @@ public class MachineGun : Gun
         {
             contShootTime = 5;
         }
-        if (lastShoot < attackCd * stats.GetShootSpeedFactor())
+        if (lastShoot < attackCd * stats.GetShootSpeedFactor() * stats.GetAttackSpeedReduct())
         {
             return;
         } 

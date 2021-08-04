@@ -19,9 +19,7 @@ public class StatsManager : MonoBehaviour
 
     // Passive skills
     [SerializeField] private Dictionary<string, bool> passiveSkills;
-
-    private float AttackSpeedReductFactor;
-    private float MoveSpeedReductFactor;
+    private float attackSpeedReduct = 1f;
 
     private void Start()
     {
@@ -120,5 +118,15 @@ public class StatsManager : MonoBehaviour
     public void SetBulletId(int val)
     {
         bulletId = val;
+    }
+
+    public void SetAttackSpeedReduct(float reductFactor)
+    {
+        attackSpeedReduct = reductFactor;
+    }
+
+    public float GetAttackSpeedReduct()
+    {
+        return attackSpeedReduct;
     }
 }
