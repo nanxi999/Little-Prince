@@ -82,6 +82,7 @@ MonoBehaviour:
     type: 3}
   explosion: {fileID: 850423576257068033, guid: 748ba5cf6ed2b1549b34a7ed9fc56a20,
     type: 3}
+  iceBullet: 0
 --- !u!212 &131320194
 SpriteRenderer:
   m_ObjectHideFlags: 0

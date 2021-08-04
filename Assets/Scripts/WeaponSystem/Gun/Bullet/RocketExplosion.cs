@@ -47,7 +47,7 @@ public class RocketExplosion : MonoBehaviour
         dmg = damage;
     }
 
-    public void Explode()
+    private void Explode()
     {
         List<Collider2D> colliderList = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();

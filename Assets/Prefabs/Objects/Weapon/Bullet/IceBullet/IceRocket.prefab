@@ -77,7 +77,7 @@ MonoBehaviour:
   - Enemy
   - BackgroundHittable
   - Friendly
-  ExplosionDmg: 35
+  ExplosionDmg: 40
   microRocket: {fileID: 2414985012770678129, guid: bc4edc89d45095c47b308222199f6a3f,
     type: 3}
   explosion: {fileID: 850423576257068033, guid: 748ba5cf6ed2b1549b34a7ed9fc56a20,

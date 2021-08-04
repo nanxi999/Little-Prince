@@ -35,10 +35,11 @@ public class Rocket : Bullet
     {
         int res = LayerMask.GetMask(layers);
         hitObject = collision.gameObject;
+        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
+            return;
+
         if (hitObject != shooter)
         {
-            if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
-                return;
             isColliding = true;
             Enemy enemy = hitObject.GetComponent<Enemy>();
             if (hitObject.GetComponent<Hurtable>())
@@ -50,7 +51,7 @@ public class Rocket : Bullet
             obj.IfIcyAttack(iceBullet);
             SpawnMicroRockets();
             Destroy(obj, 2);
-            DestroyProjectile();
+            Destroy(this.gameObject);
         }
     }
 
