@@ -281,7 +281,7 @@ public class Prince : Hurtable
             }
             else
             {
-                Debug.Log("death VFX not set");
+                //Debug.Log("death VFX not set");
             }
 
             if(animator)

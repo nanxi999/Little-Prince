@@ -206,7 +206,6 @@ public class LevelController : MonoBehaviour
     {
         Prince[] players = FindObjectsOfType<Prince>();
         bool gameOver = true;
-        Debug.Log("number of princes remaining:" + players.Length);
         foreach(Prince p in players)
         {
             if (!p.IsCryin())

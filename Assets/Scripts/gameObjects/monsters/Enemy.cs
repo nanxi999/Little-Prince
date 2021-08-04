@@ -122,7 +122,6 @@ public class Enemy : Hurtable
         animator.SetBool("Hurt", true);
         if (health <= 0)
         {
-            Debug.Log(gameObject.name);
             if(isAlive)
             {
                 levelController.EnemyKilled();
@@ -131,15 +130,7 @@ public class Enemy : Hurtable
             {
                 return;
             }
-            if (deathEffect)
-            {
-                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                Destroy(obj, 3f);
-            }
-            else
-            {
-                Debug.Log("death VFX not set");
-            }
+            OnDie();
             Destroy(this.gameObject);
         }
     }
@@ -231,7 +222,11 @@ public class Enemy : Hurtable
     {
         Prince[] princes = FindObjectsOfType<Prince>();
         float minDist = float.MaxValue;
-        float curDist = Vector2.Distance(transform.position, prince.transform.position);
+        float curDist = float.MaxValue;
+        if(prince)
+        {
+            curDist = Vector2.Distance(transform.position, prince.transform.position);
+        }
         Prince tempPrince = new Prince();
 
         foreach(Prince newPrince in princes)
@@ -249,7 +244,7 @@ public class Enemy : Hurtable
         }
         if(!tempPrince) { return; }
 
-        if (prince.IsCryin() || curDist - Vector2.Distance(transform.position,tempPrince.transform.position) > targetSwitchThreshold)
+        if ((prince && prince.IsCryin()) || curDist - Vector2.Distance(transform.position,tempPrince.transform.position) > targetSwitchThreshold)
         {
             prince = tempPrince;
         }

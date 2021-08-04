@@ -18,19 +18,25 @@ public class Hurtable : MonoBehaviour
     public virtual void Hurt(float dmg)
     {
         health -= dmg;
-        if(health <= 0)
+        if (health <= 0)
         {
-            if(deathEffect)
-            {
-                Debug.Log("created effect");
-                GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                Destroy(obj, 3f);
-            } else
-            {
-                Debug.Log("death VFX not set");
-            }
-            Destroy(this.gameObject);
+            OnDie();
         }
+    }
+
+    public virtual void OnDie()
+    {
+        if (deathEffect)
+        {
+            Debug.Log("created effect");
+            GameObject obj = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(obj, 3f);
+        }
+        else
+        {
+            Debug.Log("death VFX not set");
+        }
+        Destroy(this.gameObject);
     }
 
     public bool ifAlive()

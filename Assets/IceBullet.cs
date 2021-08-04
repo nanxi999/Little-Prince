@@ -6,7 +6,6 @@ public class IceBullet : Bullet
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(dmg);
         int res = LayerMask.GetMask(layers);
         GameObject hitObject = collision.gameObject;
         if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)

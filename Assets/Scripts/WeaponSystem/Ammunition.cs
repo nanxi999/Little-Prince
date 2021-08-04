@@ -88,7 +88,6 @@ public class Ammunition : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("ee");
         Prince prince = collision.gameObject.GetComponent<Prince>();
         if (prince)
         {

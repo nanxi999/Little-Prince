@@ -51,7 +51,7 @@ public class RocketExplosion : MonoBehaviour
     {
         List<Collider2D> colliderList = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        filter.SetLayerMask(LayerMask.GetMask("Enemy", "Friendly"));
+        filter.SetLayerMask(LayerMask.GetMask(layers));
         circle.OverlapCollider(filter, colliderList);
         foreach (Collider2D collider in colliderList)
         {

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Machine Gun
   maxAmmo: 350
-  dmg: 18
+  dmg: 20
   attackCd: 0.15
   bulletLifetime: 0.4
   bulletSpeed: 120

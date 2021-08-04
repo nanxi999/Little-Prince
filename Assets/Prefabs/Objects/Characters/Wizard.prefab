@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a6665c8fe674cd6409d365a3e03467de, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.7937458, g: 0.6556604, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -585,22 +585,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7625a7a53dbb94fa0e282a82043530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
   deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
     type: 3}
   slowColor: {r: 0.12941177, g: 0.49019608, b: 1, a: 1}
-  moveSpeed: 6
-  targetSwitchThreshold: 15
+  moveSpeed: 5
+  targetSwitchThreshold: 20
   shadowRenderer: {fileID: 3040799709614331612}
-  dmg: 10
+  dmg: 30
   prince: {fileID: 0}
   darkBullet: {fileID: 5918630548693812110, guid: 3ffef4a684621a142b7b857d85e65d41,
     type: 3}
   bulletSpeed: 45
-  bulletLifeTime: 0.6
+  bulletLifeTime: 1
   attackPoint: {fileID: 3040799709205877778}
-  attackRange: 20
-  attackCd: 3
+  attackRange: 35
+  attackCd: 1.5
+  IgniteCd: 5
+  IgniteNum: 5
 --- !u!50 &3040799711009921018
 Rigidbody2D:
   serializedVersion: 4

@@ -9,9 +9,13 @@ public class Shadow : Enemy
     public Transform attackPoint;
     public float attackRange = 0.5f;
     private AIDestinationSetter dest;
-
+    private float pushBackReductFactor = 0.4f;
     LayerMask layers;
     CircleCollider2D circle;
+
+    [SerializeField] private RocketExplosion explosionVFX;
+    [SerializeField] private bool explosive;
+    private GameObject dieEffect;
 
     protected override void Update()
     {
@@ -23,6 +27,7 @@ public class Shadow : Enemy
     protected override void Start()
     {
         base.Start();
+        dieEffect = deathEffect;
         animator = GetComponent<Animator>();
         circle = GetComponent<CircleCollider2D>();
         attackPoint = transform.Find("AttackPoint");    // find children "attackPoint"        
@@ -44,7 +49,7 @@ public class Shadow : Enemy
 
     private void CheckDamage()
     {
-        if (attackPoint)
+        if (attackPoint && !explosive)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, layers);
 
@@ -57,9 +62,9 @@ public class Shadow : Enemy
                 }
             }
         }
-        else
+        else if(explosive)
         {
-            Debug.Log("The attack point for mutant is not set");
+            Hurt(health);
         }
     }
 
@@ -73,9 +78,34 @@ public class Shadow : Enemy
     {
         freeze = true;
         GetComponent<AIPath>().enabled = false;
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration * pushBackReductFactor);
         GetComponent<AIPath>().enabled = true;
         animator.SetBool("Hurt", false);
         freeze = false;
+    }
+
+    public override void OnDie()
+    {
+        if(explosive)
+        {
+            RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+            exp.SetDmg((int)dmg);
+            Destroy(exp, 1f);
+        }
+        base.OnDie();
+    }
+
+    public void TurnExplosive()
+    {
+        explosive = true;
+        moveSpeed += 10;
+        dmg += 15;
+        health = GetMaxHealth() * 2;
+        ChangeRendererColor(Color.red);
+    }
+
+    public bool IfIgnited()
+    {
+        return explosive;
     }
 }
