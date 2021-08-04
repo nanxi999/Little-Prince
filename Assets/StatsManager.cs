@@ -13,17 +13,29 @@ public class StatsManager : MonoBehaviour
     [SerializeField] private int bulletId = 0;
 
     [Header("Limits")]
-    [SerializeField] private float moveSpeedFactorLimit = 2;
-    [SerializeField] private float hurtFactorLimit = 0.5f;
+    [SerializeField] private float moveSpeedFactorLimit = 2.5f;
+    [SerializeField] private float hurtFactorLimit = 0.7f;
     [SerializeField] private float shootSpeedFactorLimit = 0.5f;
 
     // Passive skills
     [SerializeField] private Dictionary<string, bool> passiveSkills;
 
+    private float AttackSpeedReductFactor;
+    private float MoveSpeedReductFactor;
+
     private void Start()
     {
         passiveSkills = new Dictionary<string, bool>();
         passiveSkills.Add("InfAmmo", false);
+    }
+
+    public void ClearFactors()
+    {
+        shootSpeedFactor = 1;
+        damageFactor = 1;
+        hurtFactor = 1;
+        moveSpeedFactor = 1;
+        ammoFactor = 1;
     }
 
     public float GetShootSpeedFactor()

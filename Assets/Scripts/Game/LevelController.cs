@@ -74,8 +74,8 @@ public class LevelController : MonoBehaviour
     public void InitializeLevel()
     {
         if(level == 1)
-            levelTime = 10;
-        else
+            levelTime = 20;
+        else if(level%5 == 0)
             levelTime += 5;
         StartSpawners();
         numberOfAttackers = 0;
@@ -103,6 +103,7 @@ public class LevelController : MonoBehaviour
             p.SetHealth(p.GetMaxHealth());
             StatsManager stats = p.GetComponent<StatsManager>();
             stats.ResetPassiveSkills();
+            stats.ClearFactors();
             stats.SetBulletId(0);
         }
 

@@ -231,7 +231,7 @@ MonoBehaviour:
   moveSpeed: 6
   targetSwitchThreshold: 15
   shadowRenderer: {fileID: 1459514564}
-  dmg: 5
+  dmg: 10
   prince: {fileID: 0}
   attackPoint: {fileID: 1749586901359668979}
   attackRange: 3.82

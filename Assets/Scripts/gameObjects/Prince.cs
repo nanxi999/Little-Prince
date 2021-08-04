@@ -11,7 +11,8 @@ public class Prince : Hurtable
     public GameObject controllerObj;
     public Gun initialGun;
     public GunController gunController;
-    
+
+    private float speedReductFactor = 1;
     private bool receiveInput = true;
     private Vector2 input;
     private InputAction fireAction;
@@ -21,7 +22,8 @@ public class Prince : Hurtable
     private bool freeze = false;
     private StatsManager stats;
     [SerializeField] private TMP_Text weaponStat;
-    [SerializeField] private TMP_Text weaponLevel   ;
+    [SerializeField] private TMP_Text weaponLevel;
+    [SerializeField] private SpriteRenderer renderer;
 
     // variables for the death and save features
     private float saveTime = 2f;
@@ -41,7 +43,6 @@ public class Prince : Hurtable
     private bool atAmmunition = false;
     private Ammunition supplyPoint;
     private bool filled = false;
-
     Rigidbody2D rb;
     Animator animator;
     // Start is called before the first frame update
@@ -75,7 +76,7 @@ public class Prince : Hurtable
     {
         if(!freeze)
         {
-            transform.Translate(input * speed * stats.GetMoveSpeedFactor() * Time.deltaTime);
+            transform.Translate(input * speed * speedReductFactor * stats.GetMoveSpeedFactor() * Time.deltaTime);
             CheckFlipSpriteCondition();
             Fire();
             SaveTargetPrince();
@@ -384,5 +385,21 @@ public class Prince : Hurtable
     public bool GetFillStatus()
     {
         return filled;
+    }
+    
+    public void Freeze(float speedReduct, int duration)
+    {
+        if(speedReductFactor != 1) { return; }
+        Color prevColor = renderer.color;
+        renderer.color = Color.blue;
+        StartCoroutine(SlowForSeconds(speedReduct, duration, prevColor));
+    }
+
+    IEnumerator SlowForSeconds(float speedReduct, int seconds, Color color)
+    {
+        speedReductFactor = speedReduct;
+        yield return new WaitForSeconds(seconds);
+        renderer.color = color;
+        speedReductFactor = 1f;
     }
 }

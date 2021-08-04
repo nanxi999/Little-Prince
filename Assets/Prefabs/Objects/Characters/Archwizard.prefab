@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834399368543410703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: 8.51, z: 0}
+  m_LocalPosition: {x: -1.7, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 834399370225458490}
@@ -759,7 +759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834399369202831502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.27, y: 3.68, z: 0}
+  m_LocalPosition: {x: 0.4, y: -2.6, z: 0}
   m_LocalScale: {x: 0.25799155, y: 0.25799155, z: 0.25799155}
   m_Children:
   - {fileID: 834399368578738097}
@@ -1521,24 +1521,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836b87c3b40f5c24ea0de17b2f717c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3000
+  health: 3500
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
-  moveSpeed: 7
-  targetSwitchThreshold: 15
+  moveSpeed: 7.5
+  targetSwitchThreshold: 25
   shadowRenderer: {fileID: 1049504980836993093}
   dmg: 10
   prince: {fileID: 0}
   dashDamage: 50
-  dashSpeed: 40
+  dashSpeed: 45
   dashPushBack: 30
-  attackRange: 40
-  attackCd: 5
+  attackRange: 55
+  attackCd: 3.5
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}
-  bullet: {fileID: 5878042762024612096, guid: 33f4096d02a939941bbedc5486b52633, type: 3}
+  bullets:
+  - {fileID: 520976966090748550, guid: eddf838d9cc89f74eb8eb3ae6ab315aa, type: 3}
+  - {fileID: 2531787858631804134, guid: 1e8e1cb0444067c45a61eb6f201c77f2, type: 3}
+  - {fileID: 5878042762024612096, guid: 33f4096d02a939941bbedc5486b52633, type: 3}
   bulletLifeTime: 1.5
-  bulletSpeed: 25
+  bulletSpeed: 30
+  bulletAmount: 6
   laserBeam: {fileID: 905975976534769803, guid: fa094db3eee74ad499fcecbdf2ec7950,
     type: 3}
 --- !u!58 &834399370225458492
@@ -1554,9 +1558,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.24261884, y: -5.4342284}
+  m_Offset: {x: 0.45520145, y: -3.0951705}
   serializedVersion: 2
-  m_Radius: 5.3612776
+  m_Radius: 7.9129186
 --- !u!50 &834399370225458491
 Rigidbody2D:
   serializedVersion: 4

@@ -34,6 +34,7 @@ public class CameraManager : MonoBehaviour
             {
                 foreach(Prince prince in princes)
                 {
+                    if(prince.IsCryin()) { continue; }
                     target.target = prince.transform;
                     target.weight = 1;
                     target.radius = 0;

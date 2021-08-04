@@ -218,7 +218,7 @@ public class Enemy : Hurtable
     }
 
     // choose the target prince based on distance.
-    private void UpdateTarget()
+    public void UpdateTarget()
     {
         Prince[] princes = FindObjectsOfType<Prince>();
         float minDist = float.MaxValue;

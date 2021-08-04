@@ -911,6 +911,7 @@ MonoBehaviour:
   gunController: {fileID: 0}
   weaponStat: {fileID: 794967214}
   weaponLevel: {fileID: 3346244399549115401}
+  renderer: {fileID: 3123561710782608748}
   saveKeyPressed: 0
   EnemyDetectionRange: 35
 --- !u!114 &3191773178815609794
@@ -1129,6 +1130,8 @@ MonoBehaviour:
   ammoFactor: 1
   bulletId: 0
   moveSpeedFactorLimit: 1.5
+  hurtFactorLimit: 0.7
+  shootSpeedFactorLimit: 0.5
 --- !u!1 &7976240009040162747
 GameObject:
   m_ObjectHideFlags: 0

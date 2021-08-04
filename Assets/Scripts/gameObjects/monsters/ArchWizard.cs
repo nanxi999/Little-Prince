@@ -17,9 +17,10 @@ public class ArchWizard : Enemy
     public Transform firePointWand;     //For simple attack
 
     [Header("Bullet Settings")]
-    public TracerBullet bullet;
+    public TracerBullet[] bullets;
     public float bulletLifeTime;
     public float bulletSpeed;
+    [SerializeField] int bulletAmount;
 
     public Laser laserBeam;
     private List<Laser> laserList;
@@ -32,26 +33,45 @@ public class ArchWizard : Enemy
     private LayerMask raycastMask;
     private Transform raycastStartingPoint;
     private Vector2 dashDir;
+    private AIPath path;
+
+    private float fireDuration = 1.5f;
+    private bool firing = false;
+    private int numFired;
+    private float sinceLastFire;
+    private float fireInterval;
+    private TracerBullet bullet;
     
     protected override void Start()
     {
         base.Start();
         laserList = new List<Laser>();
         //GenerateMultipleRays();
-        GetComponent<AIPath>().maxSpeed = moveSpeed;
         Physics2D.queriesStartInColliders = false;
         raycastMask = LayerMask.GetMask("Friendly", "BackgroundHittable");
         raycastStartingPoint = firePointWand.transform;
-        GetComponent<AIPath>().maxSpeed = moveSpeed;
+        path = GetComponent<AIPath>();
+        path.maxSpeed = moveSpeed;
     }
 
     protected override void Update()
     {
         sinceLastAttack += Time.deltaTime;
-        GetComponent<AIDestinationSetter>().target = prince.transform;
+        if(!prince)
+        {
+            UpdateTarget();
+        } else
+        {
+            GetComponent<AIDestinationSetter>().target = prince.transform;
+        }
         base.Update();
         transform.rotation = Quaternion.Euler(-transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        if(path)
+        {
+            path.maxSpeed = moveSpeed;
+        }
         FireTrigger();
+        FireTracer();
         Dash();
         DrawRay();
     }
@@ -84,13 +104,16 @@ public class ArchWizard : Enemy
                 StartCoroutine(Freeze(2f));
                 animator.SetTrigger("CastTracer");
                 sinceLastAttack = 0;
+                firing = true;
+                numFired = 0;
+                int index = Random.RandomRange(0, bullets.Length);
+                bullet = bullets[index];
             }
             else
             {
                 if (attackCount >= laserThreshold)
                 {
                     sinceLastAttack = 0;
-                    StartCoroutine(Freeze(4f));
                     animator.SetTrigger("CastLaser");
                     attackCount = 0;
                     laserThreshold = Random.Range(1, 4);
@@ -142,32 +165,39 @@ public class ArchWizard : Enemy
 
     public void FireTracer()
     {
+        if(!firing) { return; }
+        fireInterval = fireDuration / bulletAmount;
+        sinceLastAttack += Time.deltaTime;
+
+        Debug.Log("waiting");
+        if(sinceLastAttack >= fireInterval)
+        {
+            Debug.Log("fire");
+            GenerateBullet();
+            sinceLastAttack = 0;
+            numFired++;
+        }
+
+        if(numFired >= bulletAmount)
+        {
+            numFired = 0;
+            firing = false;
+        } 
+    }
+
+    private void GenerateBullet()
+    {
         TracerBullet tempBullet;
-        if(bullet)
+        if (bullet)
         {
             tempBullet = Instantiate(bullet, firePointWand.transform.position, transform.rotation);
             tempBullet.SetDmg(dmg);
             tempBullet.SetLifeTime(bulletLifeTime);
             tempBullet.SetSpeed(bulletSpeed);
             tempBullet.SetTarget(prince.transform);
+            tempBullet.SetShooter(this.gameObject);
         }
-            
     }
-
-    /*
-    public void Fire()
-    {
-        if (darkBullet)
-        {
-            Vector3 dir = prince.transform.position - attackPoint.transform.position;
-            float angle = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg - 90f;
-            DarkBullet db = Instantiate(darkBullet, attackPoint.transform.position, transform.rotation);
-            db.SetDirection(dir);
-            db.transform.Rotate(new Vector3(0, 0, angle));
-            db.SetDmg(dmg);
-            db.SetShooter(gameObject);
-        }
-    }*/
 
     public void ChannelRays()
     {
@@ -196,6 +226,8 @@ public class ArchWizard : Enemy
 
     void GenerateMultipleRays()
     {
+        moveSpeed = 5f;
+        
         firePointBall.Find("Start").gameObject.SetActive(true);
         GenerateBeam(Vector2.up);
         GenerateBeam(Vector2.down);
@@ -267,6 +299,7 @@ public class ArchWizard : Enemy
         }
         firePointBall.Find("Start").gameObject.SetActive(false);
         laserList.Clear();
+        moveSpeed = 12f;
     }
 
     /*
@@ -329,8 +362,7 @@ public class ArchWizard : Enemy
         if (health < (max / 2))
         {
             angry = true;
-            AIPath aipath = GetComponent<AIPath>();
-            aipath.maxSpeed = aipath.maxSpeed * 1.5f;
+            moveSpeed = 12;
             raycastStartingPoint = transform;
             animator.SetTrigger("Angry");
         }

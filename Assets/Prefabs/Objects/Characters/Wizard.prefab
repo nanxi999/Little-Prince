@@ -585,24 +585,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7625a7a53dbb94fa0e282a82043530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 800
   deathEffect: {fileID: 4477876738805503457, guid: 4ed19ea2b263f3b4f8be77393796e0a9,
     type: 3}
   slowColor: {r: 0.12941177, g: 0.49019608, b: 1, a: 1}
   moveSpeed: 5
   targetSwitchThreshold: 20
   shadowRenderer: {fileID: 3040799709614331612}
-  dmg: 30
+  dmg: 25
   prince: {fileID: 0}
   darkBullet: {fileID: 5918630548693812110, guid: 3ffef4a684621a142b7b857d85e65d41,
     type: 3}
-  bulletSpeed: 45
+  bulletSpeed: 40
   bulletLifeTime: 1
   attackPoint: {fileID: 3040799709205877778}
-  attackRange: 35
+  attackRange: 30
   attackCd: 1.5
   IgniteCd: 5
-  IgniteNum: 5
+  IgniteNum: 2
 --- !u!50 &3040799711009921018
 Rigidbody2D:
   serializedVersion: 4
