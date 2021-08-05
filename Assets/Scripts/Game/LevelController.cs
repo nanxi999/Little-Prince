@@ -27,6 +27,7 @@ public class LevelController : MonoBehaviour
     private bool prepSession = false;
     private int enemyToKill;
     private GameUI gameUI;
+    private bool stopSpawn = false;
 
     private void Awake()
     {
@@ -41,8 +42,22 @@ public class LevelController : MonoBehaviour
     {
         PrepSessionCountDown();
         enemyCountText.text = numberOfAttackers.ToString();
+
+        CheckEnemyAmount();
     }
 
+    private void CheckEnemyAmount()
+    {
+        if(numberOfAttackers >= 100)
+        {
+            stopSpawn = true;
+            StopSpawners();
+        } else if(numberOfAttackers <= 80 && stopSpawn && !levelTimeFinished)
+        {
+            stopSpawn = false;
+            StartSpawners();
+        }
+    }
     private void PrepSessionCountDown()
     {
         if (prepSession)
@@ -74,9 +89,11 @@ public class LevelController : MonoBehaviour
     public void InitializeLevel()
     {
         if(level == 1)
-            levelTime = 20;
-        else if(level%5 == 0 )
-            levelTime += 5;
+            levelTime = 10;
+        else if(levelTime <= 60)
+        {
+            levelTime += 2;
+        } 
         StartSpawners();
         numberOfAttackers = 0;
         levelTimeFinished = false;

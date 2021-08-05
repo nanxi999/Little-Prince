@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         int stage = (levelController.GetLevel() - 1) / 5;
         float minSpawnDelay = Mathf.Max(baseMinSpawnDelay, startMinSpawnDelay - stage * spawnDelayDecreaseFactor);
         float maxSpawnDelay = Mathf.Max(baseMaxSpawnDelay, startMaxSpawnDelay - stage * spawnDelayDecreaseFactor);
-        speedIncrease = Mathf.Min(((levelController.GetLevel() - 1) / 5) * speedIncreaseFactor, maxSpeedIncrease);
+        //speedIncrease = Mathf.Min(((levelController.GetLevel() - 1) / 5) * speedIncreaseFactor, maxSpeedIncrease);
         dmgIncrease = ((levelController.GetLevel() - 1) / 5) * dmgIncreaseFactor;
         healthIncrease = ((levelController.GetLevel() - 1) / 5) * healthIncreaseFactor;
         spawn = true;
