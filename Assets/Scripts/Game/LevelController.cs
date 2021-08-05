@@ -258,4 +258,9 @@ public class LevelController : MonoBehaviour
     {
         FindObjectOfType<GameUI>().TogglePauseStatus();
     }
+
+    public bool IfDuringPrepSession()
+    {
+        return prepSession;
+    }
 }

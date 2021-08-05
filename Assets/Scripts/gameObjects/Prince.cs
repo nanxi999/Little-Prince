@@ -43,6 +43,7 @@ public class Prince : Hurtable
     private bool atAmmunition = false;
     private Ammunition supplyPoint;
     private bool filled = false;
+    private LevelController levelController;
     Rigidbody2D rb;
     Animator animator;
     // Start is called before the first frame update
@@ -56,6 +57,7 @@ public class Prince : Hurtable
         playerID = FindObjectsOfType<Prince>().Length;
         controllerObj.transform.parent = transform.Find("Character").transform;
         stats = GetComponent<StatsManager>();
+        levelController = FindObjectOfType<LevelController>();
 
         var playerInput = GetComponent<PlayerInput>();
         var map = playerInput.currentActionMap;
@@ -193,7 +195,7 @@ public class Prince : Hurtable
             {
                 supplyPoint.CancelRefill(this);
             }
-        } else if(receiveInput && firing && !cryin)
+        } else if(receiveInput && firing && !cryin && !levelController.IfDuringPrepSession())
         {
             Gun gun = gunController.GetComponentInChildren<Gun>();
             if (!gun)

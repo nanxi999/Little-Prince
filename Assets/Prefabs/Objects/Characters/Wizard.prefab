@@ -590,17 +590,17 @@ MonoBehaviour:
     type: 3}
   slowColor: {r: 0.12941177, g: 0.49019608, b: 1, a: 1}
   moveSpeed: 5
-  targetSwitchThreshold: 20
+  targetSwitchThreshold: 10
   shadowRenderer: {fileID: 3040799709614331612}
   dmg: 25
   prince: {fileID: 0}
   darkBullet: {fileID: 5918630548693812110, guid: 3ffef4a684621a142b7b857d85e65d41,
     type: 3}
   bulletSpeed: 40
-  bulletLifeTime: 1
+  bulletLifeTime: 0.7
   attackPoint: {fileID: 3040799709205877778}
-  attackRange: 30
-  attackCd: 1.5
+  attackRange: 29
+  attackCd: 2
   IgniteCd: 10
   IgniteNum: 2
 --- !u!50 &3040799711009921018

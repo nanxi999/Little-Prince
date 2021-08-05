@@ -1521,19 +1521,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836b87c3b40f5c24ea0de17b2f717c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3000
+  health: 3500
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
-  moveSpeed: 7.5
-  targetSwitchThreshold: 25
+  moveSpeed: 8
+  targetSwitchThreshold: 10
   shadowRenderer: {fileID: 1049504980836993093}
   dmg: 10
   prince: {fileID: 0}
   dashDamage: 50
   dashSpeed: 45
   dashPushBack: 30
-  attackRange: 55
-  attackCd: 3.5
+  attackRange: 40
+  attackCd: 4
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}
   bullets:

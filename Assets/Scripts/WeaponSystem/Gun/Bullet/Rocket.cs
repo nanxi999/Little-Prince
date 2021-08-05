@@ -46,6 +46,7 @@ public class Rocket : Bullet
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
             }
+
             RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
             obj.SetDmg(ExplosionDmg);
             obj.SetShooter(shooter);
