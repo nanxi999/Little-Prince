@@ -73,7 +73,7 @@ public class StatsManager : MonoBehaviour
 
     public void SetHurtFactor(float val)
     {
-        hurtFactor = Mathf.Max(val, hurtFactorLimit);
+        hurtFactor = val;
     }
 
     public float GetMoveSpeedFactor()
@@ -88,7 +88,7 @@ public class StatsManager : MonoBehaviour
 
     public void SetMoveSpeedFactor(float val)
     {
-        moveSpeedFactor = Mathf.Min(val, moveSpeedFactorLimit);
+        moveSpeedFactor = val;
     }
 
     public void ResetPassiveSkills()

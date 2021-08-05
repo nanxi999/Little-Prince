@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3040799709614331610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -2.54, z: 5}
-  m_LocalScale: {x: 0.36836526, y: 0.13502522, z: 1}
+  m_LocalPosition: {x: -0.28, y: -2.56, z: 0}
+  m_LocalScale: {x: 0.29469222, y: 0.06751261, z: 1}
   m_Children: []
   m_Father: {fileID: 3040799711009921015}
   m_RootOrder: 0
@@ -601,7 +601,7 @@ MonoBehaviour:
   attackPoint: {fileID: 3040799709205877778}
   attackRange: 30
   attackCd: 1.5
-  IgniteCd: 5
+  IgniteCd: 10
   IgniteNum: 2
 --- !u!50 &3040799711009921018
 Rigidbody2D:

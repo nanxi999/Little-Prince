@@ -132,6 +132,7 @@ MonoBehaviour:
   layers:
   - Friendly
   - BackgroundHittable
+  - Border
   target: {fileID: 0}
   element: Explosion
   explosionVFX: {fileID: 850423576257068033, guid: 866cd30485bd9a442a2c52ef918da0e2,

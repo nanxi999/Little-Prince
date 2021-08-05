@@ -31,7 +31,7 @@ public class ShotGun : Gun
             case 3:
                 shotsBeforeCoolDown = 6;
                 maxAmmo = 60;
-                coolDownCd = 1f;
+                coolDownCd = 0.5f;
                 break;
             case 5:
                 dmg = 35;

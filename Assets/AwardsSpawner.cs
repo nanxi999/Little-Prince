@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AwardsSpawner : MonoBehaviour
 {
-    public Award[] awardPrefabArray;
+    public Award[] normalAwardPrefabArray;
+    public Award[] gunAwardPrefabArray;
     public GameObject spawnEffect;
 
     private LevelController levelController;
@@ -23,24 +24,23 @@ public class AwardsSpawner : MonoBehaviour
     {
         Vector3 offset = new Vector3(0, -1, 0);
         GameObject effect = Instantiate(spawnEffect, transform.position, transform.rotation);
-        Award award1, award2, award3;
-        List<Award> awards;
-        if(FindObjectOfType<LevelController>().GetLevel() % 4 == 0)
-        {
-            awards = GetValidGunAwards();
-        } else
-        {
-            awards = GetValidAwards();
-        }
-        award1 = Instantiate(GetRandomAward(awards), transform.position + offset, transform.rotation);
-        award2 = Instantiate(GetRandomAward(awards), transform.position + offset, transform.rotation);
-        award3 = Instantiate(GetRandomAward(awards), transform.position + offset, transform.rotation);
+        Award award1, award2, award3, award4;
+        List<Award> normalAwards, gunAwards;
+
+        normalAwards = FilterAwards(normalAwardPrefabArray);
+        gunAwards = FilterAwards(gunAwardPrefabArray);
+
+        award1 = Instantiate(GetRandomAward(normalAwards), transform.position + offset, transform.rotation);
+        award2 = Instantiate(GetRandomAward(normalAwards), transform.position + offset, transform.rotation);
+        award3 = Instantiate(GetRandomAward(normalAwards), transform.position + offset, transform.rotation);
+        award4 = Instantiate(GetRandomAward(gunAwards), transform.position + offset, transform.rotation);
 
         if (award1 && award2 && award3)
         {
-            award1.GetComponent<Rigidbody2D>().velocity = new Vector3(-6f, 5f, 0f);
-            award2.GetComponent<Rigidbody2D>().velocity = new Vector3(0f, 5f, 0f);
-            award3.GetComponent<Rigidbody2D>().velocity = new Vector3(6f, 5f, 0f);
+            award1.GetComponent<Rigidbody2D>().velocity = new Vector3(-9f, 5f, 0f);
+            award2.GetComponent<Rigidbody2D>().velocity = new Vector3(-3f, 5f, 0f);
+            award3.GetComponent<Rigidbody2D>().velocity = new Vector3(3f, 5f, 0f);
+            award4.GetComponent<Rigidbody2D>().velocity = new Vector3(9f, 5f, 0f);
         } else
         {
             Debug.Log("Fail to get ramdom award");
@@ -50,25 +50,12 @@ public class AwardsSpawner : MonoBehaviour
         Destroy(effect, 2);
     }
 
-    private List<Award> GetValidAwards()
+    private List<Award> FilterAwards(Award[] awardPrefabArray)
     {
         List<Award> validAwards = new List<Award>();
         foreach(Award award in awardPrefabArray)
         {
             if(levelController.GetLevel() >= award.GetFirstSpawnLevel())
-            {
-                validAwards.Add(award);
-            }
-        }
-        return validAwards;
-    }
-
-    private List<Award> GetValidGunAwards()
-    {
-        List<Award> validAwards = new List<Award>();
-        foreach (Award award in awardPrefabArray)
-        {
-            if (levelController.GetLevel() >= award.GetFirstSpawnLevel() && award.GetComponent<GunAward>())
             {
                 validAwards.Add(award);
             }

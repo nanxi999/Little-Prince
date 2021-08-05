@@ -89,24 +89,14 @@ public class Prince : Hurtable
     {
         int lv = gunController.GetGunLevel();
         weaponLevel.text = "Lv" + lv;
-        switch (lv)
-        { 
-            case 1:
-                weaponLevel.color = Color.white;
-                break;
-            case 2:
-                weaponLevel.color = Color.yellow;
-                break;
-            case 3:
-                weaponLevel.color = new Color(1.0f, 0.64f, 0.0f);
-                break;
-            case 4:
-                weaponLevel.color = Color.red;
-                break;
-            default:
-                weaponLevel.color = Color.white;
-                break;
-        }
+        if(lv < 3)
+            weaponLevel.color = Color.white;
+        else if(lv >= 3 && lv < 5)
+            weaponLevel.color = Color.yellow;
+        else if(lv >= 5 && lv < 7)
+            weaponLevel.color = new Color(1.0f, 0.64f, 0.0f);
+        else if(lv >= 7)
+            weaponLevel.color = Color.red;
     }
 
     private void CheckFlipSpriteCondition()

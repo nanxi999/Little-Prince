@@ -20,7 +20,7 @@ public class Enemy : Hurtable
     protected bool isAlive = true;
     private float speedModifier = 1;
     protected bool isSLowed;
-    private AIPath path;
+    protected AIPath path;
     protected bool selected;
 
     protected override void Awake()

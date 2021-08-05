@@ -225,7 +225,7 @@ MonoBehaviour:
   gunName: Rocket Launcher
   maxAmmo: 10
   dmg: 0
-  attackCd: 1.5
+  attackCd: 0.75
   bulletLifetime: 1.5
   bulletSpeed: 25
   pushBackForce: 0

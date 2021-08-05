@@ -10,19 +10,20 @@ public class RPG : Gun
         level++;
         maxAmmo += 2;
         dmg += 10;
+
         switch (level)
         {
             case 3:
-                attackCd = 1.2f;
+                attackCd = 0.65f;
                 microRocketNum = 4;
                 bulletSpeed = 30;
                 break;
             case 5:
-                attackCd = 1.0f;
+                attackCd = 0.6f;
                 microRocketNum = 8;
                 break;
             case 7:
-                attackCd = 0.8f;
+                attackCd = 0.5f;
                 microRocketNum = 12;
                 bulletSpeed = 35;
                 break;

@@ -9,6 +9,7 @@ public class RocketExplosion : MonoBehaviour
     private CircleCollider2D circle;
     private int dmg = 10;
     private bool ice;
+    private GameObject shooter;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,11 @@ public class RocketExplosion : MonoBehaviour
         dmg = damage;
     }
 
+    public void SetShooter(GameObject obj)
+    {
+        shooter = obj;
+    }
+
     private void Explode()
     {
         List<Collider2D> colliderList = new List<Collider2D>();
@@ -55,6 +61,8 @@ public class RocketExplosion : MonoBehaviour
         circle.OverlapCollider(filter, colliderList);
         foreach (Collider2D collider in colliderList)
         {
+            if(collider.gameObject == shooter) { continue; }
+
             Hurtable enemy = collider.gameObject.GetComponent<Hurtable>();
             if (enemy)
             {

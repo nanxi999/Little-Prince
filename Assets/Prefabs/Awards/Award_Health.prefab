@@ -424,7 +424,7 @@ MonoBehaviour:
   collectEffect: {fileID: 851927929687668209, guid: 00736acb6f3cce647b68cefe4cbc43cd,
     type: 3}
   value:
-  - 10
+  - 25
 --- !u!61 &3460781675845430116
 BoxCollider2D:
   m_ObjectHideFlags: 0

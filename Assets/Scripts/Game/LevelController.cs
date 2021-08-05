@@ -8,7 +8,7 @@ using Cinemachine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] int level = 1;
-    [SerializeField] int levelTime;
+    [SerializeField] int levelTime = 0;
     int numberOfAttackers;
     int numberOfPlayers;
     List<int> playersAwarded;
@@ -88,11 +88,9 @@ public class LevelController : MonoBehaviour
 
     public void InitializeLevel()
     {
-        if(level == 1)
-            levelTime = 10;
-        else if(levelTime <= 60)
+        if(levelTime <= 60)
         {
-            levelTime += 2;
+            levelTime = 10 + (level-1) * 2;
         } 
         StartSpawners();
         numberOfAttackers = 0;

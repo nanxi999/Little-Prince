@@ -141,7 +141,7 @@ public class Gun : MonoBehaviour
         bullet.SetShooter(prince.gameObject);
         bullet.SetLifeTime(bulletLifetime);
         bullet.SetSpeed(bulletSpeed);
-        bullet.SetDmg(dmg);
+        bullet.SetDmg(dmg * stats.GetDamageFactor());
         bullet.SetPushBackForce(pushBackForce);
     }
 }

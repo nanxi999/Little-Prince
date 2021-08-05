@@ -19,7 +19,7 @@ public class GameUI : MonoBehaviour
 
     private void Awake()
     {
-        instruction = transform.Find("LevelInstruction").gameObject;
+        instruction = transform.Find("Instruction").gameObject;
         instructionAnimator = instruction.GetComponent<Animator>();
         pauseMenu = transform.Find("Paused Menu").gameObject;
         es = GetComponent<EventSystem>();

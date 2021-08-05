@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 905975976534769800}
   - component: {fileID: 905975976534769803}
   m_Layer: 9
-  m_Name: LaserGun 1
+  m_Name: LaserGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,11 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defDistanceRay: 800
-  laserFirePoint: {fileID: 0}
   lineRenderer: {fileID: 905975976534769800}
   layerNames:
   - Friendly
   - BackgroundHittable
+  - Border
   hitEffectPrefab: {fileID: 8351440496796138405, guid: 5d559afe3fd71ed46b905370039a1fe2,
     type: 3}
   dir: {x: 0, y: 0}

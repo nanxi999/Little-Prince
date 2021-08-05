@@ -48,6 +48,7 @@ public class Rocket : Bullet
             }
             RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
             obj.SetDmg(ExplosionDmg);
+            obj.SetShooter(shooter);
             obj.IfIcyAttack(iceBullet);
             SpawnMicroRockets();
             Destroy(obj, 2);

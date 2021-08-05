@@ -33,7 +33,6 @@ public class ArchWizard : Enemy
     private LayerMask raycastMask;
     private Transform raycastStartingPoint;
     private Vector2 dashDir;
-    private AIPath path;
 
     private float fireDuration = 1.5f;
     private bool firing = false;
@@ -241,7 +240,7 @@ public class ArchWizard : Enemy
         GenerateBeam(new Vector2(-1, Mathf.Tan(deg)));
         GenerateBeam(new Vector2(1, -Mathf.Tan(deg)));
         GenerateBeam(new Vector2(-1, -Mathf.Tan(deg)));
-
+        
         // Update ray width
         StartCoroutine(RayWidthsGrow());
     }

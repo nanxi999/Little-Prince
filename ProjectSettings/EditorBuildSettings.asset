@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Menu.unity
     guid: 1ecfba85008b57d4a9d09cc6c4bfc3ef
   - enabled: 1
-    path: Assets/Scenes/Nick Scene.unity
-    guid: 97861f9e571d0f7419cc478abaa99ba2
+    path: Assets/Scenes/Nick Scece.unity
+    guid: 0ff5f1dcc8f5a2f46adf0b81c4b88ad8
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 548e5d75336423b46a8fb28b93d3a218
