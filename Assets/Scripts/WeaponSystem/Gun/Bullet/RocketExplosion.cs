@@ -13,15 +13,16 @@ public class RocketExplosion : MonoBehaviour
     private int dmg = 10;
     private bool ice;
     private GameObject shooter;
+    private bool Exploded;
+    private bool shooterSet = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, 1.5f);
+        Destroy(this.gameObject, 1f);
         circle = GetComponent<CircleCollider2D>();
         audioSource = GetComponent<AudioSource>();
         InitIndexList();
-        Explode();
         if(audioSource && explosionSFX)
         {
             audioSource.PlayOneShot(explosionSFX);
@@ -45,6 +46,12 @@ public class RocketExplosion : MonoBehaviour
             {
                 audioSource.Stop();
             }
+        }
+
+        if (!Exploded && shooterSet)
+        {
+            Explode();
+            Exploded = true;
         }
     }
 
@@ -71,6 +78,7 @@ public class RocketExplosion : MonoBehaviour
     public void SetShooter(GameObject obj)
     {
         shooter = obj;
+        shooterSet = true;
     }
 
     private void Explode()

@@ -51,7 +51,6 @@ public class Rocket : Bullet
             obj.SetShooter(shooter);
             obj.IfIcyAttack(iceBullet);
             SpawnMicroRockets();
-            Destroy(obj, 0.7f);
 
             if (hitObject.GetComponent<Hurtable>())
             {
@@ -78,8 +77,8 @@ public class Rocket : Bullet
                 Debug.Log("spawn " + num);
                 int angle = (360/microRockNum) * num;
                 Vector2 dir = -(transform.position - initPosition);
-                Bullet bullet = Instantiate(microRocket, transform.position, Quaternion.Euler(0, 0, angle));
-                InitBullet((Rocket)bullet);
+                Rocket bullet = (Rocket)Instantiate(microRocket, transform.position, Quaternion.Euler(0, 0, angle));
+                InitBullet(bullet);
                 num--;
             }
         }

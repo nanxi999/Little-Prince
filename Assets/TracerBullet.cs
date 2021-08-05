@@ -72,6 +72,7 @@ public class TracerBullet : Bullet
         {
             RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
             exp.SetDmg((int)10);
+            exp.SetShooter(null);
             Destroy(exp, 1f);
         } 
     }

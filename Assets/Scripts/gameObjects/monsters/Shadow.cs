@@ -90,7 +90,7 @@ public class Shadow : Enemy
         {
             RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
             exp.SetDmg((int)dmg);
-            Destroy(exp, 1f);
+            exp.SetShooter(null);
         }
         base.OnDie();
     }
@@ -99,7 +99,7 @@ public class Shadow : Enemy
     {
         explosive = true;
         moveSpeed += 10;
-        dmg += 15;
+        dmg += 20;
         health = GetMaxHealth() * 2;
         ChangeRendererColor(Color.red);
     }
