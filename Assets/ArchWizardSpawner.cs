@@ -19,7 +19,7 @@ public class ArchWizardSpawner : EnemySpawner
         count = 0;
         if(levelController.GetLevel() % firstSpawnLevel == 0)
         {
-            while(count < levelController.GetLevel() / (firstSpawnLevel *2))
+            while(count < Mathf.Max((levelController.GetLevel() - 15), 0 ) / (firstSpawnLevel * 2) + 1)
             {
                 yield return new WaitForSeconds(Random.Range(startMinSpawnDelay, startMaxSpawnDelay));
                 SpawnAttacker();

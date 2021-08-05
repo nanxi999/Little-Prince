@@ -48,7 +48,7 @@ public class TracerBullet : Bullet
     {
         if(!path)
         {
-            if(element.Equals("Darkness") || element == null)
+            if(element.Equals("Darkness") || element.Equals("Ice"))
             {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             } else if(element.Equals("Explosion"))

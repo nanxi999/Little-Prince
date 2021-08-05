@@ -32,7 +32,7 @@ public class Wizard : Enemy
         sinceLastAttack += Time.deltaTime;
         igniteSinceLastAtk += Time.deltaTime;
 
-        IgniteNum = levelController.GetLevel() / 10 + 1
+        IgniteNum = levelController.GetLevel() / 10 + 1;
         base.Update();
         GetComponent<AIDestinationSetter>().target = prince.transform;
         FireTrigger();
