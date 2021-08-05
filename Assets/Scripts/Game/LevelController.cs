@@ -249,6 +249,11 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public int GetPlayerNumber()
+    {
+        return numberOfPlayers;
+    }
+
     public void PlayerLeft()
     {
         numberOfPlayers -= 1;
