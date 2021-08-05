@@ -7,23 +7,26 @@ public class RPG : Gun
     private int microRocketNum = 0;
     public override void LevelUp()
     {
-        level++;
-        maxAmmo += 1;
-        switch (level)
+        if(level < maxLevel)
         {
-            case 3:
-                microRocketNum = 4;
-                bulletSpeed = 30;
-                break;
-            case 5:
-                microRocketNum = 8;
-                break;
-            case 7:
-                microRocketNum = 12;
-                bulletSpeed = 35;
-                break;
-            default:
-                break;
+            level++;
+            maxAmmo += 1;
+            switch (level)
+            {
+                case 3:
+                    microRocketNum = 4;
+                    bulletSpeed = 30;
+                    break;
+                case 5:
+                    microRocketNum = 8;
+                    break;
+                case 7:
+                    microRocketNum = 12;
+                    bulletSpeed = 35;
+                    break;
+                default:
+                    break;
+            }
         }
     }
     public override void Fire()
