@@ -37,7 +37,7 @@ public class RPG : Gun
         {
             return;
         }
-        else if (bullet[stats.GetBulletId()])
+        else if (bullet[stats.GetBulletId()] && ammo > 0)
         {
             if (!stats.GetPassiveSkillsStats("InfAmmo") && ammo > 0)
                 ammo--;

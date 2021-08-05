@@ -8,19 +8,10 @@ public class TracerBullet : Bullet
     public Transform target;
     [SerializeField] private string element;
     [SerializeField] RocketExplosion explosionVFX;
-
-    private AIDestinationSetter dest;
-    private AIPath path;
     private Vector2 dir;
 
     protected override void Start()
     {
-        dest = GetComponent<AIDestinationSetter>();
-        path = GetComponent<AIPath>();
-        if (path && dest)
-        {
-            InitAIPath();
-        }
         base.Start();
         InitDir();
     }
@@ -32,13 +23,6 @@ public class TracerBullet : Bullet
         transform.Rotate(new Vector3(0, 0, angle));
     }
 
-    private void InitAIPath()
-    {
-        path.maxSpeed = speed + 13;
-        dest.target = target;
-        lifeTime = 2.5f;
-    }
-
     public void SetTarget(Transform tempTarget)
     {
         target = tempTarget;
@@ -46,16 +30,13 @@ public class TracerBullet : Bullet
 
     protected override void Fly()
     {
-        if(!path)
+        if(element.Equals("Darkness") || element.Equals("Ice"))
         {
-            if(element.Equals("Darkness") || element.Equals("Ice"))
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-            } else if(element.Equals("Explosion"))
-            {
-                dir = Vector2.left * 2.3f;
-                transform.Translate(dir * speed * Time.deltaTime);
-            }
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        } else if(element.Equals("Explosion"))
+        {
+            dir = Vector2.left * 2.3f;
+            transform.Translate(dir * speed * Time.deltaTime);
         }
     }
 
@@ -92,9 +73,6 @@ public class TracerBullet : Bullet
             RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
             exp.SetDmg((int)10);
             Destroy(exp, 1f);
-        } else if(element.Equals("Ice"))
-        {
-
         } 
     }
 }

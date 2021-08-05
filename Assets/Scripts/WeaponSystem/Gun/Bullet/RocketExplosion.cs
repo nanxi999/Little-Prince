@@ -5,6 +5,9 @@ using UnityEngine;
 public class RocketExplosion : MonoBehaviour
 {
     [SerializeField] private string[] layers;
+    [SerializeField] AudioClip explosionSFX;
+    
+    private AudioSource audioSource;
     protected List<int> layerIndexes;
     private CircleCollider2D circle;
     private int dmg = 10;
@@ -15,8 +18,16 @@ public class RocketExplosion : MonoBehaviour
     void Start()
     {
         circle = GetComponent<CircleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         InitIndexList();
         Explode();
+        if(audioSource && explosionSFX)
+        {
+            audioSource.PlayOneShot(explosionSFX);
+        } else
+        {
+            Debug.Log("audiosource or audio not properly set for explosion");
+        }
     }
 
     // Update is called once per frame
@@ -25,6 +36,14 @@ public class RocketExplosion : MonoBehaviour
         if (!circle)
         {
             Start();
+        }
+
+        if (audioSource)
+        {
+            if(audioSource.time > 0.8)
+            {
+                audioSource.Stop();
+            }
         }
     }
 
