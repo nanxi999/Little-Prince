@@ -38,16 +38,17 @@ public class ShotGun : Gun
                 bulletNum = 5;
                 shotsBeforeCoolDown = 8;
                 attackCd = 0.22f;
-                maxAmmo = 90;
+                maxAmmo = 80;
                 break;
             case 7:
                 dmg = dmg * 0.6f;
                 attackCd = 0.15f;
-                maxAmmo = 130;
+                maxAmmo = 100;
                 coolDownCd = 0f;
                 break;
             default:
                 dmg += 5;
+                maxAmmo += 10;
                 break;
         }
     }
@@ -58,8 +59,15 @@ public class ShotGun : Gun
         {
             return;
         }
-        else if (bullet[stats.GetBulletId()] && ammo > 0)
+        else if (bullet[stats.GetBulletId()])
         {
+            if (!stats.GetPassiveSkillsStats("InfAmmo"))
+            {
+                if (ammo <= 0)
+                    return;
+                ammo--;
+            }
+
             shootCount++;
             if (shootCount >= shotsBeforeCoolDown)
             {
@@ -67,8 +75,6 @@ public class ShotGun : Gun
                 shootCount = 0;
             }         
 
-            if(!stats.GetPassiveSkillsStats("InfAmmo"))
-                ammo--;
             audioSource.PlayOneShot(shootSound);
             Bullet b = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             InitBullet(b);

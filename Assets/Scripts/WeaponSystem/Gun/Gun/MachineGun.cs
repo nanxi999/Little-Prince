@@ -32,28 +32,29 @@ public class MachineGun : Gun
         switch (level)
         {
             case 3:
-                maxAmmo = 350;
+                maxAmmo = 300;
                 dmg = dmg * 1.2f;
+                attackCd = 0.12f;
                 startModifyingSpread = 1;
                 spread = 10;
                 break;
             case 5:
                 dmg = dmg * 1.2f;
-                attackCd = attackCd * 0.9f;
-                maxAmmo = 450;
+                attackCd = 0.1f;
+                maxAmmo = 400;
                 startModifyingSpread = 2;
                 spread = 8;
                 break;
             case 7:
                 dmg = dmg * 1.2f;
-                maxAmmo = 550;
-                attackCd = attackCd * 0.8f;
-                maxAmmo = (int)(maxAmmo * 1.8f);
+                maxAmmo = 500;
+                attackCd = 0.08f;
                 startModifyingSpread = 3;
                 spread = 6;
                 break;
             default:
                 dmg += 3;
+                maxAmmo += 50;
                 break;
         }
         return;
@@ -70,11 +71,14 @@ public class MachineGun : Gun
         {
             return;
         } 
-        else if (bullet[stats.GetBulletId()] && ammo > 0)
+        else if (bullet[stats.GetBulletId()])
         {
             if (!stats.GetPassiveSkillsStats("InfAmmo"))
+            {
+                if (ammo <= 0)
+                    return;
                 ammo--;
-
+            }
             // modify spread
             float spreadModify = 0;
             if (contShootTime > startModifyingSpread)

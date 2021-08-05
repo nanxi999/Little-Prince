@@ -96,7 +96,7 @@ public class GunController : MonoBehaviour
         if (tempGun)
         {
             tempGun.LevelUp();
-            tempGun.SetAmmo((int)Mathf.Ceil(gun.GetMaxAmmo() * stats.GetAmmoFactor()));
+            tempGun.SetAmmo((int)Mathf.Ceil(tempGun.GetMaxAmmo() * stats.GetAmmoFactor()));
             return;
         } else
         {
@@ -154,13 +154,15 @@ public class GunController : MonoBehaviour
     public string GetGunStat()
     {
         if(!gun) { return "?"; }
-        if(gun.GetName().Equals("Rifle"))
-        { 
+        else if(stats.GetPassiveSkillsStats("InfAmmo") || gun.GetName().Equals("Rifle"))
+        {
             return gun.GetName() + ": \u221E";
-        } else
+        }
+        else
         {
             return gun.GetName() + ": " + gun.GetAmmo();
         }
+        
     }
 
     public int GetGunLevel()

@@ -67,8 +67,11 @@ public class Gun : MonoBehaviour
         }
         else if (bullet[stats.GetBulletId()])
         {
-            if (!stats.GetPassiveSkillsStats("InfAmmo") && ammo > 0)
+            if (!stats.GetPassiveSkillsStats("InfAmmo")) {
+                if (ammo <= 0)
+                    return;
                 ammo--;
+            }
             audioSource.PlayOneShot(shootSound);
             //AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             FindObjectOfType<CamShakeController>().ShakeAtController(0.2f, shakeAmplitude, 5f);
