@@ -17,6 +17,7 @@ public class RocketExplosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(this.gameObject, 1.5f);
         circle = GetComponent<CircleCollider2D>();
         audioSource = GetComponent<AudioSource>();
         InitIndexList();

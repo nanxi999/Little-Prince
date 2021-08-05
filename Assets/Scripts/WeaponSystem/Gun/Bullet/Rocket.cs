@@ -13,10 +13,13 @@ public class Rocket : Bullet
     private int microRockNum = 0;
     private int microRockDmg = 10;
     private BoxCollider2D box;
+    private List<GameObject> objs;
+    private GameObject ignoreObj;
     protected override void Start()
     {
         base.Start();
         box = GetComponent<BoxCollider2D>();
+        objs = new List<GameObject>();
     }
 
     protected override void Update()
@@ -35,25 +38,28 @@ public class Rocket : Bullet
     {
         int res = LayerMask.GetMask(layers);
         hitObject = collision.gameObject;
-        if (!(layerIndexes.Contains(collision.gameObject.layer)) || isColliding)
+        if (!(layerIndexes.Contains(collision.gameObject.layer)))
             return;
 
-        if (hitObject != shooter)
+        if (hitObject != shooter && !objs.Contains(hitObject) && hitObject!=ignoreObj)
         {
-            isColliding = true;
             Enemy enemy = hitObject.GetComponent<Enemy>();
-            if (hitObject.GetComponent<Hurtable>())
-            {
-                hitObject.GetComponent<Hurtable>().Hurt(dmg);
-            }
+            objs.Add(hitObject);
 
             RocketExplosion obj = Instantiate(explosion, transform.position, Quaternion.identity);
             obj.SetDmg(ExplosionDmg);
             obj.SetShooter(shooter);
             obj.IfIcyAttack(iceBullet);
             SpawnMicroRockets();
-            Destroy(obj, 2);
-            Destroy(this.gameObject);
+            Destroy(obj, 0.7f);
+
+            if (hitObject.GetComponent<Hurtable>())
+            {
+                hitObject.GetComponent<Hurtable>().Hurt(dmg);
+            } else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -64,26 +70,32 @@ public class Rocket : Bullet
 
     private void SpawnMicroRockets()
     {
-        Debug.Log("Spawning");
+        int num = microRockNum;
         if (microRocket)
         {
-            while (microRockNum > 0)
+            while (num > 0)
             {
-                Debug.Log("spawn " + microRockNum);
-                int angle = 30 * microRockNum;
+                Debug.Log("spawn " + num);
+                int angle = (360/microRockNum) * num;
                 Vector2 dir = -(transform.position - initPosition);
                 Bullet bullet = Instantiate(microRocket, transform.position, Quaternion.Euler(0, 0, angle));
-                InitBullet(bullet);
-                microRockNum--;
+                InitBullet((Rocket)bullet);
+                num--;
             }
         }
     }
 
-    protected void InitBullet(Bullet bullet)
+    protected void InitBullet(Rocket bullet)
     {
-        bullet.SetShooter(hitObject);
-        bullet.SetLifeTime(lifeTime / 4);
+        bullet.SetShooter(shooter);
+        bullet.SetLifeTime(lifeTime / 5);
         bullet.SetSpeed(speed / 3);
+        bullet.SetIgnoreObj(hitObject);
+    }
+
+    public void SetIgnoreObj(GameObject obj)
+    {
+        ignoreObj = obj;
     }
 
     protected override void DestroyProjectile()

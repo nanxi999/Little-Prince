@@ -224,9 +224,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Rocket Launcher
   maxAmmo: 10
-  dmg: 0
+  dmg: 25
   attackCd: 0.75
-  bulletLifetime: 1.5
+  bulletLifetime: 1.2
   bulletSpeed: 25
   pushBackForce: 0
   level: 1

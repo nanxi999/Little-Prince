@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea96fe9187533f54685472121e6c68bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 5000
   deathEffect: {fileID: 0}
   speed: 17
   controllerObj: {fileID: 6786467526076406317, guid: d5978d4e2ad69de409cb436618389cca,
@@ -913,7 +913,7 @@ MonoBehaviour:
   weaponLevel: {fileID: 3346244399549115401}
   renderer: {fileID: 3123561710782608748}
   saveKeyPressed: 0
-  EnemyDetectionRange: 25
+  EnemyDetectionRange: 40
 --- !u!114 &3191773178815609794
 MonoBehaviour:
   m_ObjectHideFlags: 0
