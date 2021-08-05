@@ -35,7 +35,7 @@ public class TracerBullet : Bullet
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         } else if(element.Equals("Explosion"))
         {
-            dir = Vector2.left * 2.3f;
+            dir = Vector2.left * 2f;
             transform.Translate(dir * speed * Time.deltaTime);
         }
     }
@@ -72,6 +72,7 @@ public class TracerBullet : Bullet
         {
             RocketExplosion exp = Instantiate(explosionVFX, transform.position, Quaternion.identity);
             exp.SetDmg((int)10);
+            exp.SetShooter(null);
             Destroy(exp, 1f);
         } 
     }

@@ -7,26 +7,26 @@ public class RPG : Gun
     private int microRocketNum = 0;
     public override void LevelUp()
     {
-        level++;
-        maxAmmo += 2;
-        switch (level)
+        if(level < maxLevel)
         {
-            case 3:
-                attackCd = 0.9f;
-                microRocketNum = 4;
-                bulletSpeed = 30;
-                break;
-            case 5:
-                attackCd = 0.8f;
-                microRocketNum = 8;
-                break;
-            case 7:
-                attackCd = 0.7f;
-                microRocketNum = 12;
-                bulletSpeed = 35;
-                break;
-            default:
-                break;
+            level++;
+            maxAmmo += 1;
+            switch (level)
+            {
+                case 3:
+                    microRocketNum = 4;
+                    bulletSpeed = 30;
+                    break;
+                case 5:
+                    microRocketNum = 8;
+                    break;
+                case 7:
+                    microRocketNum = 12;
+                    bulletSpeed = 35;
+                    break;
+                default:
+                    break;
+            }
         }
     }
     public override void Fire()
@@ -49,17 +49,6 @@ public class RPG : Gun
             Bullet newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle));
             ((Rocket)newBullet).SetMicroRocketNum(microRocketNum);
             InitBullet(newBullet);
-            if (level == maxLevel)
-            {
-               newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle + 15));
-              ((Rocket)newBullet).SetMicroRocketNum(microRocketNum);
-                InitBullet(newBullet);
-
-                newBullet = Instantiate(bullet[stats.GetBulletId()], firePoint.transform.position, Quaternion.Euler(0, 0, angle - 15));
-               ((Rocket)newBullet).SetMicroRocketNum(microRocketNum);
-                InitBullet(newBullet);
-            }
-
             lastShoot = 0f;
             if (shootEffects[stats.GetBulletId()])
             {
