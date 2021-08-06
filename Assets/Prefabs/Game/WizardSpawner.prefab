@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMinSpawnDelay: 10
-  startMaxSpawnDelay: 15
-  baseMinSpawnDelay: 5
-  baseMaxSpawnDelay: 5
-  spawnDelayDecreaseFactor: 0.2
-  speedIncreaseFactor: 0.2
+  startMaxSpawnDelay: 20
+  baseMinSpawnDelay: 10
+  baseMaxSpawnDelay: 10
+  minSpawnDelayDecrease: 0
+  maxSpawnDelayDecrease: 1
+  speedIncreaseFactor: 0
   maxSpeedIncrease: 0
   dmgIncreaseFactor: 0
   healthIncreaseFactor: 0

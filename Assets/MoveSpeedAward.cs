@@ -14,7 +14,7 @@ public class MoveSpeedAward : Award
         base.Start();
         selected = percentage[Random.Range(0, percentage.Length)];
         TMP_Text descriptionText = description.Find("Description").GetComponent<TMP_Text>();
-        descriptionText.SetText("Increase the movement speed of the prince by {0}%. The movement speed can be increased by at most 50%.", selected * 100);
+        descriptionText.SetText("In the next level, increase the movement speed of the prince by {0}%.", selected * 100);
         description.gameObject.SetActive(false);
     }
 

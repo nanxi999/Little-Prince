@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Spawning Frequency Setting")]
     [SerializeField] protected float startMinSpawnDelay = 1f;
     [SerializeField] protected float startMaxSpawnDelay = 3f;
     [SerializeField] protected float baseMinSpawnDelay = 1f;
     [SerializeField] protected float baseMaxSpawnDelay = 3f;
-    [SerializeField] protected float spawnDelayDecreaseFactor = 0.1f;
+
+    [Header("Difficulty Increase Setting")]
+    [SerializeField] protected float minSpawnDelayDecrease = 0.1f;
+    [SerializeField] protected float maxSpawnDelayDecrease = 0.1f;
     [SerializeField] protected float speedIncreaseFactor;
     [SerializeField] protected float maxSpeedIncrease;
     [SerializeField] protected float dmgIncreaseFactor;
@@ -30,8 +34,10 @@ public class EnemySpawner : MonoBehaviour
     public virtual IEnumerator StartSpawning()
     {
         int stage = (levelController.GetLevel() - 1) / 5;
-        float minSpawnDelay = Mathf.Max(baseMinSpawnDelay, startMinSpawnDelay - stage * spawnDelayDecreaseFactor);
-        float maxSpawnDelay = Mathf.Max(baseMaxSpawnDelay, startMaxSpawnDelay - stage * spawnDelayDecreaseFactor);
+        float minSpawnDelay = Mathf.Max(baseMinSpawnDelay, startMinSpawnDelay - stage * minSpawnDelayDecrease);
+        float maxSpawnDelay = Mathf.Max(baseMaxSpawnDelay, startMaxSpawnDelay - stage * maxSpawnDelayDecrease);
+        Debug.Log("min spawn delay:" + minSpawnDelay);
+        Debug.Log("max spawn delay:" + maxSpawnDelay);
         //speedIncrease = Mathf.Min(((levelController.GetLevel() - 1) / 5) * speedIncreaseFactor, maxSpeedIncrease);
         dmgIncrease = ((levelController.GetLevel() - 1) / 5) * dmgIncreaseFactor;
         healthIncrease = ((levelController.GetLevel() - 1) / 5) * healthIncreaseFactor;

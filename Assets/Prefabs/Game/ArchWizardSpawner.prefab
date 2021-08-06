@@ -47,9 +47,12 @@ MonoBehaviour:
   startMaxSpawnDelay: 3
   baseMinSpawnDelay: 3
   baseMaxSpawnDelay: 3
+  minSpawnDelayDecrease: 0
+  maxSpawnDelayDecrease: 0
   speedIncreaseFactor: 0
   maxSpeedIncrease: 0
   dmgIncreaseFactor: 1
+  healthIncreaseFactor: 0
   enemyPref: {fileID: 834399370225458493, guid: 83bcf1c7a4d49ad42bcc3ebe218185b4,
     type: 3}
   dashDmgIncreaseFactor: 2

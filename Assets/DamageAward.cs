@@ -14,7 +14,7 @@ public class DamageAward : Award
         base.Start();
         selected = percentage[Random.Range(0, percentage.Length)];
         TMP_Text descriptionText = description.Find("Description").GetComponent<TMP_Text>();
-        descriptionText.SetText("Improve the damage of your weapons by {0}%", selected * 100);
+        descriptionText.SetText("In the next level, improve the damage of your weapons by {0}%", selected * 100);
         description.gameObject.SetActive(false);
     }
 

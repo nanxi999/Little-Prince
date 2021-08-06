@@ -96,37 +96,40 @@ public class ArchWizard : Enemy
 
         Vector2 dir = prince.transform.position - raycastStartingPoint.position;
         RaycastHit2D hitInfo = Physics2D.Raycast(raycastStartingPoint.position, dir, attackRange, raycastMask.value);
-        if (hitInfo.transform.GetComponent<Prince>())
+        if(hitInfo)
         {
-            if (!angry)
+            if (hitInfo.transform.GetComponent<Prince>())
             {
-                StartCoroutine(Freeze(2f));
-                animator.SetTrigger("CastTracer");
-                sinceLastAttack = 0;
-                firing = true;
-                numFired = 0;
-                int max = Mathf.Min(bullets.Length, FindObjectOfType<LevelController>().GetLevel() / 5);
-                int index = Random.RandomRange(0, max);
-                bullet = bullets[index];
-            }
-            else
-            {
-                if (attackCount >= laserThreshold)
+                if (!angry)
                 {
+                    StartCoroutine(Freeze(2f));
+                    animator.SetTrigger("CastTracer");
                     sinceLastAttack = 0;
-                    animator.SetTrigger("CastLaser");
-                    attackCount = 0;
-                    laserThreshold = Random.Range(1, 4);
+                    firing = true;
+                    numFired = 0;
+                    int max = Mathf.Min(bullets.Length, FindObjectOfType<LevelController>().GetLevel() / 5);
+                    int index = Random.RandomRange(0, max);
+                    bullet = bullets[index];
                 }
                 else
                 {
-                    sinceLastAttack = 0;
-                    StartCoroutine(Freeze(4f));
-                    animator.SetTrigger("Dash");
-                    attackCount += 1;
+                    if (attackCount >= laserThreshold)
+                    {
+                        sinceLastAttack = 0;
+                        animator.SetTrigger("CastLaser");
+                        attackCount = 0;
+                        laserThreshold = Random.Range(1, 4);
+                    }
+                    else
+                    {
+                        sinceLastAttack = 0;
+                        StartCoroutine(Freeze(4f));
+                        animator.SetTrigger("Dash");
+                        attackCount += 1;
+                    }
                 }
             }
-        }          
+        }
     }
 
     public void SetDashDir()
