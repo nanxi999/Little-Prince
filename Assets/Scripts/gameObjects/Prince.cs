@@ -71,6 +71,9 @@ public class Prince : Hurtable
 
         assistAction = map.FindAction("FireAssist");
         assistAction.started += ToggleAssist;
+
+        // player join
+        levelController.PlayerJoined(this);
     }
 
     // Update is called once per frame
@@ -277,6 +280,8 @@ public class Prince : Hurtable
                 //Debug.Log("death VFX not set");
             }
 
+            levelController.PlayerCry(this);
+
             if(animator)
             {
                 // start cryin and waiting for help
@@ -322,6 +327,7 @@ public class Prince : Hurtable
             remainingSaveTime -= Time.deltaTime;
         } else
         {
+            levelController.PlayerNoLongerCry(this);
             // the target prince is saved
             animator.SetTrigger("Saved");
             saveTime += 0.5f;

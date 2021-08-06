@@ -238,8 +238,9 @@ public class LevelController : MonoBehaviour
         FindObjectOfType<SceneLoader>().LoadSceneWithIndex(2);
     }
 
-    public void PlayerJoined()
+    public void PlayerJoined(Prince prince)
     {
+
         numberOfPlayers += 1;
         if(numberOfPlayers == 1)
         {
@@ -247,6 +248,17 @@ public class LevelController : MonoBehaviour
             InitializeLevel();
             FindObjectOfType<CinemachineTargetGroup>().RemoveMember(startCameraPos);
         }
+        FindObjectOfType<CinemachineTargetGroup>().AddMember(prince.transform, 1, 0);
+    }
+
+    public void PlayerCry(Prince prince)
+    {
+        FindObjectOfType<CinemachineTargetGroup>().RemoveMember(prince.transform);
+    }
+
+    public void PlayerNoLongerCry(Prince prince)
+    {
+        FindObjectOfType<CinemachineTargetGroup>().AddMember(prince.transform, 1, 0);
     }
 
     public int GetPlayerNumber()

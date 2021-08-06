@@ -236,7 +236,6 @@ public class Enemy : Hurtable
                 float distance = Vector2.Distance(transform.position, newPrince.transform.position);
                 if(distance < minDist)
                 {
-                    Debug.Log("minPrince");
                     minDist = distance;
                     tempPrince = newPrince;
                 }
