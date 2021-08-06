@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea96fe9187533f54685472121e6c68bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 100
   deathEffect: {fileID: 0}
   speed: 17
   controllerObj: {fileID: 6786467526076406317, guid: d5978d4e2ad69de409cb436618389cca,

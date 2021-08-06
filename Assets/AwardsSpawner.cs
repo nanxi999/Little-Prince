@@ -13,6 +13,7 @@ public class AwardsSpawner : MonoBehaviour
     private void Start()
     {
         levelController = FindObjectOfType<LevelController>();
+        SpawnNumberOfAwards(6);
     }
 
     public void StartSpawning()

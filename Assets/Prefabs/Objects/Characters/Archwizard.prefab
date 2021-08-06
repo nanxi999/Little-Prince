@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836b87c3b40f5c24ea0de17b2f717c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3500
+  health: 4500
   deathEffect: {fileID: 0}
   slowColor: {r: 0, g: 0.3704834, b: 1, a: 1}
   moveSpeed: 8
@@ -1573,8 +1573,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 70
-  m_LinearDrag: 15
+  m_Mass: 500
+  m_LinearDrag: 50
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
