@@ -26,15 +26,13 @@ public class CameraManager : MonoBehaviour
                 nullTargets++;
             }
         }
-
-        if(group.m_Targets.Length - nullTargets < 2)
+        if(group.m_Targets.Length - nullTargets < 4)
         {
             Prince[] princes = FindObjectsOfType<Prince>();
             if(princes.Length > 0)
             {
                 foreach(Prince prince in princes)
                 {
-                    if(prince.IsCryin()) { continue; }
                     target.target = prince.transform;
                     target.weight = 1;
                     target.radius = 0;
@@ -42,8 +40,9 @@ public class CameraManager : MonoBehaviour
                     group.m_Targets.SetValue(target, i++);
                 } 
             }
-
             i = 0;
         }
+
+
     }
 }
