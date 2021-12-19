@@ -1545,17 +1545,17 @@ MonoBehaviour:
   dashDamage: 50
   dashSpeed: 45
   dashPushBack: 30
-  attackRange: 40
-  attackCd: 4
+  attackRange: 50
+  attackCd: 3.5
   firePointBall: {fileID: 834399369202831503}
   firePointWand: {fileID: 834399368543410704}
   bullets:
   - {fileID: 5878042762024612096, guid: 33f4096d02a939941bbedc5486b52633, type: 3}
   - {fileID: 2531787858631804134, guid: 1e8e1cb0444067c45a61eb6f201c77f2, type: 3}
   - {fileID: 520976966090748550, guid: eddf838d9cc89f74eb8eb3ae6ab315aa, type: 3}
-  bulletLifeTime: 1.2
+  bulletLifeTime: 2
   bulletSpeed: 30
-  bulletAmount: 6
+  bulletAmount: 7
   laserBeam: {fileID: 905975976534769803, guid: fa094db3eee74ad499fcecbdf2ec7950,
     type: 3}
 --- !u!58 &834399370225458492

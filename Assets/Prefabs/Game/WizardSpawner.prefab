@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dddd060e1cc71408d142ca6e52a0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMinSpawnDelay: 10
-  startMaxSpawnDelay: 20
+  startMinSpawnDelay: 20
+  startMaxSpawnDelay: 35
   baseMinSpawnDelay: 10
-  baseMaxSpawnDelay: 10
-  minSpawnDelayDecrease: 0
-  maxSpawnDelayDecrease: 1
+  baseMaxSpawnDelay: 15
+  minSpawnDelayDecrease: 0.3
+  maxSpawnDelayDecrease: 0.2
   speedIncreaseFactor: 0
   maxSpeedIncrease: 0
   dmgIncreaseFactor: 0

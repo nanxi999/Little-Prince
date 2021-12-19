@@ -51,8 +51,8 @@ public class TracerBullet : Bullet
         {
             if(collision.gameObject.GetComponent<Prince>())
             {
-                dmg = 5;
-                collision.gameObject.GetComponent<Prince>().Freeze(0.5f, 4);
+                dmg = 6;
+                collision.gameObject.GetComponent<Prince>().Freeze(0.6f, 5);
             }
         }
 
@@ -60,7 +60,7 @@ public class TracerBullet : Bullet
         {
             if (collision.gameObject.GetComponent<Prince>())
             {
-                collision.gameObject.GetComponentInChildren<Prince>().DarkBoltHit(2.0f, 4);
+                collision.gameObject.GetComponentInChildren<Prince>().DarkBoltHit(2.5f, 4);
             }
         }
         base.OnTriggerEnter2D(collision);

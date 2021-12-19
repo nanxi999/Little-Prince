@@ -15,6 +15,7 @@ public class ArchWizardSpawner : EnemySpawner
         speedIncrease = ((levelController.GetLevel() - 1) / 5) * speedIncreaseFactor;
         dmgIncrease = ((levelController.GetLevel() - 1) / 5) * dmgIncreaseFactor;
         dashDmgIncrease = ((levelController.GetLevel() - 1) / 5) * dashDmgIncreaseFactor;
+        healthIncrease = ((levelController.GetLevel() - 1 / 5)) * healthIncreaseFactor;
         //laserDmgIncrease = ((levelController.GetLevel() - 1) / 5) * laserDmgIncreaseFactor;
         count = 0;
         if(levelController.GetLevel() % firstSpawnLevel == 0)
@@ -35,5 +36,6 @@ public class ArchWizardSpawner : EnemySpawner
         newEnemy.SetDmg(dmgIncrease + newEnemy.GetDmg());
         newEnemy.SetDashDmg(dashDmgIncrease + newEnemy.GetDashDmg());
         newEnemy.SetSpeed((float)(speedIncrease + newEnemy.GetSpeed()));
+        newEnemy.SetHealth(healthIncrease + newEnemy.GetHealth());
     }
 }
