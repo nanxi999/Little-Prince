@@ -229,11 +229,23 @@ public class LevelController : MonoBehaviour
         }
         Debug.Log(gameOver);
         if (gameOver)
-            StartCoroutine(GameOver());    
+        {
+            Results resultKeeper = FindObjectOfType<Results>();
+            Prince[] princes = FindObjectsOfType<Prince>();
+            if (resultKeeper)
+            {
+                foreach (Prince prince in princes)
+                {
+                    resultKeeper.AddPrince(prince);
+                }
+            }
+            StartCoroutine(GameOver());
+        }
     }
 
     IEnumerator GameOver()
     {
+        Debug.Log("here");
         yield return new WaitForSeconds(2);
         FindObjectOfType<SceneLoader>().LoadSceneWithIndex(2);
     }
@@ -253,11 +265,16 @@ public class LevelController : MonoBehaviour
 
     public void PlayerCry(Prince prince)
     {
-        FindObjectOfType<CinemachineTargetGroup>().RemoveMember(prince.transform);
+        numberOfPlayers -= 1;
+        if(numberOfPlayers != 0)
+        {
+            FindObjectOfType<CinemachineTargetGroup>().RemoveMember(prince.transform);
+        }
     }
 
     public void PlayerNoLongerCry(Prince prince)
     {
+        numberOfPlayers += 1;
         FindObjectOfType<CinemachineTargetGroup>().AddMember(prince.transform, 1, 0);
     }
 

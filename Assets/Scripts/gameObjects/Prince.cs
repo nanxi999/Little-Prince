@@ -46,7 +46,13 @@ public class Prince : Hurtable
     private LevelController levelController;
     Rigidbody2D rb;
     Animator animator;
-    // Start is called before the first frame update
+
+    // info
+    [SerializeField] private TMP_Text name;
+    [SerializeField] private int score = 0;
+    private int rescues = 0;
+    private int deaths = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,6 +80,12 @@ public class Prince : Hurtable
 
         // player join
         levelController.PlayerJoined(this);
+
+        NameManager nameManager = FindObjectOfType<NameManager>();
+        if(nameManager)
+        {
+            name.text = nameManager.getUniqueName();
+        }
     }
 
     // Update is called once per frame
@@ -281,6 +293,7 @@ public class Prince : Hurtable
             }
 
             levelController.PlayerCry(this);
+            deaths++;
 
             if(animator)
             {
@@ -291,6 +304,16 @@ public class Prince : Hurtable
                 remainingSaveTime = saveTime;
             }
         }
+    }
+
+    public int GetDeaths()
+    {
+        return deaths;
+    }
+
+    public int GetRescues()
+    {
+        return rescues;
     }
 
     public bool IsCryin()
@@ -311,6 +334,7 @@ public class Prince : Hurtable
             } else
             {
                 princeToSave = null;
+                rescues += 1;
             }
         }
     }
@@ -411,6 +435,27 @@ public class Prince : Hurtable
         StartCoroutine(ResetAttackSpeed(duration));
     }
     
+    public void AddScore(int amount)
+    {
+        if(amount > 0)
+        {
+            score += amount;
+        }
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public string GetName()
+    {
+        return name.text;
+    }
+    public void SetName(String newName)
+    {
+        name.text = newName;
+    }
     IEnumerator ResetAttackSpeed(float duration)
     {
         yield return new WaitForSeconds(duration);

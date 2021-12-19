@@ -103,6 +103,8 @@ public class Bullet : MonoBehaviour
                 {
                     enemy.PushBack(dir / dir.magnitude * pushBackForce, 0.7f);
                 }
+
+                AddScoreForShooter(Mathf.RoundToInt(dmg));
             }
             if (hitObject.GetComponent<Hurtable>())
             {
@@ -122,26 +124,12 @@ public class Bullet : MonoBehaviour
         return shooter;
     }
 
-    /*
-    public void ToggleIceBullet(bool status)
+    public void AddScoreForShooter(int score)
     {
-        iceBullet = status;
+        Prince prince = shooter.GetComponent<Prince>();
+        if(prince)
+        {
+            prince.AddScore(score);
+        }
     }
-
-    private void UpdateSpriteRenderer()
-    {
-        if(sprites.Length < 2)
-        {
-            Debug.Log("Please set the sprites for bullets");
-            return;
-        }
-        if (iceBullet)
-        {
-            renderer.sprite = sprites[1];
-        }
-        else
-        {
-            renderer.sprite = sprites[0];
-        }
-    }*/
 }

@@ -9,6 +9,8 @@ public class Enemy : Hurtable
     [SerializeField] protected float moveSpeed = 6;
     [SerializeField] protected float targetSwitchThreshold = 30;
     [SerializeField] protected SpriteRenderer shadowRenderer;
+
+
     public float dmg = 1;
     protected bool freeze = false;
 

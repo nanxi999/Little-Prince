@@ -8,7 +8,7 @@ public class CameraManager : MonoBehaviour
 
     CinemachineTargetGroup group;
     Cinemachine.CinemachineTargetGroup.Target target;
-    private int i = 0;
+
     void Start()
     {
         group = GameObject.Find("Targets").GetComponent<CinemachineTargetGroup>();
