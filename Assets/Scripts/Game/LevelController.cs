@@ -8,7 +8,7 @@ using Cinemachine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] int level = 1;
-    [SerializeField] int levelTime = 0;
+    int levelTime = 0;
     int numberOfAttackers;
     int numberOfPlayers;
     List<int> playersAwarded;
@@ -26,8 +26,10 @@ public class LevelController : MonoBehaviour
     private float timeBeforeNextLv;
     private bool prepSession = false;
     private int enemyToKill;
-    private GameUI gameUI;
     private bool stopSpawn = false;
+
+    private GameUI gameUI;
+    private List<Prince> princes;
 
     private void Awake()
     {
@@ -36,6 +38,14 @@ public class LevelController : MonoBehaviour
         numberOfPlayers = 0;
         playersAwarded = new List<int>();
         ammu = FindObjectsOfType<Ammunition>();
+        princes = new List<Prince>();
+    }
+
+    private void Start()
+    {
+        FindObjectOfType<ResultKeeper>().ResetGameResult();
+        gameUI = FindObjectOfType<GameUI>();
+        levelText.text = "Level " + level;
     }
 
     private void Update()
@@ -75,12 +85,6 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        gameUI = FindObjectOfType<GameUI>();
-        levelText.text = "Level " + level;
-    }
-
     public int GetLevel()
     {
         return level;
@@ -88,7 +92,7 @@ public class LevelController : MonoBehaviour
 
     public void InitializeLevel()
     {
-        if(levelTime <= 60)
+        if (levelTime <= 60)
         {
             levelTime = 10 + (level-1) * 2;
         } 
@@ -113,6 +117,7 @@ public class LevelController : MonoBehaviour
         StartCoroutine(gameUI.ShowInstruction("Level completed! Get ready for the next level...", 3f));
         FindObjectOfType<AwardsSpawner>().StartSpawning();
         Prince[] players = FindObjectsOfType<Prince>();
+
         foreach(Prince p in players)
         {
             p.SetHealth(p.GetMaxHealth());
@@ -138,6 +143,7 @@ public class LevelController : MonoBehaviour
         DestroyAwards();
         level += 1;
         levelText.text = "Level " + level;
+        joinText.SetActive(false);
         StartCoroutine(gameUI.ShowInstruction("Level " + level, 3f));
         yield return new WaitForSeconds(2);
         foreach (Ammunition ammo in ammu)
@@ -230,15 +236,25 @@ public class LevelController : MonoBehaviour
         Debug.Log(gameOver);
         if (gameOver)
         {
-            Results resultKeeper = FindObjectOfType<Results>();
+            ResultKeeper resultKeeper = FindObjectOfType<ResultKeeper>();
             Prince[] princes = FindObjectsOfType<Prince>();
+            int bestScore = 0;
+
+            /* Save the game statistics to ResultKeeper */
             if (resultKeeper)
             {
                 foreach (Prince prince in princes)
                 {
+                    if (prince.GetScore() > bestScore)
+                    {
+                        bestScore = prince.GetScore();
+                    }
                     resultKeeper.AddPrince(prince);
                 }
+                resultKeeper.SetGameLevel(level);
             }
+
+            resultKeeper.UpdateHighScore(level, bestScore);
             StartCoroutine(GameOver());
         }
     }
@@ -252,13 +268,16 @@ public class LevelController : MonoBehaviour
 
     public void PlayerJoined(Prince prince)
     {
-
         numberOfPlayers += 1;
+        princes.Add(prince);
+
+        /* Initialize the game */
         if(numberOfPlayers == 1)
         {
-            joinText.SetActive(false);
-            InitializeLevel();
+            timeBeforeNextLv = prepareTime;
+            prepSession = true;
             FindObjectOfType<CinemachineTargetGroup>().RemoveMember(startCameraPos);
+            FindObjectOfType<AwardsSpawner>().StartSpawning();
         }
         FindObjectOfType<CinemachineTargetGroup>().AddMember(prince.transform, 1, 0);
     }

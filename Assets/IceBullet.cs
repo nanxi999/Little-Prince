@@ -27,6 +27,7 @@ public class IceBullet : Bullet
             if (hitObject.GetComponent<Hurtable>())
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
+                AddScoreForShooter(Mathf.RoundToInt(dmg));
             }
             DestroyProjectile();
         }

@@ -1426,6 +1426,7 @@ GameObject:
   - component: {fileID: 843652226382500421}
   - component: {fileID: 843652226382500418}
   - component: {fileID: 843652226382500419}
+  - component: {fileID: 8910807291369747198}
   m_Layer: 12
   m_Name: Archwizard
   m_TagString: Hurtable
@@ -1673,6 +1674,22 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!70 &8910807291369747198
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834399370225458489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.2500354, y: 3.229106}
+  m_Size: {x: 5.2405005, y: 5.2405005}
+  m_Direction: 0
 --- !u!1 &834399370272818965
 GameObject:
   m_ObjectHideFlags: 0

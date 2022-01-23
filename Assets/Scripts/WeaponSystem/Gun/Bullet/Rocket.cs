@@ -55,6 +55,7 @@ public class Rocket : Bullet
             if (hitObject.GetComponent<Hurtable>())
             {
                 hitObject.GetComponent<Hurtable>().Hurt(dmg);
+                AddScoreForShooter(Mathf.RoundToInt(dmg));
             } else
             {
                 Destroy(this.gameObject);

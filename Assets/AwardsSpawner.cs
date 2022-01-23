@@ -13,7 +13,6 @@ public class AwardsSpawner : MonoBehaviour
     private void Start()
     {
         levelController = FindObjectOfType<LevelController>();
-        SpawnNumberOfAwards(6);
     }
 
     public void StartSpawning()
@@ -72,13 +71,15 @@ public class AwardsSpawner : MonoBehaviour
 
     public void SpawnNumberOfAwards(int num)
     {
-        if(num < 3)
+        if (num < 3)
         {
             Debug.Log("Cannot spawn less than 3 awards");
         } else if (num > 6)
         {
             Debug.Log("Cannot spawn more than 6 awards");
         }
+
+        GameObject effect = Instantiate(spawnEffect, transform.position, transform.rotation);
         Vector3 offset = new Vector3(0, -1, 0);
         float[] gaps = { 12f, 18f, 20f, 24f };
         float gap = gaps[num - 3] / (num - 1);
@@ -102,6 +103,8 @@ public class AwardsSpawner : MonoBehaviour
                 award = Instantiate(GetRandomAward(normalAwards), transform.position + offset, transform.rotation);
             award.GetComponent<Rigidbody2D>().velocity = new Vector3((-left) + i * gap, 5f, 0f);
         }
+
+        Destroy(effect, 2);
     }
 
     private List<Award> FilterAwards(Award[] awardPrefabArray)

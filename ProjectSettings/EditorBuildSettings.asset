@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Menu.unity
     guid: 1ecfba85008b57d4a9d09cc6c4bfc3ef
   - enabled: 1
-    path: Assets/Scenes/Nick Scece.unity
-    guid: 0ff5f1dcc8f5a2f46adf0b81c4b88ad8
+    path: Assets/Scenes/Adam Hori.unity
+    guid: eb84676010339f441b97c773f6d1927b
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 548e5d75336423b46a8fb28b93d3a218
+    path: Assets/Scenes/GameOver Adam.unity
+    guid: 9abdaa61c32054e4b97435e33f2ee693
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 52f4a8562667b80428bf377cbf95f05a,
       type: 2}

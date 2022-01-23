@@ -172,10 +172,10 @@ public class ArchWizard : Enemy
         fireInterval = fireDuration / bulletAmount;
         sinceLastAttack += Time.deltaTime;
 
-        Debug.Log("waiting");
+        //Debug.Log("waiting");
         if(sinceLastAttack >= fireInterval)
         {
-            Debug.Log("fire");
+            //Debug.Log("fire");
             GenerateBullet();
             sinceLastAttack = 0;
             numFired++;

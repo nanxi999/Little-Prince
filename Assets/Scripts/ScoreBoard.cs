@@ -7,18 +7,19 @@ public class ScoreBoard : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreboard;
     [SerializeField] TMP_Text topScore;
+
+    Prince[] princes;
     int max = 0;
     string leader = "no leader yet";
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Prince[] princes = FindObjectsOfType<Prince>();
+        princes = FindObjectsOfType<Prince>();
         for (int i = 0; i < princes.Length; i++)
         {
             int score = princes[i].GetScore();

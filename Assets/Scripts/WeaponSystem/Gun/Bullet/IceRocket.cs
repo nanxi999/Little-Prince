@@ -53,6 +53,7 @@ public class IceRocket : Bullet
             if (enemy)
             {
                 enemy.Hurt(ExplosionDmg);
+                AddScoreForShooter(Mathf.RoundToInt(ExplosionDmg));
                 Enemy enemyComp = enemy.GetComponent<Enemy>();
 
                 if (enemy)
